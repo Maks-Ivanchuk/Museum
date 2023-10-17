@@ -1,0 +1,38 @@
+.header {
+   width: 100%;
+   margin: 0 auto;
+}
+
+.header__wrapper {
+   display: flex;
+   justify-content: space-between;
+}
+
+.header__logo {
+   a {
+      color: $white;
+      font-family: Forum;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+   }
+}
+
+.header__nav {
+   display: flex;
+   justify-content: space-between;
+   width: 54%;
+
+   a {
+      color: $white;
+      font-family: Roboto;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 100;
+      line-height: normal;
+      letter-spacing: 2px;
+   }
+}
