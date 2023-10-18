@@ -1,5 +1,30 @@
-h1 {
-   font-family: 'Roboto', sans-serif;
-   color: red;
-   font-size: 50px;
+// @media screen and (min-width: 421px) {
+
+// }
+
+// @media screen and (min-width: 769px) {
+
+// }
+
+// @media screen and (min-width: 1025px) {
+
+// }
+
+.main {
+   padding-top: 90px;
+   color: black;
+   // flex: 1 1 auto;
+
+   @media screen and (min-width: 421px) {
+      padding-top: 110px;
+   }
+
+   @media screen and (min-width: 769px) {
+      padding-top: 130px;
+   }
+
+   @media screen and (min-width: 1025px) {
+      padding-top: 150px;
+   }
+
 }

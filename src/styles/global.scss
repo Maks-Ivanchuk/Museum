@@ -1,20 +1,34 @@
+// @media screen and (min-width: 421px) {
+
+// }
+
+// @media screen and (min-width: 769px) {
+
+// }
+
+// @media screen and (min-width: 1025px) {
+
+// }
+
+.bg-dark {
+   background-color: $bg-dark;
+}
+
 body {
-   width: auto;
    height: 100vh;
    display: flex;
    flex-direction: column;
    font-family: 'Forum', serif;
+   color: $white;
+   position: relative;
+
 }
 
 .container {
-   max-width: calc(1920px - 240px * 2);
    margin: 0 auto;
+   padding: 0 20px;
 
    @media screen and (min-width: 1024px) {
-      width: 1024px;
+      max-width: calc(1920px - 220px * 2);
    }
-}
-
-.bg-dark {
-   background-color: $bg-dark;
 }
