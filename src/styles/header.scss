@@ -37,40 +37,6 @@
    }
 }
 
-// .header__logo {
-//    display: flex;
-//    align-items: center;
-//    gap: 25px;
-
-//    .header__logo-icon {
-//       width: 29px;
-//       height: 16px;
-//    }
-
-//    .header__logo-text {
-//       color: $white;
-//       font-family: Forum;
-//       font-size: 16px;
-//       font-style: normal;
-//       font-weight: 400;
-//       line-height: normal;
-//       letter-spacing: 5px;
-//       text-transform: uppercase;
-//    }
-
-//    @media screen and (min-width: 421px) {
-//       .header__logo-icon {
-//          width: 49px;
-//          height: 26px;
-//       }
-
-//       .header__logo-text {
-//          font-size: 28px;
-//       }
-//    }
-// }
-
-//----------------------------------------
 .header__logo {
    display: flex;
    align-items: center;
@@ -101,8 +67,6 @@
       font-size: 28px;
    }
 }
-
-// ------------------
 
 .header__bg-menu {
    height: 18px;

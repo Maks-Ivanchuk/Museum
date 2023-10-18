@@ -12,8 +12,7 @@
 
 .main {
    padding-top: 90px;
-   color: black;
-   // flex: 1 1 auto;
+   flex: 1 1 auto;
 
    @media screen and (min-width: 421px) {
       padding-top: 110px;
@@ -26,5 +25,123 @@
    @media screen and (min-width: 1025px) {
       padding-top: 150px;
    }
+}
 
+.welcome {}
+
+.welcome__wrapper {
+   display: flex;
+   flex-direction: column;
+
+
+
+   @media screen and (min-width: 1024px) {
+      flex-direction: row;
+      justify-content: space-between;
+   }
+
+}
+
+.welcome__info {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   gap: 25px;
+   align-items: center;
+
+   @media screen and (min-width: 1024px) {
+      align-items: flex-start;
+   }
+
+   h1 {
+      color: $white;
+      text-align: center;
+      font-family: Forum;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 40px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+
+      @media screen and (min-width: 1024px) {
+         text-align: left;
+         align-items: flex-start;
+      }
+   }
+
+   h3 {
+      color: $white;
+      font-family: Roboto;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+      letter-spacing: 2px;
+      padding-bottom: 50px;
+   }
+}
+
+.welcome__info-btn {
+   display: none;
+   background-color: $dark-red;
+   border-radius: 10px;
+   text-align: center;
+   font-family: Roboto;
+   font-size: 20px;
+   font-style: normal;
+   font-weight: 300;
+   line-height: normal;
+   letter-spacing: 2px;
+   color: $white;
+   cursor: pointer;
+
+   @media screen and (min-width: 1024px) {
+      display: block;
+      padding: 10 45px;
+   }
+
+   @media screen and (min-width: 1920px) {
+      padding: 25 65px;
+      font-size: 20px;
+   }
+}
+
+.welcome__slider {
+   max-width: 100%;
+   overflow: hidden;
+}
+
+.slider__wrapper {
+   display: flex;
+   flex-direction: column;
+   // height: 100%;
+}
+
+.slider__img-small {
+   display: block;
+
+   @media screen and (min-width: 1024px) {
+      display: none;
+   }
+}
+
+.slider__img-large {
+   display: none;
+
+   @media screen and (min-width: 1024px) {
+      display: block;
+      max-width: 100%;
+      height: auto;
+
+   }
+}
+
+.slider__btn-nav {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 80px;
 }
