@@ -48,18 +48,47 @@
    gap: 25px;
    align-items: center;
    color: $white;
+   padding-bottom: 50px;
+
+   @media screen and (min-width: 460px) {
+      padding-bottom: 50px;
+   }
 
    @media screen and (min-width: 1024px) {
       align-items: flex-start;
+      padding-bottom: 0px;
    }
 
    h1 {
       text-align: center;
-   
+
       @media screen and (min-width: 1024px) {
          text-align: left;
       }
    }
+
+   h3 {
+      text-transform: none;
+      font-family: Roboto;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+      letter-spacing: 2px;
+
+      @media screen and (min-width: 768px) {
+         font-size: 20px;
+      }
+
+      @media screen and (min-width: 1024px) {
+         font-size: 24px;
+      }
+
+      @media screen and (min-width: 1440px) {
+         font-size: 28px;
+      }
+   }
+
 }
 
 .welcome__info-btn {
@@ -77,13 +106,15 @@
    cursor: pointer;
 
    @media screen and (min-width: 1024px) {
-      display: block;
-      padding: 10 45px;
+      display: flex;
+      max-width: 300px;
+      padding: 10 43px;
    }
 
-   @media screen and (min-width: 1920px) {
+   @media screen and (min-width: 1440px) {
       padding: 25 65px;
-      font-size: 20px;
+      max-width: 360px;
+      font-size: 22px;
    }
 }
 
@@ -179,7 +210,7 @@
 
    }
 
-   @media screen and (min-width: 1920px) {
+   @media screen and (min-width: 1440px) {
       justify-content: space-between;
    }
 }
@@ -189,6 +220,7 @@
    flex-direction: column;
    max-width: 280px;
    max-height: 300px;
+   cursor: pointer;
 
    @media screen and (min-width: 1024px) {
       max-width: 330px;
@@ -226,7 +258,7 @@
       width: 75%;
    }
 
-   @media screen and (min-width: 1920px) {
+   @media screen and (min-width: 1440px) {
       max-width: 300px;
    }
 }
@@ -259,7 +291,7 @@
       }
    }
 
-   @media screen and (min-width: 1920px) {
+   @media screen and (min-width: 1440px) {
       p:first-child {
          font-size: 22px;
       }
@@ -269,6 +301,8 @@
       }
    }
 }
+
+.explore {}
 
 .explore__wrapper {
    display: flex;
@@ -306,10 +340,14 @@
    font-weight: 300;
    line-height: 38.5px;
 
+   span {
+      color: $font-gold;
+   }
+
    @media screen and (min-width: 1024px) {
       display: flex;
       flex-direction: column;
-      
+
       p:last-child {
          display: none;
       }
@@ -323,25 +361,97 @@
          display: block;
       }
    }
-
-   span {
-      color: $font-gold;
-   }
 }
 
 .explore__action {
    max-width: 100%;
-
-   // @media screen and (min-width: 1440px) {
-   //    width: 720px;
-   //    height: 700px;
-   //    }
-   }
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
 
 .explore__img {
+   max-width: 720px;
    width: 100%;
 
-      @media screen and (min-width: 1440px) {
+   @media screen and (min-width: 1440px) {
       width: auto;
-      }
+   }
+}
+
+.video {}
+
+.video__wrapper {
+   display: flex;
+   flex-direction: column;
+   padding: 40px 0px;
+   gap: 20px;
+
+   @media screen and (min-width: 768px) {
+      padding: 60px 0px;
+      gap: 40px;
+   }
+}
+
+.video__title {
+   color: $font-gold;
+}
+
+.video__content {}
+
+.video__item {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+
+   iframe {
+      width: 100%;
+      max-width: 560px;
+      height: calc(560px / 1.77);
+   }
+}
+
+.gallery__warpper {
+   display: flex;
+   flex-direction: column;
+   padding-top: 40px;
+   gap: 40px;
+
+   @media screen and (min-width: 1024px) {
+      padding-top: 60px;
+      gap: 60px;
+   }
+
+   @media screen and (min-width: 1440px) {
+      padding-top: 75px;
+      gap: 75px;
+   }
+}
+
+.gallery__title {}
+
+.gallery__content {
+   overflow: hidden;
+   padding-bottom: 20px;
+}
+
+.gallery__content-grid {
+   max-height: 600px;
+   overflow: auto;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 10px;
+
+   @media screen and (min-width: 1024px) {
+      grid-template-columns: 1fr 1fr 1fr;
+   }
+}
+
+.gallery__item {
+   // max-width: 100%;
+
+   img {
+      width: 100%;
+   }
 }
