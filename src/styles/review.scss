@@ -201,17 +201,12 @@
 
    @media screen and (min-width: 1024px) {
       gap: 60px;
-      padding: 40px 0px;
+      padding: 60px 0px;
 
    }
 
    @media screen and (min-width: 1440px) {
-      gap: 40px;
-
-   }
-
-   @media screen and (min-width: 1440px) {
-      justify-content: space-between;
+      padding: 75px 0;
    }
 }
 
@@ -323,7 +318,7 @@
 
    @media screen and (min-width: 1440px) {
       gap: 75px;
-      
+
    }
 }
 
@@ -435,36 +430,201 @@
 .gallery__title {}
 
 .gallery__content {
-   overflow: hidden;
-   padding-bottom: 20px;
-}
+   width: 100%;
+   height: auto;
+   columns: 2;
+   gap: 24px;
 
-.gallery__content-grid {
-   // max-height: 600px;
-   // overflow: auto;
-   // display: grid;
-   // grid-template-columns: 1fr 1fr;
-   justify-content: center;
-   display: flex;
-   flex-wrap: wrap;
-   gap: 10px;
+   @media screen and (min-width: 769px) {
+      gap: 36px;
+   }
 
    @media screen and (min-width: 1024px) {
-      // grid-template-columns: 1fr 1fr 1fr;
+      columns: 3;
    }
 }
 
 .gallery__item {
    display: flex;
-   flex-basis: 48%;
+   padding-bottom: 24px;
+
+   @media screen and (min-width: 769px) {
+      padding-bottom: 36px;
+   }
 
    img {
-      width: 100%;
       height: auto;
+      width: 100%;
+   }
+
+   &:nth-child(1) {
+      padding-top: 50px;
+   }
+
+   &:nth-child(11) {
+      padding-top: 0px;
    }
 
    @media screen and (min-width: 1024px) {
-      flex-basis: 32%;
-      // gap: 5%;
+
+      &:nth-child(11) {
+         padding-top: 50px;
+      }
+   }
+}
+
+
+.tickets__wrapper {
+   display: flex;
+   flex-direction: column;
+
+   h4 {
+      text-align: center;
+      font-family: Roboto;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+
+      @media screen and (min-width: 1440px) {
+         font-size: 28px;
+      }
+   }
+}
+
+.tickets__title {
+   display: flex;
+   border-bottom-color: $dark-red;
+   border-bottom-width: 3px;
+   border-bottom-style: solid;
+   padding: 20px 0;
+   color: $font-gold;
+}
+
+.tickets__content {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   padding: 40px 0px;
+   gap: 40px;
+   color: $dark;
+
+   @media screen and (min-width: 768px) {
+      flex-direction: row;
+      gap: 60px;
+      padding-right: 50px;
+      justify-content: space-between;
+   }
+
+   @media screen and (min-width: 1024px) {
+      gap: 80px;
+      padding: 60px 0px;
+      padding-right: 30px;
+   }
+
+   @media screen and (min-width: 1440px) {
+      gap: 60px;
+      padding: 75px 0px;
+   }
+}
+
+.tickets__img {
+   max-width: 720px;
+   width: 100%;
+
+
+   @media screen and (min-width: 768px) {}
+
+   @media screen and (min-width: 1024px) {}
+
+   @media screen and (min-width: 1440px) {}
+
+   img {
+      width: 100%;
+   }
+}
+
+.tickets__buy {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+
+   @media screen and (min-width: 1440px) {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 620px;
+   }
+}
+
+.tickets__type {
+   display: none;
+   color: $dark;
+   font-family: Roboto;
+   font-size: 22px;
+   font-style: normal;
+   font-weight: 300;
+   line-height: normal;
+
+   @media screen and (min-width: 1440px) {
+      display: flex;
+      flex-direction: column;
+   }
+}
+
+.tickets__type-title {}
+
+.tickets__type-input {
+   display: flex;
+   flex-direction: column;
+}
+
+.tickets__amount {
+   display: flex;
+   flex-direction: column;
+
+   @media screen and (min-width: 768px) {}
+
+   @media screen and (min-width: 1024px) {}
+}
+
+.tickets__amount-title {
+   padding-bottom: 20px;
+}
+
+.tickets__amount-form {
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   font-weight: 300;
+}
+
+.tickets__amount-total {
+   text-align: center;
+   font-family: Roboto;
+   font-size: 16px;
+   font-style: normal;
+   font-weight: 700;
+   line-height: normal;
+   padding-top: 20px;
+   padding-bottom: 40px;
+}
+
+.tickets__amount-btn {
+   background-color: $dark;
+   color: $white;
+   padding: 17px 60px;
+}
+
+.amount-form__block {
+   border-color: $dark;
+   border-style: solid;
+   border-width: 3px;
+   width: 175px;
+   height: 50px;
+
+   @media screen and (min-width: 1440px) {
+      width: 150px;
    }
 }
