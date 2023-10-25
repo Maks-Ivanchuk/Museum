@@ -7,8 +7,8 @@
 *,
 *:before,
 *:after {
-  moz-box-sizing: border-box;
-  webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -38,7 +38,6 @@ body {
   font-size: 14px;
   -ms-text-sixe-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-
 }
 
 input,
@@ -86,4 +85,3 @@ h6 {
   font-size: inherit;
   font-weight: 400;
 }
-

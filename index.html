@@ -7,7 +7,7 @@
   <link rel="icon" href="src/img/favicons/favicon.svg" sizes="32x32" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;400;700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;400;500;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="src/styles/styles.scss" />
   <title>LOUVRE</title>
@@ -19,7 +19,7 @@
       <div class="header__wrapper">
         <div class="header__logo">
           <a href=".//index.html" class="header__logo-link">
-            <img class="header__logo-icon" src="./src/img/icon/iconHeader.svg" alt="icon louvre" />
+            <img class="header__logo-icon" src="./src/img/icon/iconLogoLouvre.svg" alt="icon louvre" />
           </a>
           <a href=".//index.html" class="header__logo-text">Louvre</a>
         </div>
@@ -202,11 +202,19 @@
         <div class="video__wrapper">
           <div class="video__title">
             <h2>Video journey</h2>
+            <h4>Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or
+              Hammurabi's Code</h4>
           </div>
           <div class="video__content">
             <div class="video__item">
               <iframe src="https://www.youtube.com/embed/zp1BXPX8jcU?si=_AgQ52F_93GJrf4p" title="YouTube video player"
                 frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <div class="video__item">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/Vi5D6FKhRmo?si=gsMFnt8JX2eIOl2S"
+                title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
             </div>
@@ -286,9 +294,20 @@
                   <h4>Ticket Type</h4>
                 </div>
                 <div class="tickets__type-input">
-                  <input type="text" value="Permanent exhibition">
-                  <input type="text" value="Temporary exhibition">
-                  <input type="text" value="Combined Admission">
+                  <form class="tickets__type-form">
+                    <label for="type-permanent-ex">
+                      <input id="type-permanent-ex" name="type-tickets" type="radio" value="Permanent exhibition">
+                      Permanent exhibition
+                    </label>
+                    <label for="type-temporary-ex">
+                      <input id="type-temporary-ex" name="type-tickets" type="radio" value="Temporary exhibition">
+                      Temporary exhibition
+                    </label>
+                    <label for="type-combic-admission">
+                      <input id="type-combic-admission" name="type-tickets" type="radio" value="Combined Admission">
+                      Combined Admission
+                    </label>
+                  </form>
                 </div>
               </div>
               <div class="tickets__amount">
@@ -309,9 +328,62 @@
         </div>
       </div>
     </section>
-    <section id="Contacts"></section>
+    <section class="parallax">
+      <div class="parallax__img"></div>
+    </section>
+    <section id="Contacts" class="contacts">
+      <div class="container">
+        <div class="contacts__wrapper">
+          <div class="contacts__title">
+            <h2>Contacts</h2>
+          </div>
+          <div class="contacts__main">
+            <div class="contacts__main-info">
+              <div class="contacts__name-museum">
+                <p>Palais Royal Musee du Louvre</p>
+              </div>
+              <div class="contacts__address">
+                <p>address: 75001 Paris, France</p>
+                <p>phone: +33(0) 1 40 20 50 50</p>
+                <p>mail: info@louvre.fr</p>
+              </div>
+            </div>
+            <div class="contacts__map">
+              <img src="./src/img/content/map.png" alt="">
+            </div>
+          </div>
+        </div>
+    </section>
   </main>
-  <footer></footer>
+  <footer class="footer bg-dark">
+    <div class="container">
+      <div class="footer__wrapper">
+        <div class="footer__logo">
+          <a href=".//index.html" class="footer__logo-link">
+            <img class="footer__logo-icon" src="./src/img/icon/iconLogoLouvre.svg" alt="icon louvre" />
+          </a>
+          <a href=".//index.html" class="footer__logo-text">Louvre</a>
+        </div>
+        <div class="footer__nav">
+          <nav class="header__nav-item">
+            <a href="#Visiting" class="footer__nav-link">Visiting</a>
+            <a href="#Explore" class="footer__nav-link">Explore</a>
+            <a href="#Video" class="footer__nav-link">Video</a>
+            <a href="#Gallery" class="footer__nav-link">Gallery</a>
+            <a href="Tickets" class="footer__nav-link">Tickets</a>
+            <a href="Contacts" class="footer__nav-link">Contacts</a>
+          </nav>
+          <div class="footer__sociable">
+            <div class="footer__sociable-item"></div>
+            <div class="footer__sociable-item"></div>
+            <div class="footer__sociable-item"></div>
+            <div class="footer__sociable-item"></div>
+            <div class="footer__sociable-item"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
   <script src="src/js/script.js"></script>
 </body>
 
