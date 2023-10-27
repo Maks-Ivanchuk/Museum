@@ -1,19 +1,37 @@
-.footer {
-   a {
-      color: $white;
-   }
-}
+.footer {}
 
 .footer__wrapper {
    display: flex;
    flex-direction: column;
    gap: 40px;
    padding: 40px 0;
+
+   @media screen and (min-width: 768px) {
+      flex-direction: row;
+      gap: 3%;
+
+   }
+
+   @media screen and (min-width: 1024px) {
+      padding-top: 60px;
+      padding-bottom: 50px;
+      gap: 45px;
+   }
+
+   @media screen and (min-width: 1440px) {
+      gap: 10%;
+   }
 }
 
 .footer__logo {
    display: flex;
    gap: 20px;
+   align-items: flex-end;
+
+   @media screen and (min-width: 768px) {
+      align-items: flex-start;
+      gap: 25px;
+   }
 }
 
 .footer__logo-link {}
@@ -38,36 +56,79 @@
    letter-spacing: 5px;
    text-transform: uppercase;
 
-   @media screen and (min-width: 421px) {
+   @media screen and (min-width: 768px) {
       font-size: 28px;
    }
 }
 
 .footer__nav {
    display: flex;
-   flex-direction: column;
+   justify-content: center;
    align-items: center;
+   flex-direction: column;
    gap: 40px;
+
+   @media screen and (min-width: 768px) {
+      gap: 50px;
+      flex-basis: 67%;
+   }
+
+   @media screen and (min-width: 1024px) {
+      flex-direction: row;
+      align-items: flex-end;
+      width: 100%;
+      justify-content: space-between;
+      flex-basis: auto;
+   }
 }
 
 .footer__nav-item {
    display: grid;
    grid-template-columns: 1fr 1fr 1fr;
-   grid-template-rows: 1fr 1fr;
-   width: 100%;
+   justify-content: space-between;
    text-align: center;
+   gap: 25px;
+   width: 100%; //виправити ось це, бо воно все ламає
 
    @media screen and (min-width: 768px) {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr;
+   }
+
+   @media screen and (min-width: 1024px) {
+      width: auto;
+      grid-row-gap: 25px;
+      grid-column-gap: 100px;
    }
 }
 
-.footer__nav-link {}
+.footer__nav-link {
+   color: $white;
+   font-family: Roboto;
+   font-size: 16px;
+   font-style: normal;
+   font-weight: 100;
+   line-height: normal;
+   letter-spacing: 2px;
+
+   @media screen and (min-width: 768px) {
+      font-size: 18px;
+   }
+
+   @media screen and (min-width: 1024px) {
+      font-size: 22px;
+   }
+}
 
 .footer__sociable {
    display: flex;
-   gap: 5px;
+   justify-content: space-evenly;
+   width: 70%;
+   min-width: 260px;
+
+   @media screen and (min-width: 768px) {
+      justify-content: space-between;
+      width: 340px;
+   }
 }
 
 .footer__sociable-item {
