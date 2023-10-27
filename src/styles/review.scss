@@ -49,6 +49,7 @@
    align-items: center;
    color: $white;
    padding-bottom: 50px;
+   flex-basis: 45%;
 
    @media screen and (min-width: 460px) {
       padding-bottom: 50px;
@@ -106,14 +107,14 @@
    cursor: pointer;
 
    @media screen and (min-width: 1024px) {
+      width: fit-content;
+      padding: 10px 44px;
       display: flex;
-      max-width: 300px;
-      padding: 10 43px;
    }
 
    @media screen and (min-width: 1440px) {
       padding: 25 65px;
-      max-width: 360px;
+      width: fit-content;
       font-size: 22px;
    }
 }

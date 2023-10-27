@@ -84,12 +84,12 @@
 
 .footer__nav-item {
    display: grid;
-   grid-template-columns: 1fr 1fr 1fr;
    justify-content: space-between;
    text-align: center;
+   grid-template-columns: 1fr 1fr 1fr;
    gap: 25px;
-   width: 100%; //виправити ось це, бо воно все ламає
-
+   width: 100%;
+   
    @media screen and (min-width: 768px) {
       grid-template-columns: 1fr 1fr;
    }
@@ -98,6 +98,10 @@
       width: auto;
       grid-row-gap: 25px;
       grid-column-gap: 100px;
+   }
+
+   @media screen and (min-width: 1440px) {
+      grid-column-gap: 150px;
    }
 }
 
@@ -121,9 +125,10 @@
 
 .footer__sociable {
    display: flex;
-   justify-content: space-evenly;
+   justify-content: space-between;
    width: 70%;
    min-width: 260px;
+   max-width: 340px;
 
    @media screen and (min-width: 768px) {
       justify-content: space-between;
