@@ -25,6 +25,10 @@ body {
    font-family: Roboto;
    color: $white;
    position: relative;
+
+   &.body--block {
+      overflow: hidden;
+   }
 }
 
 .container {

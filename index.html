@@ -108,12 +108,9 @@
             <h2>Virtual tour</h2>
           </div>
           <div class="visiting__content">
-            <div class="visiting__item">
+            <a class="visiting__item" href="https://www.google.com/maps/@48.8606882,2.3356791,3a,90y,328.36h,87.55t/data=!3m7!1e1!3m5!1sAF1QipMZ9YgnArbwEIbTDANeSQYFu9gNqpW_2Sv8FBvY!2e10!3e12!7i4352!8i1815">
               <div class="visiting__item-img">
-                <a
-                  href="https://www.google.com/maps/@48.8606882,2.3356791,3a,90y,328.36h,87.55t/data=!3m7!1e1!3m5!1sAF1QipMZ9YgnArbwEIbTDANeSQYFu9gNqpW_2Sv8FBvY!2e10!3e12!7i4352!8i1815">
                   <img src="./src/img/content/visiting/Royal_place.jpg" alt="Royal place" />
-                </a>
               </div>
               <div class="visiting__item-title">
                 <h3>Royal Palace</h3>
@@ -123,8 +120,8 @@
                 <p>360° Virtual Tour</p>
                 <p>Google Street Panorama View</p>
               </div>
-            </div>
-            <div class="visiting__item">
+            </a>
+            <a class="visiting__item" href="https://www.google.com/maps/@48.8563254,2.3352706,3a,75y,90t/data=!3m7!1e1!3m5!1sAF1QipNRj_CwP4coDMYdCHj6qHeBeJpI2VxU5BUsOX4F!2e10!3e12!7i11000!8i5500">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/DenonWing.jpg" alt="Denon Wing" />
               </div>
@@ -136,8 +133,8 @@
                 <p>360° Virtual Tour</p>
                 <p>Google Street Panorama View</p>
               </div>
-            </div>
-            <div class="visiting__item">
+            </a>
+            <a class="visiting__item" href="https://www.google.com/maps/@48.8601723,2.3395439,3a,88.4y,322.04h,84.25t/data=!3m7!1e1!3m5!1sAF1QipNMZGQuEA-pAUvIG_eP_2f3gWTKZEJ6XLVJ-Pgb!2e10!3e12!7i10240!8i5120">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/ColonnadePerrault.jpg" alt="Colonnade Perrault" />
               </div>
@@ -149,8 +146,8 @@
                 <p>360° Virtual Tour</p>
                 <p>Google Street Panorama View</p>
               </div>
-            </div>
-            <div class="visiting__item">
+            </a>
+            <a class="visiting__item" href="https://www.google.com/maps/@48.860183,2.3356156,3a,90y,177.69h,95.61t/data=!3m7!1e1!3m5!1sAF1QipP7uFZnTITRe-7AEVAgHAfqiCL-03gvBHcYWgF3!2e10!3e12!7i5472!8i2736">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/Greek_hall.jpg" alt="Greek hall" />
               </div>
@@ -162,8 +159,8 @@
                 <p>360° Virtual Tour</p>
                 <p>Google Street Panorama View</p>
               </div>
-            </div>
-            <div class="visiting__item">
+            </a>
+            <a class="visiting__item" href="https://www.google.com/maps/@48.8598788,2.3355157,3a,82.2y,7.53h,94t/data=!3m7!1e1!3m5!1sAF1QipO1wkUUbyzpPjj-OR0mR5etZJT-xl-40XK8rDQ3!2e10!3e12!7i10240!8i5120">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/Mona_Lisa.jpg" alt="Mona Lisa" />
               </div>
@@ -175,8 +172,8 @@
                 <p>360° Virtual Tour</p>
                 <p>Google Street Panorama View</p>
               </div>
-            </div>
-            <div class="visiting__item">
+            </a>
+            <a class="visiting__item" href="https://www.google.com/maps/@48.8563254,2.3352706,3a,90y,21.26h,79.91t/data=!3m7!1e1!3m5!1sAF1QipPpGAowYatVyk3MMGnZAaQkYm2EUk-Dlca06SS5!2e10!3e12!7i11304!8i5652">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/NightPalace.jpg" alt="Night Palace" />
               </div>
@@ -188,7 +185,7 @@
                 <p>360° Virtual Tour</p>
                 <p>Google Street Panorama View</p>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -420,7 +417,18 @@
       </div>
     </div>
   </footer>
-  <div id="overlay"></div>
+  <div id="modal-window" class="modal-window">
+    <div class="modal-waindow__wrapper">
+      <button class="btn-close-modal">
+        <span></span>
+        <span></span>
+      </button>
+      <iframe src="https://www.google.com/maps/@48.8618159,2.3366818,3a,75y,81.55h,73.4t/data=!3m4!1e1!3m2!1sAF1QipOVxZQuSy3Bx9T_HpH_7FtBHDTXvI6SF-A10ocT!2e10" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+
+    </div>
+  </div>
+  <div id="overlay" class="overlay"></div>
   <script src="src/js/script.js"></script>
 </body>
 

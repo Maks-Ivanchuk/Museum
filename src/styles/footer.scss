@@ -145,6 +145,11 @@
 
    border-radius: 50%;
    border-style: solid;
-   border-color: #666;
+   border-color: $grey;
    border-width: 1px;
+
+   &:hover {
+      border-color: $white;
+      transform: scale(1.05);
+   }
 }
