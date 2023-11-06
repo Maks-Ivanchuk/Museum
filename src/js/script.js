@@ -4,24 +4,27 @@ document.addEventListener("DOMContentLoaded", () => {
    const body = document.querySelector('body');
    const overlay = document.querySelector('.overlay');
    const maxWidth = 1024;
-   const btnDiscoverLouvre = document.querySelector('.welcome__info-btn');
-   const welcomeModalWindow = document.querySelector('.welcome-modal-window');
-   const closeWelcomModalWindow = document.querySelector('.welcome__btn-close-modal');
 
 
-   btnDiscoverLouvre.addEventListener('click', function () {
-      if (welcomeModalWindow.classList.contains('welcome-modal-window--open')) {
-         welcomeModalWindow.classList.remove('welcome-modal-window--open');
-      } else {
-         welcomeModalWindow.classList.add('welcome-modal-window--open');
-      }
-   })
+   function openCloseModalWindowWelcom() {
+      const btnDiscoverLouvre = document.querySelector('.welcome__info-btn');
+      const welcomeModalWindow = document.querySelector('.welcome-modal-window');
+      const closeWelcomModalWindow = document.querySelector('.welcome__btn-close-modal');
 
-   closeWelcomModalWindow.addEventListener('click', function () {
-      if (welcomeModalWindow.classList.contains('welcome-modal-window--open')) {
-         welcomeModalWindow.classList.remove('welcome-modal-window--open');
-      };
-   });
+      btnDiscoverLouvre.addEventListener('click', function () {
+         if (welcomeModalWindow.classList.contains('welcome-modal-window--open')) {
+            welcomeModalWindow.classList.remove('welcome-modal-window--open');
+         } else {
+            welcomeModalWindow.classList.add('welcome-modal-window--open');
+         }
+      })
+
+      closeWelcomModalWindow.addEventListener('click', function () {
+         if (welcomeModalWindow.classList.contains('welcome-modal-window--open')) {
+            welcomeModalWindow.classList.remove('welcome-modal-window--open');
+         };
+      });
+   };
 
    function closeBurgerMenu() {
       let curentWindowsWidth = document.documentElement.clientWidth;
@@ -50,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
       overlay.classList.toggle('overlay--open');
    })
 
-
-
    window.addEventListener('resize', closeBurgerMenu);
+   openCloseModalWindowWelcom();
 });

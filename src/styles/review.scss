@@ -52,10 +52,9 @@
 
    opacity: 0;
    overflow: hidden;
-   transition: 0.2s all;
 
    &.welcome-modal-window--open {
-      z-index: 1000;
+      z-index: 4;
       opacity: 1;
       overflow: visible;
    }
@@ -84,21 +83,21 @@
    width: 40px;
    height: 40px;
    border-radius: 2px;
-   transition: 0.2s all;
 
-
-   background-color: rgb(34, 34, 34);
+   background-color: #222222;
 
    &:hover {
-      filter: brightness(2);
-      border-radius: 5px;
-
+      span {
+         filter: brightness(1.5);
+      }
    }
 
    span {
       width: 60%;
       height: 2px;
-      background-color: rgb(179, 179, 179);
+      background-color: #b3b3b3;
+      transition: 0.2s all;
+      filter: brightness(1.1);
 
       &:nth-child(1) {
          transform: translateY(1px) rotate(45deg);
@@ -237,6 +236,11 @@
 }
 
 .visiting {}
+
+.visiting__iframe {
+   width: 100dvw;
+   height: 100dvh;
+}
 
 .visiting__wrapper {
    display: flex;
