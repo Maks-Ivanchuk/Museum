@@ -30,20 +30,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const modalWindowBtns = document.querySelectorAll('.modal-window-btn');
       const modalWindow = document.querySelector('.modal-window');
       const closeModalWindow = document.querySelector('.modal-window__btn-close');
-      // const targetSrc = '';
 
       modalWindowBtns.forEach((modalWindowBtn) => {
          modalWindowBtn.addEventListener('click', (event) => {
             event.preventDefault();
-
             const targetSrc = modalWindowBtn.getAttribute('href');
-            console.log(targetSrc);
 
             if (modalWindow.classList.contains('modal-window--open')) {
                modalWindow.classList.remove('modal-window--open');
             } else {
                modalWindow.classList.add('modal-window--open');
             }
+
+            modalWindow.document.querySelector('iframe').src = targetSrc;
          });
       });
 
