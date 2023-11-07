@@ -6,25 +6,57 @@ document.addEventListener("DOMContentLoaded", () => {
    const maxWidth = 1024;
 
 
-   function openCloseModalWindowWelcom() {
-      const btnDiscoverLouvre = document.querySelector('.welcome__info-btn');
-      const welcomeModalWindow = document.querySelector('.welcome-modal-window');
-      const closeWelcomModalWindow = document.querySelector('.welcome__btn-close-modal');
+   // function openCloseModalWindowWelcom() {
+   //    const btnDiscoverLouvre = document.querySelector('.welcome__info-btn');
+   //    const welcomeModalWindow = document.querySelector('.welcome-modal-window');
+   //    const closeWelcomModalWindow = document.querySelector('.welcome__btn-close-modal');
 
-      btnDiscoverLouvre.addEventListener('click', function () {
-         if (welcomeModalWindow.classList.contains('welcome-modal-window--open')) {
-            welcomeModalWindow.classList.remove('welcome-modal-window--open');
+   //    btnDiscoverLouvre.addEventListener('click', function () {
+   //       if (welcomeModalWindow.classList.contains('welcome-modal-window--open')) {
+   //          welcomeModalWindow.classList.remove('welcome-modal-window--open');
+   //       } else {
+   //          welcomeModalWindow.classList.add('welcome-modal-window--open');
+   //       }
+   //    })
+
+   //    closeWelcomModalWindow.addEventListener('click', function () {
+   //       if (welcomeModalWindow.classList.contains('welcome-modal-window--open')) {
+   //          welcomeModalWindow.classList.remove('welcome-modal-window--open');
+   //       };
+   //    });
+   // };
+
+   function openCloseModalWindow() {
+      const modalWindowBtns = document.querySelectorAll('.modal-window-btn');
+      const modalWindow = document.querySelector('.modal-window');
+      const closeModalWindow = document.querySelector('.modal-window__btn-close');
+      // const targetSrc = '';
+
+      modalWindowBtns.forEach((modalWindowBtn) => {
+         modalWindowBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            const targetSrc = modalWindowBtn.getAttribute('href');
+            console.log(targetSrc);
+
+            if (modalWindow.classList.contains('modal-window--open')) {
+               modalWindow.classList.remove('modal-window--open');
+            } else {
+               modalWindow.classList.add('modal-window--open');
+            }
+         });
+      });
+
+      closeModalWindow.addEventListener('click', function () {
+         if (modalWindow.classList.contains('modal-window--open')) {
+            modalWindow.classList.remove('modal-window--open');
          } else {
-            welcomeModalWindow.classList.add('welcome-modal-window--open');
-         }
-      })
-
-      closeWelcomModalWindow.addEventListener('click', function () {
-         if (welcomeModalWindow.classList.contains('welcome-modal-window--open')) {
-            welcomeModalWindow.classList.remove('welcome-modal-window--open');
+            return;
          };
       });
    };
+
+   // document.querySelector('.visiting__item').getAttribute('href')
 
    function closeBurgerMenu() {
       let curentWindowsWidth = document.documentElement.clientWidth;
@@ -54,5 +86,5 @@ document.addEventListener("DOMContentLoaded", () => {
    })
 
    window.addEventListener('resize', closeBurgerMenu);
-   openCloseModalWindowWelcom();
+   openCloseModalWindow();
 });

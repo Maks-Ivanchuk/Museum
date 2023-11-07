@@ -69,7 +69,7 @@
     <section id="Welcome" class="welcome bg-dark">
       <div class="container">
         <div class="welcome__wrapper">
-          <div class="welcome-modal-window">
+          <!-- <div class="welcome-modal-window">
             <div class="welcome-modal-window__wrapper">
               <button class="welcome__btn-close-modal">
                 <span></span>
@@ -80,13 +80,14 @@
                 style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-          </div>
+          </div> -->
           <div class="welcome__info">
             <h1>Welcome<br />to the Louvre</h1>
             <h3>From the castle to the museum</h3>
-            <button class="welcome__info-btn">
+            <a class="welcome__info-btn modal-window-btn"
+              href="https://www.google.com/maps/embed?pb=!4v1699273977005!6m8!1m7!1sCAoSLEFGMVFpcE9WeFpRdVN5M0J4OVRfSHBIXzdGdEJIRFRYdkk2U0YtQTEwb2NU!2m2!1d48.86181593314584!2d2.336681797486702!3f81.55!4f-16.599999999999994!5f0.7820865974627469">
               Discover the Louvre
-            </button>
+            </a>
           </div>
           <div class="welcome__slider">
             <div class="slider__wrapper">
@@ -121,7 +122,7 @@
             <h2>Virtual tour</h2>
           </div>
           <div class="visiting__content">
-            <a class="visiting__item" target="_blank" href="./src/tours/tour1.html">
+            <a class="visiting__item modal-window-btn" target="_blank" href="./src/tours/tour1.html">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/Royal_place.jpg" alt="Royal place" />
               </div>
@@ -134,7 +135,7 @@
                 <p>Google Street Panorama View</p>
               </div>
             </a>
-            <a class="visiting__item" target="_blank" href="./src/tours/tour2.html">
+            <a class="visiting__item modal-window-btn" target="_blank" href="./src/tours/tour2.html">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/DenonWing.jpg" alt="Denon Wing" />
               </div>
@@ -147,7 +148,7 @@
                 <p>Google Street Panorama View</p>
               </div>
             </a>
-            <a class="visiting__item" target="_blank" href="./src/tours/tour3.html">
+            <a class="visiting__item modal-window-btn" target="_blank" href="./src/tours/tour3.html">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/ColonnadePerrault.jpg" alt="Colonnade Perrault" />
               </div>
@@ -160,7 +161,7 @@
                 <p>Google Street Panorama View</p>
               </div>
             </a>
-            <a class="visiting__item" target="_blank" href="./src/tours/tour4.html">
+            <a class="visiting__item modal-window-btn" target="_blank" href="./src/tours/tour4.html">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/Greek_hall.jpg" alt="Greek hall" />
               </div>
@@ -173,7 +174,7 @@
                 <p>Google Street Panorama View</p>
               </div>
             </a>
-            <a class="visiting__item" target="_blank" href="./src/tours/tour5.html">
+            <a class="visiting__item modal-window-btn" target="_blank" href="./src/tours/tour5.html">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/Mona_Lisa.jpg" alt="Mona Lisa" />
               </div>
@@ -186,7 +187,7 @@
                 <p>Google Street Panorama View</p>
               </div>
             </a>
-            <a class="visiting__item" target="_blank" href="./src/tours/tour6.html">
+            <a class="visiting__item modal-window-btn" target="_blank" href="./src/tours/tour6.html">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/NightPalace.jpg" alt="Night Palace" />
               </div>
@@ -430,16 +431,18 @@
       </div>
     </div>
   </footer>
-  <!-- <div id="modal-window" class="modal-window">
-    <div class="modal-waindow__wrapper">
-      <button class="btn-close-modal">
+  <!-- <iframe
+                src="https://www.google.com/maps/embed?pb=!4v1699273977005!6m8!1m7!1sCAoSLEFGMVFpcE9WeFpRdVN5M0J4OVRfSHBIXzdGdEJIRFRYdkk2U0YtQTEwb2NU!2m2!1d48.86181593314584!2d2.336681797486702!3f81.55!4f-16.599999999999994!5f0.7820865974627469"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+  <div class="modal-window">
+    <div class="modal-window__wrapper">
+      <button class="modal-window__btn-close">
         <span></span>
         <span></span>
       </button>
-      <iframe src="#" frameborder="0" style="border:0" allowfullscreen>
-      </iframe>
     </div>
-  </div> -->
+  </div>
   <div id="overlay" class="overlay"></div>
   <script src="src/js/script.js"></script>
 </body>
