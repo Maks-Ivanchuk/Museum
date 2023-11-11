@@ -30,19 +30,26 @@ document.addEventListener("DOMContentLoaded", () => {
       const modalWindowBtns = document.querySelectorAll('.modal-window-btn');
       const modalWindow = document.querySelector('.modal-window');
       const closeModalWindow = document.querySelector('.modal-window__btn-close');
+      const modalWindowWrapper = document.querySelector('.modal-window__wrapper');
 
       modalWindowBtns.forEach((modalWindowBtn) => {
          modalWindowBtn.addEventListener('click', (event) => {
             event.preventDefault();
             const targetSrc = modalWindowBtn.getAttribute('href');
+            console.log(targetSrc);
 
             if (modalWindow.classList.contains('modal-window--open')) {
                modalWindow.classList.remove('modal-window--open');
             } else {
+               modalWindowWrapper.insertAdjacentHTML('beforeend',
+                  `<iframe src="https://www.google.com/maps/embed?pb=!4v1699706068201!6m8!1m7!1sCAoSLEFGMVFpcE1aOVlnbkFyYndFSWJUREFOZVNRWUZ1OWdOcXBXXzJTdjhGQnZZ!2m2!1d48.8606881835717!2d2.335679134426641!3f328.36!4f-2.450000000000003!5f0.4000000000000002" width="600" height="450" style="border:0;" allowfullscreen = "" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`);
                modalWindow.classList.add('modal-window--open');
             }
 
-            modalWindow.document.querySelector('iframe').src = targetSrc;
+
+
+
+            // modalWindow.document.querySelector('iframe').src = targetSrc;
          });
       });
 
@@ -76,6 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
       body.classList.toggle('body--block');
       overlay.classList.toggle('overlay--open');
    });
+
+
 
    overlay.addEventListener('click', function () {
       headerNav.classList.toggle('header__nav--open');

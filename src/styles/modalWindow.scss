@@ -1,12 +1,27 @@
 .modal-window {
    position: absolute;
-   inset: 10% 20px;
+   top: 90px;
+   right: 20px;
+   bottom: 20px;
+   left: 20px;
    background: yellow;
 
    z-index: -1000;
 
    opacity: 0;
    overflow: hidden;
+
+   @media screen and (min-width: 421px) {
+      top: 110px;
+   }
+
+   @media screen and (min-width: 769px) {
+      top: 130px;
+   }
+
+   @media screen and (min-width: 1440px) {
+      top: 150px;
+   }
 
    &.modal-window--open {
       position: fixed;
