@@ -1,7 +1,6 @@
 {
   "name": "museum",
   "version": "1.0.0",
-  "description": "",
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,5 +9,14 @@
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maks-Ivanchuk/Museum.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Maks-Ivanchuk/Museum/issues"
+  },
+  "homepage": "https://github.com/Maks-Ivanchuk/Museum#readme",
+  "description": ""
 }

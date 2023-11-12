@@ -1,0 +1,89 @@
+// @media screen and (min-width: 421px) {
+
+// }
+
+// @media screen and (min-width: 769px) {
+
+// }
+
+// @media screen and (min-width: 1025px) {
+
+// }
+html {
+   scroll-behavior: smooth;
+}
+
+.bg-dark {
+   background-color: $bg-dark;
+}
+
+body {
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+
+   font-family: Roboto;
+   color: $white;
+   position: relative;
+
+   &.body--block {
+      overflow: hidden;
+   }
+}
+
+.container {
+   margin: 0 auto;
+   padding: 0 20px;
+
+   @media screen and (min-width: 1025px) {
+      max-width: calc(1920px - 220px * 2);
+   }
+}
+
+h1,
+h2 {
+   font-family: Forum;
+   font-size: 28px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 40px;
+   letter-spacing: 5px;
+   text-transform: uppercase;
+
+   @media screen and (min-width: 768px) {
+      font-size: 40px;
+      line-height: 60px;
+   }
+
+   @media screen and (min-width: 1024px) {
+      font-size: 50px;
+      line-height: 75px;
+   }
+
+   @media screen and (min-width: 1440px) {
+      font-size: 80px;
+      line-height: 90px;
+   }
+}
+
+h3 {
+   font-family: Forum;
+   font-size: 18px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   letter-spacing: 3px;
+   text-transform: uppercase;
+
+   @media screen and (min-width: 768px) {
+      font-size: 22px;
+   }
+
+   @media screen and (min-width: 1024px) {
+      font-size: 28px;
+   }
+
+   @media screen and (min-width: 1440px) {
+      font-size: 32px;
+   }
+}

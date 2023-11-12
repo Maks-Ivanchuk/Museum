@@ -1,0 +1,155 @@
+.footer {}
+
+.footer__wrapper {
+   display: flex;
+   flex-direction: column;
+   gap: 40px;
+   padding: 40px 0;
+
+   @media screen and (min-width: 768px) {
+      flex-direction: row;
+      gap: 3%;
+
+   }
+
+   @media screen and (min-width: 1024px) {
+      padding-top: 60px;
+      padding-bottom: 50px;
+      gap: 45px;
+   }
+
+   @media screen and (min-width: 1440px) {
+      gap: 10%;
+   }
+}
+
+.footer__logo {
+   display: flex;
+   gap: 20px;
+   align-items: flex-end;
+
+   @media screen and (min-width: 768px) {
+      align-items: flex-start;
+      gap: 25px;
+   }
+}
+
+.footer__logo-link {}
+
+.footer__logo-icon {
+   width: 29px;
+   height: 16px;
+
+   @media screen and (min-width: 421px) {
+      width: 49px;
+      height: 26px;
+   }
+}
+
+.footer__logo-text {
+   color: $white;
+   font-family: Forum;
+   font-size: 16px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   letter-spacing: 5px;
+   text-transform: uppercase;
+
+   @media screen and (min-width: 768px) {
+      font-size: 28px;
+   }
+}
+
+.footer__nav {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   gap: 40px;
+
+   @media screen and (min-width: 768px) {
+      gap: 50px;
+      flex-basis: 67%;
+   }
+
+   @media screen and (min-width: 1024px) {
+      flex-direction: row;
+      align-items: flex-end;
+      width: 100%;
+      justify-content: space-between;
+      flex-basis: auto;
+   }
+}
+
+.footer__nav-item {
+   display: grid;
+   justify-content: space-between;
+   text-align: center;
+   grid-template-columns: 1fr 1fr 1fr;
+   gap: 25px;
+   width: 100%;
+   
+   @media screen and (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+   }
+
+   @media screen and (min-width: 1024px) {
+      width: auto;
+      grid-row-gap: 25px;
+      grid-column-gap: 100px;
+   }
+
+   @media screen and (min-width: 1440px) {
+      grid-column-gap: 150px;
+   }
+}
+
+.footer__nav-link {
+   color: $white;
+   font-family: Roboto;
+   font-size: 16px;
+   font-style: normal;
+   font-weight: 100;
+   line-height: normal;
+   letter-spacing: 2px;
+
+   @media screen and (min-width: 768px) {
+      font-size: 18px;
+   }
+
+   @media screen and (min-width: 1024px) {
+      font-size: 22px;
+   }
+}
+
+.footer__sociable {
+   display: flex;
+   justify-content: space-between;
+   width: 70%;
+   min-width: 260px;
+   max-width: 340px;
+
+   @media screen and (min-width: 768px) {
+      justify-content: space-between;
+      width: 340px;
+   }
+}
+
+.footer__sociable-item {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 48px;
+   height: 48px;
+
+   border-radius: 50%;
+   border-style: solid;
+   border-color: $grey;
+   border-width: 1px;
+
+   &:hover {
+      border-color: $white;
+      transform: scale(1.05);
+   }
+}
