@@ -78,4 +78,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
    window.addEventListener('resize', closeBurgerMenu);
    openCloseModalWindow();
+
+   $('.slider__slick').slick({
+      arrows: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: true,
+      // responsive: [
+      //    {
+      //       breakpoint: 768,
+      //       settings: {
+      //          arrows: false,
+      //          slidesToShow: 1,
+      //          slidesToScroll: 1,
+      //          dots: true,
+      //       }
+      //    },
+      // ]
+   });
 });

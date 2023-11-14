@@ -9,6 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;400;500;700&display=swap"
     rel="stylesheet" />
+  <!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.css"/> -->
+
+  <link rel="stylesheet" href="./slick/slick-theme.scss">
+  <link rel="stylesheet" href="./slick/slick.scss"> 
   <link rel="stylesheet" href="src/styles/styles.scss" />
   <title>LOUVRE</title>
 </head>
@@ -78,24 +83,32 @@
           </div>
           <div class="welcome__slider">
             <div class="slider__wrapper">
-              <img class="slider__img-small" src="./src/img/pictures/monaLisaSmall.png" alt="mo" />
-              <img class="slider__img-large" src="./src/img/pictures/monaLisaLarge.png" alt="mo" />
-              <div class="slider__btn-nav">
-                <svg xmlns="http://www.w3.org/2000/svg" width="75" height="7" viewBox="0 0 75 7" fill="none">
-                  <path d="M0 7V0H7V7H0Z" fill="#D2B183" />
-                  <path d="M17 7V0H24V7H17Z" fill="white" />
-                  <path d="M34 7V0H41V7H34Z" fill="white" />
-                  <path d="M51 7V0H58V7H51Z" fill="white" />
-                  <path d="M68 7V0H75V7H68Z" fill="white" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="8" viewBox="0 0 80 8" fill="none">
-                  <path
-                    d="M74.2775 1.97284e-06C76.0983 1.68661 78.0058 2.91738 80 3.69231L80 4.30769C78.0058 5.10541 76.0983 6.33618 74.2775 8L72.7601 8C73.6272 6.5641 74.4653 5.47009 75.2746 4.71795L50 4.71795L50 3.28205L75.2746 3.28205C74.4653 2.52992 73.6272 1.4359 72.7601 1.86378e-06L74.2775 1.97284e-06Z"
-                    fill="white" />
-                  <path
-                    d="M5.72254 8.00024C3.90173 6.31363 1.99422 5.08286 0 4.30794V3.69255C1.99422 2.89483 3.90173 1.66406 5.72254 0.000244141H7.23988C6.37283 1.43614 5.53468 2.53016 4.72543 3.2823H30V4.71819H4.72543C5.53468 5.47033 6.37283 6.56435 7.23988 8.00024H5.72254Z"
-                    fill="white" />
-                </svg>
+              <div class="slider__slick">
+                <div class="slider__item">
+                  <div class="slider__item--wrapper">
+                    <img src="./src/img/content/welcom/1.jpg" alt="Picture">
+                  </div>
+                </div>
+                <div class="slider__item">
+                  <div class="slider__item--wrapper">
+                    <img src="./src/img/content/welcom/2.jpg" alt="Picture">
+                  </div>
+                </div>
+                <div class="slider__item">
+                  <div class="slider__item--wrapper">
+                    <img src="./src/img/content/welcom/3.jpg" alt="Picture">
+                  </div>
+                </div>
+                <div class="slider__item">
+                  <div class="slider__item--wrapper">
+                    <img src="./src/img/content/welcom/4.jpg" alt="Picture">
+                  </div>
+                </div>
+                <div class="slider__item">
+                  <div class="slider__item--wrapper">
+                    <img src="./src/img/content/welcom/5.jpg" alt="Picture">
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -428,7 +441,9 @@
     </div>
   </div>
   <div id="overlay" class="overlay"></div>
-  <script src="src/js/script.js"></script>
+  <script type="module" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script type="module" src="https://kenwheeler.github.io/slick/slick/slick.js"></script>
+  <script src="./src/js/script.js"></script>
 </body>
 
 </html>
