@@ -96,4 +96,14 @@ document.addEventListener("DOMContentLoaded", () => {
       //    },
       // ]
    });
+
+
+   $('.video__slider').slick({
+      arrows: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: true,
+
+   });
+
 });
