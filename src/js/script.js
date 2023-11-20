@@ -84,17 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
       slidesToShow: 1,
       slidesToScroll: 1,
       dots: true,
-      // responsive: [
-      //    {
-      //       breakpoint: 768,
-      //       settings: {
-      //          arrows: false,
-      //          slidesToShow: 1,
-      //          slidesToScroll: 1,
-      //          dots: true,
-      //       }
-      //    },
-      // ]
    });
 
 
@@ -102,8 +91,31 @@ document.addEventListener("DOMContentLoaded", () => {
       arrows: false,
       slidesToShow: 1,
       slidesToScroll: 1,
-      dots: true,
+      asNavFor: '.video__slider-nav',
+      infinite: true,
+      speed: 300,
+   });
 
+   $('.video__slider-nav').slick({
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      asNavFor: '.video__slider',
+      dots: true,
+      centerMode: false,
+      focusOnSelect: true,
+      infinite: true,
+      speed: 300,
+      centerPadding: '60px',
+
+      responsive: [
+         {
+            breakpoint: 768,
+            settings: {
+               slidesToShow: 3,
+               centerMode: true,
+            }
+         }
+      ]
    });
 
 });
