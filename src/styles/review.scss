@@ -448,9 +448,24 @@
    aspect-ratio: 16 / 9;
 }
 
-.video__slider-nav {}
+.video__slider-nav-item {
+   .slick-slide {
+      .slick-activ {
 
-.video__slider-nav-item {}
+         margin: 0 10px;
+
+      }
+   }
+}
+
+// .video__slider-nav-item {
+//    .slick-active {
+
+//       //   @media screen and (min-width: 769px) {
+//       margin: 0 10px;
+
+//    }
+// }
 
 .slider-nav-item__iframe {
    max-width: 100%;

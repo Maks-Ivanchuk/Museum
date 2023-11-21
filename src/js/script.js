@@ -97,22 +97,24 @@ document.addEventListener("DOMContentLoaded", () => {
    });
 
    $('.video__slider-nav').slick({
-      slidesToShow: 2,
+      slidesToShow: 3,
       slidesToScroll: 1,
       asNavFor: '.video__slider',
       dots: true,
-      centerMode: false,
+      centerMode: true,
       focusOnSelect: true,
       infinite: true,
       speed: 300,
-      centerPadding: '60px',
+      arrows: false,
+      // centerPadding: '60px',
 
       responsive: [
          {
             breakpoint: 768,
             settings: {
-               slidesToShow: 3,
-               centerMode: true,
+               slidesToShow: 2,
+               centerMode: false,
+               arrows: false,
             }
          }
       ]
