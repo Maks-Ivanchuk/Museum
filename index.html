@@ -9,9 +9,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;400;500;700&display=swap"
     rel="stylesheet" />
+  <link rel="stylesheet" href="./slick/slick-theme.scss">
+  <link rel="stylesheet" href="./slick/slick.scss">
   <link rel="stylesheet" href="src/styles/styles.scss" />
   <title>LOUVRE</title>
 </head>
+
 <body>
   <header class="header bg-dark">
     <div class="container">
@@ -72,30 +75,28 @@
             <h1>Welcome<br />to the Louvre</h1>
             <h3>From the castle to the museum</h3>
             <a class="welcome__info-btn modal-window-btn"
-              href="https://www.youtube.com/embed/zp1BXPX8jcU?si=cBgyvuRMzGfkbb1g">
+              href="https://www.google.com/maps/embed?pb=!4v1700480868647!6m8!1m7!1sCAoSLEFGMVFpcE9WeFpRdVN5M0J4OVRfSHBIXzdGdEJIRFRYdkk2U0YtQTEwb2NU!2m2!1d48.86181593314584!2d2.336681797486702!3f81.55!4f-16.599999999999994!5f0.7820865974627469">
               Discover the Louvre
             </a>
           </div>
           <div class="welcome__slider">
             <div class="slider__wrapper">
-              <img class="slider__img-small" src="./src/img/pictures/monaLisaSmall.png" alt="mo" />
-              <img class="slider__img-large" src="./src/img/pictures/monaLisaLarge.png" alt="mo" />
-              <div class="slider__btn-nav">
-                <svg xmlns="http://www.w3.org/2000/svg" width="75" height="7" viewBox="0 0 75 7" fill="none">
-                  <path d="M0 7V0H7V7H0Z" fill="#D2B183" />
-                  <path d="M17 7V0H24V7H17Z" fill="white" />
-                  <path d="M34 7V0H41V7H34Z" fill="white" />
-                  <path d="M51 7V0H58V7H51Z" fill="white" />
-                  <path d="M68 7V0H75V7H68Z" fill="white" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="8" viewBox="0 0 80 8" fill="none">
-                  <path
-                    d="M74.2775 1.97284e-06C76.0983 1.68661 78.0058 2.91738 80 3.69231L80 4.30769C78.0058 5.10541 76.0983 6.33618 74.2775 8L72.7601 8C73.6272 6.5641 74.4653 5.47009 75.2746 4.71795L50 4.71795L50 3.28205L75.2746 3.28205C74.4653 2.52992 73.6272 1.4359 72.7601 1.86378e-06L74.2775 1.97284e-06Z"
-                    fill="white" />
-                  <path
-                    d="M5.72254 8.00024C3.90173 6.31363 1.99422 5.08286 0 4.30794V3.69255C1.99422 2.89483 3.90173 1.66406 5.72254 0.000244141H7.23988C6.37283 1.43614 5.53468 2.53016 4.72543 3.2823H30V4.71819H4.72543C5.53468 5.47033 6.37283 6.56435 7.23988 8.00024H5.72254Z"
-                    fill="white" />
-                </svg>
+              <div class="slider__slick">
+                <div class="slider__item">
+                  <img src="./src/img/content/welcom/1.jpg" alt="Picture">
+                </div>
+                <div class="slider__item">
+                  <img src="./src/img/content/welcom/2.jpg" alt="Picture">
+                </div>
+                <div class="slider__item">
+                  <img src="./src/img/content/welcom/3.jpg" alt="Picture">
+                </div>
+                <div class="slider__item">
+                  <img src="./src/img/content/welcom/4.jpg" alt="Picture">
+                </div>
+                <div class="slider__item">
+                  <img src="./src/img/content/welcom/5.jpg" alt="Picture">
+                </div>
               </div>
             </div>
           </div>
@@ -109,7 +110,8 @@
             <h2>Virtual tour</h2>
           </div>
           <div class="visiting__content">
-            <a class="visiting__item modal-window-btn" href="https://www.youtube.com/embed/zp1BXPX8jcU?si=cBgyvuRMzGfkbb1g">
+            <a class="visiting__item modal-window-btn"
+              href="https://www.google.com/maps/embed?pb=!4v1700480188471!6m8!1m7!1sCAoSLEFGMVFpcE1aOVlnbkFyYndFSWJUREFOZVNRWUZ1OWdOcXBXXzJTdjhGQnZZ!2m2!1d48.8606881835717!2d2.335679134426641!3f328.36!4f-2.450000000000003!5f0.4000000000000002">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/Royal_place.jpg" alt="Royal place" />
               </div>
@@ -122,7 +124,8 @@
                 <p>Google Street Panorama View</p>
               </div>
             </a>
-            <a class="visiting__item modal-window-btn" target="_blank" href="https://www.youtube.com/embed/zp1BXPX8jcU?si=cBgyvuRMzGfkbb1g">
+            <a class="visiting__item modal-window-btn" target="_blank"
+              href="https://www.google.com/maps/embed?pb=!4v1700480495835!6m8!1m7!1sCAoSLEFGMVFpcE5Sal9Dd1A0Y29ETVlkQ0hqNnFIZUJlSnBJMlZ4VTVCVXNPWDRG!2m2!1d48.8563254!2d2.3352706!3f0!4f0!5f0.7820865974627469">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/DenonWing.jpg" alt="Denon Wing" />
               </div>
@@ -135,7 +138,8 @@
                 <p>Google Street Panorama View</p>
               </div>
             </a>
-            <a class="visiting__item modal-window-btn" target="_blank" href="https://www.youtube.com/embed/zp1BXPX8jcU?si=cBgyvuRMzGfkbb1g">
+            <a class="visiting__item modal-window-btn" target="_blank"
+              href="https://www.google.com/maps/embed?pb=!4v1700480575355!6m8!1m7!1sCAoSLEFGMVFpcE5NWkdRdUVBLXBBVXZJR19lUF8yZjNnV1RLWkVKNlhMVkotUGdi!2m2!1d48.8601723!2d2.3395439!3f322.04!4f-5.75!5f0.440292882915489">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/ColonnadePerrault.jpg" alt="Colonnade Perrault" />
               </div>
@@ -148,7 +152,8 @@
                 <p>Google Street Panorama View</p>
               </div>
             </a>
-            <a class="visiting__item modal-window-btn" target="_blank" href="https://www.youtube.com/embed/zp1BXPX8jcU?si=cBgyvuRMzGfkbb1g">
+            <a class="visiting__item modal-window-btn" target="_blank"
+              href="https://www.google.com/maps/embed?pb=!4v1700480739453!6m8!1m7!1sCAoSLEFGMVFpcFA3dUZablRJVFJlLTdBRVZBZ0hBZnFpQ0wtMDNndkJIY1lXZ0Yz!2m2!1d48.86018303140322!2d2.335615591987402!3f177.69!4f5.609999999999999!5f0.4000000000000002">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/Greek_hall.jpg" alt="Greek hall" />
               </div>
@@ -161,7 +166,8 @@
                 <p>Google Street Panorama View</p>
               </div>
             </a>
-            <a class="visiting__item modal-window-btn" target="_blank" href="https://www.youtube.com/embed/zp1BXPX8jcU?si=cBgyvuRMzGfkbb1g">
+            <a class="visiting__item modal-window-btn" target="_blank"
+              href="https://www.google.com/maps/embed?pb=!4v1700480782302!6m8!1m7!1sCAoSLEFGMVFpcE8xd2tVVWJ5enBQamotT1IwbVI1ZXRaSlQteGwtNDBYSzhyRFEz!2m2!1d48.85987877384653!2d2.335515730085149!3f7.53!4f4!5f0.5970117501821992">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/Mona_Lisa.jpg" alt="Mona Lisa" />
               </div>
@@ -174,7 +180,8 @@
                 <p>Google Street Panorama View</p>
               </div>
             </a>
-            <a class="visiting__item modal-window-btn" target="_blank" href="https://www.youtube.com/embed/zp1BXPX8jcU?si=cBgyvuRMzGfkbb1g">
+            <a class="visiting__item modal-window-btn" target="_blank"
+              href="https://www.google.com/maps/embed?pb=!4v1700480819490!6m8!1m7!1sCAoSLEFGMVFpcFBwR0Fvd1lhdFZ5azNNTUduWkFhUWtZbTJFVWstRGxjYTA2U1M1!2m2!1d48.8563254!2d2.3352706!3f21.26!4f-10.090000000000003!5f0.4000000000000002">
               <div class="visiting__item-img">
                 <img src="./src/img/content/visiting/NightPalace.jpg" alt="Night Palace" />
               </div>
@@ -230,17 +237,91 @@
               Hammurabi's Code</h4>
           </div>
           <div class="video__content">
-            <div class="video__item">
-              <iframe src="https://www.youtube.com/embed/zp1BXPX8jcU?si=_AgQ52F_93GJrf4p" title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-            </div>
-            <div class="video__item">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/Vi5D6FKhRmo?si=gsMFnt8JX2eIOl2S"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
+            <div class="video__slider--wrapper">
+              <div class="video__slider">
+                <div class="video__slider-item">
+                  <iframe class="slider-item__iframe"
+                    src="https://www.youtube.com/embed/zp1BXPX8jcU?si=_AgQ52F_93GJrf4p" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+                <div class="video__slider-item">
+                  <iframe class="slider-item__iframe"
+                    src="https://www.youtube.com/embed/Vi5D6FKhRmo?si=gsMFnt8JX2eIOl2S" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+                <div class="video__slider-item">
+                  <iframe class="slider-item__iframe"
+                    src="https://www.youtube.com/embed/NOhDysLnTvY?si=uxNS0RPxxj7v1h1l" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+                <div class="video__slider-item">
+                  <iframe class="slider-item__iframe"
+                    src="https://www.youtube.com/embed/aWmJ5DgyWPI?si=-ULPSTlbwAuGsi_u" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+                <div class="video__slider-item">
+                  <iframe class="slider-item__iframe"
+                    src="https://www.youtube.com/embed/2OR0OCr6uRE?si=vgb25TZbmeiWz8X5" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
+              <div class="video__slider-nav">
+                <div class="video__slider-nav-item">
+                  <iframe class="slider-nav-item__iframe"
+                    src="https://www.youtube.com/embed/zp1BXPX8jcU?si=_AgQ52F_93GJrf4p" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+                <div class="video__slider-nav-item">
+                  <iframe class="slider-nav-item__iframe"
+                    src="https://www.youtube.com/embed/Vi5D6FKhRmo?si=gsMFnt8JX2eIOl2S" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+                <div class="video__slider-nav-item">
+                  <iframe class="slider-nav-item__iframe"
+                    src="https://www.youtube.com/embed/NOhDysLnTvY?si=uxNS0RPxxj7v1h1l" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+                <div class="video__slider-nav-item">
+                  <iframe class="slider-nav-item__iframe"
+                    src="https://www.youtube.com/embed/aWmJ5DgyWPI?si=-ULPSTlbwAuGsi_u" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+                <div class="video__slider-nav-item">
+                  <iframe class="slider-nav-item__iframe"
+                    src="https://www.youtube.com/embed/2OR0OCr6uRE?si=vgb25TZbmeiWz8X5" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -421,14 +502,16 @@
   <div class="modal-window nodal-window--">
     <div class="modal-window__wrapper">
       <button class="modal-window__btn-close">
-          <span></span>
-          <span></span>
+        <span></span>
+        <span></span>
       </button>
       <div class="modal-window__iframe"></div>
     </div>
   </div>
   <div id="overlay" class="overlay"></div>
-  <script src="src/js/script.js"></script>
+  <script type="module" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script type="module" src="https://kenwheeler.github.io/slick/slick/slick.js"></script>
+  <script src="./src/js/script.js"></script>
 </body>
 
 </html>

@@ -78,4 +78,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
    window.addEventListener('resize', closeBurgerMenu);
    openCloseModalWindow();
+
+   $('.slider__slick').slick({
+      arrows: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: true,
+   });
+
+
+   $('.video__slider').slick({
+      arrows: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      asNavFor: '.video__slider-nav',
+      infinite: true,
+      speed: 300,
+   });
+
+   $('.video__slider-nav').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      asNavFor: '.video__slider',
+      dots: true,
+      centerMode: true,
+      focusOnSelect: true,
+      infinite: true,
+      speed: 300,
+      arrows: false,
+      // centerPadding: '60px',
+
+      responsive: [
+         {
+            breakpoint: 768,
+            settings: {
+               slidesToShow: 2,
+               centerMode: false,
+               arrows: false,
+            }
+         }
+      ]
+   });
+
 });
