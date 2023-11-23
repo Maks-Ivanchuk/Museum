@@ -1,3 +1,19 @@
+import galery1 from '../img/content/gallery/galery1.jpg';
+import galery2 from '../img/content/gallery/galery2.jpg';
+import galery3 from '../img/content/gallery/galery3.jpg';
+import galery4 from '../img/content/gallery/galery4.jpg';
+import galery5 from '../img/content/gallery/galery5.jpg';
+import galery6 from '../img/content/gallery/galery6.jpg';
+import galery7 from '../img/content/gallery/galery7.jpg';
+import galery8 from '../img/content/gallery/galery8.jpg';
+import galery9 from '../img/content/gallery/galery9.jpg';
+import galery10 from '../img/content/gallery/galery10.jpg';
+import galery11 from '../img/content/gallery/galery11.jpg';
+import galery12 from '../img/content/gallery/galery12.jpg';
+import galery13 from '../img/content/gallery/galery13.jpg';
+import galery14 from '../img/content/gallery/galery14.jpg';
+import galery15 from '../img/content/gallery/galery15.jpg';
+
 document.addEventListener("DOMContentLoaded", () => {
    const burgerMenuBtn = document.querySelector('.header__bg-menu');
    const headerNav = document.querySelector('.header__nav');
@@ -121,3 +137,48 @@ document.addEventListener("DOMContentLoaded", () => {
    });
 
 });
+
+//galery
+
+function addRandomImgGalery() {
+
+   let galeryImgAddress = [
+      galery1,
+      galery2,
+      galery3,
+      galery4,
+      galery5,
+      galery6,
+      galery7,
+      galery8,
+      galery9,
+      galery10,
+      galery11,
+      galery12,
+      galery13,
+      galery14,
+      galery15,
+   ];
+
+   shuffleArray(galeryImgAddress);
+
+   const galleryInnerContent = document.querySelector('.gallery__inner-content');
+
+   for (let i = 0; i < galeryImgAddress.length; i++) {
+      const img = document.createElement('img');
+      img.classList.add('gallery__img');
+      img.src = galeryImgAddress[i];
+      img.alt = `galery${i + 1}`;
+      galleryInnerContent.append(img);
+   }
+};
+
+function shuffleArray(array) {
+   for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+   }
+};
+
+addRandomImgGalery();
+
