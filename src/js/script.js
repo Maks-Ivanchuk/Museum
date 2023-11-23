@@ -136,6 +136,18 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
    });
 
+   const amountForm = document.querySelector('.tickets__amount-form');
+   amountForm.addEventListener('click', function (event) {
+      const target = event.target;
+      const currentAmountInput = target.closest('.amount-form__wrapper').querySelector('.amount-form__value');
+      const currentAmountInputValue = currentAmountInput.value;
+
+      if (target.tagName == 'BUTTON') {
+         const btnSymbol = target.innerText;
+         console.log(btnSymbol);
+      }
+   });
+
 });
 
 //galery
