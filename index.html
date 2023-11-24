@@ -381,17 +381,19 @@
                 <form class="tickets__amount-form">
                   <p>Basic 18+</p>
                   <div class="amount-form__wrapper">
-                    <button class="amount-form__btn">–</button>
+                    <button class="amount-form__btn" type="button" data-quantity-ticket="minus">–</button>
                     <input id="amount-basic" class="amount-form__value" value="0">
-                    <button class="amount-form__btn">+</button>
+                    <button class="amount-form__btn" type="button" data-quantity-ticket="plus">+</button>
                   </div>
                   <p>Senior 65+</p>
                   <div class="amount-form__wrapper">
-                    <button class="amount-form__btn">–</button>
+                    <button class="amount-form__btn" type="button" data-quantity-ticket="minus">–</button>
                     <input id="amount-senior" class="amount-form__value" value="0">
-                    <button class="amount-form__btn">+</button>
+                    <button class="amount-form__btn" type="button" data-quantity-ticket="plus">+</button>
                   </div>
-                  <span class="tickets__amount-total">Total € 220</span>
+                  <span class="tickets__amount-total">
+                    Total € <span class="total">0</span>
+                  </span>
                 </form>
                 <button class="tickets__amount-btn">Buy Now</button>
               </div>

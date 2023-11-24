@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
    window.addEventListener('resize', closeBurgerMenu);
    openCloseModalWindow();
 
+   //slider
    $('.slider__slick').slick({
       arrows: false,
       slidesToShow: 1,
@@ -102,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
       dots: true,
    });
 
-
+   //slider video
    $('.video__slider').slick({
       arrows: false,
       slidesToShow: 1,
@@ -122,7 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
       infinite: true,
       speed: 300,
       arrows: false,
-      // centerPadding: '60px',
 
       responsive: [
          {
@@ -136,61 +136,104 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
    });
 
-   const amountForm = document.querySelector('.tickets__amount-form');
-   amountForm.addEventListener('click', function (event) {
-      const target = event.target;
-      const currentAmountInput = target.closest('.amount-form__wrapper').querySelector('.amount-form__value');
-      const currentAmountInputValue = currentAmountInput.value;
+   //galery
 
-      if (target.tagName == 'BUTTON') {
-         const btnSymbol = target.innerText;
-         console.log(btnSymbol);
+   function addRandomImgGalery() {
+
+      function shuffleArray(array) {
+         for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+         }
+      };
+
+      let galeryImgAddress = [
+         galery1,
+         galery2,
+         galery3,
+         galery4,
+         galery5,
+         galery6,
+         galery7,
+         galery8,
+         galery9,
+         galery10,
+         galery11,
+         galery12,
+         galery13,
+         galery14,
+         galery15,
+      ];
+
+      shuffleArray(galeryImgAddress);
+
+      const galleryInnerContent = document.querySelector('.gallery__inner-content');
+
+      for (let i = 0; i < galeryImgAddress.length; i++) {
+         const img = document.createElement('img');
+         img.classList.add('gallery__img');
+         img.src = galeryImgAddress[i];
+         img.alt = `galery${i + 1}`;
+         galleryInnerContent.append(img);
       }
-   });
+   };
 
+   addRandomImgGalery();
+
+   //buy ticket
+
+   function quantityTickets() {
+      const amountFormButtons = document.querySelectorAll('button[data-quantity-ticket]');
+      let currentNumTicketsBasic = 0;
+      let currentNumTicketsSenior = 0;
+
+      amountFormButtons.forEach(amountFormButton => {
+         amountFormButton.addEventListener('click', (event) => {
+            const target = event.target;
+            const typeBtn = target.dataset.quantityTicket;
+            const currentTicketsInput = target.closest('.amount-form__wrapper').querySelector('.amount-form__value');
+
+            if (currentTicketsInput.id === 'amount-basic') {
+               if (typeBtn === 'minus' && currentNumTicketsBasic !== 0) {
+                  currentNumTicketsBasic -= 1;
+               } else if (typeBtn === 'plus') {
+                  currentNumTicketsBasic += 1;
+               } else {
+                  return;
+               };
+
+               currentTicketsInput.value = currentNumTicketsBasic;
+
+            } else if (currentTicketsInput.id === 'amount-senior') {
+               if (typeBtn === 'minus' && currentNumTicketsSenior !== 0) {
+                  currentNumTicketsSenior -= 1;
+               } else if (typeBtn === 'plus') {
+                  currentNumTicketsSenior += 1;
+               } else {
+                  return;
+               };
+
+               currentTicketsInput.value = currentNumTicketsSenior;
+
+            } else {
+               return;
+            };
+            totalCostTicket()
+         });
+      });
+
+      function totalCostTicket() {
+         const costBasicTicket = 120;
+         const costSeniorTicket = 100;
+         const totalAmountTickets = document.querySelector('.total');
+
+         let total = (currentNumTicketsBasic * costBasicTicket) + (currentNumTicketsSenior * costSeniorTicket);
+         totalAmountTickets.innerHTML = total;
+      }
+
+   };
+
+   quantityTickets();
 });
 
-//galery
-
-function addRandomImgGalery() {
-
-   let galeryImgAddress = [
-      galery1,
-      galery2,
-      galery3,
-      galery4,
-      galery5,
-      galery6,
-      galery7,
-      galery8,
-      galery9,
-      galery10,
-      galery11,
-      galery12,
-      galery13,
-      galery14,
-      galery15,
-   ];
-
-   shuffleArray(galeryImgAddress);
-
-   const galleryInnerContent = document.querySelector('.gallery__inner-content');
-
-   for (let i = 0; i < galeryImgAddress.length; i++) {
-      const img = document.createElement('img');
-      img.classList.add('gallery__img');
-      img.src = galeryImgAddress[i];
-      img.alt = `galery${i + 1}`;
-      galleryInnerContent.append(img);
-   }
-};
-
-function shuffleArray(array) {
-   for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-   }
-};
-
-addRandomImgGalery();
 
