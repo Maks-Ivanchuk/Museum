@@ -223,8 +223,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       function totalCostTicket() {
-         const costBasicTicket = 120;
-         const costSeniorTicket = 100;
+         const costBasicTicket = 17;
+         const costSeniorTicket = 25;
          const totalAmountTickets = document.querySelector('.total');
 
          let total = (currentNumTicketsBasic * costBasicTicket) + (currentNumTicketsSenior * costSeniorTicket);
