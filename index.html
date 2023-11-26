@@ -354,7 +354,7 @@
                 <div class="tickets__type-title">
                   <h4>Ticket Type</h4>
                 </div>
-                <div class="tickets__type-input">
+                <div class="tickets__type-input-form">
                   <form class="tickets__type-form">
                     <label for="type-permanent-ex">
                       <input class="tickets__type-input" id="type-permanent-ex" name="type-tickets" type="radio"
@@ -468,7 +468,7 @@
       </div>
     </div>
   </footer>
-  <div class="modal-window nodal-window--">
+  <div class="modal-window">
     <div class="modal-window__wrapper">
       <button class="modal-window__btn-close">
         <span></span>
@@ -477,6 +477,70 @@
       <div class="modal-window__iframe"></div>
     </div>
   </div>
+
+
+    <div class="tickets-m-w">
+      <div class="container">
+        <div class="tickets-m-w__wrapper">
+          <button class="tickets-m-w__btn-close">
+            <span></span>
+            <span></span>
+          </button> 
+          <div class="tickets-m-w__user-info">
+            <div class="user-info__title">
+              <img src="./src/img/icon/logo.png" alt="">
+              <h2>Booking tickets</h2>
+              <h4>Tour to Louvre</h4>
+            </div>
+            <div class="user-info__input">
+              <form class="user-info__form">
+                <div class="user-info__form-data">
+                  <input type="date">
+                  <input type="time" name="" id="">
+                </div>
+                <input type="text" placeholder="Name" name="" id="">
+                <input type="text" placeholder="E-mail" name="" id="">
+                <input type="text" placeholder="Phone" name="" id="">
+                <select name="" id="">
+                  <option value="permanent exhibition">Permanent exhibition</option>
+                  <option value="temporary exhibition">Temporary exhibition</option>
+                  <option value="combined Admission">Combined Admission</option>
+                </select>
+                <div class="user-info__entry-ticket">
+                  <div class="entry-ticket__title">
+                    <h4>Entry ticket</h4>
+                  </div>
+                  <div class="entry-ticket__type-ticket">
+                    <div class="entry-ticket__wrapper">
+                      <p>Basic 18+ (20 €)</p>
+                      <div class="entry-ticket__row">
+                        <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="minus">–</button>
+                        <input id="entry-ticket-basic" class="entry-ticket__value" value="0">
+                        <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="plus">+</button>
+                      </div>
+                    </div>
+                    <div class="entry-ticket__wrapper">
+                      <p>Senior 65+ (10 €)</p>
+                      <div class="entry-ticket__row">
+                        <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="minus">–</button>
+                        <input id="entry-ticket-senior" class="entry-ticket__value" value="0">
+                        <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="plus">+</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        <div class="tickets-m-w__purchase-info">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
   <div id="overlay" class="overlay"></div>
   <script type="module" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script type="module" src="https://kenwheeler.github.io/slick/slick/slick.js"></script>

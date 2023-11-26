@@ -224,16 +224,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       function totalCostTicket() {
          const costBasicTicket = 17;
-         const costSeniorTicket = 25;
+         const costSeniorTicket = 10;
          const totalAmountTickets = document.querySelector('.total');
 
          let total = (currentNumTicketsBasic * costBasicTicket) + (currentNumTicketsSenior * costSeniorTicket);
          totalAmountTickets.innerHTML = total;
       }
-
    };
 
    quantityTickets();
+
+   //  modal-buy-tickets
 });
 
 

@@ -1,0 +1,204 @@
+.tickets-m-w {
+   position: fixed;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   
+   background-color: $white;
+   color: $dark;
+
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   z-index: 100;
+
+   .container {
+      width: 100%;
+   }
+}
+
+.tickets-m-w__wrapper {
+   max-width: 970px;
+   width: 100%;
+   display: flex;
+   gap: 40px;
+   flex-direction: column;
+   padding: 0 10px;
+   position: relative;
+
+   @media screen and (min-width: 768px) {
+      flex-direction: row;
+      gap: 50px;
+   }
+}
+
+.tickets-m-w__btn-close {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: 25px;
+   height: 25px;
+   position: absolute;
+   top: -65px;
+   right: 10px;
+   cursor: pointer;
+   background-color: $white;
+
+   span {
+      width: 34px;
+      height: 1px;
+      background-color: $bg-dark;
+
+      &:nth-child(1) {
+         transform: translateY(0.5px) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+         transform: translateY(-0.5px) rotate(-45deg);
+      }
+   }
+}
+
+.tickets-m-w__user-info {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 40px;
+}
+
+.user-info__title {
+   display: flex;
+   flex-direction: column;
+   border-bottom-color: $dark-red;
+   border-bottom-width: 2px;
+   border-bottom-style: solid;
+
+   img{
+      width: 85px;
+   }
+
+   h2{
+      color: $font-gold;
+      font-family: Forum;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      letter-spacing: 0px;
+   }
+
+   h4{
+      color: $dark-red;
+      font-family: Roboto;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin-bottom: 10px;
+   }
+}
+.user-info__input {
+}
+.user-info__form {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+
+   input, select{
+      height: 45px;
+      border-color: $dark;
+      border-width: 1px;
+      border-style: solid;
+   }
+}
+.user-info__form-data {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   
+   input{
+      border-color: $dark;
+      border-width: 1px;
+      border-style: solid;
+   }
+
+}
+.user-info__entry-ticket {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   padding: 10px 15px 15px 15px;
+
+   border-color: $dark;
+   border-width: 1px;
+   border-style: solid;
+
+      input{
+      border: none;
+   }
+}
+.entry-ticket__title {
+   border-bottom-color: $dark-red;
+   border-bottom-width: 2px;
+   border-bottom-style: solid;
+
+   h4 {
+      color: $font-gold;
+      font-family: Forum;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-transform: capitalize;
+      padding-bottom: 5px;
+   }
+}
+.entry-ticket__type-ticket {
+   display: flex;
+   flex-direction: column;
+   
+}
+.entry-ticket__wrapper{
+   display: flex;
+   justify-content: space-between;
+   height: 25px;
+}
+.entry-ticket__row {
+   border-color: $dark;
+   border-width: 1px;
+   border-style: solid;
+   display: flex;
+   width: 105px;
+   
+   input {
+         height: 25px;
+   }
+}
+.entry-ticket__form-btn {
+   width: 35px;
+   background-color: $dark;
+   color: $white;
+}
+.entry-ticket__value {
+   color: $bg-dark;
+   font-family: Roboto;
+   font-size: 18px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   width: 35px;
+   background-color: $white;
+   color: $dark;
+   text-align: center;
+}
+
+.tickets-m-w__purchase-info {
+   width: 100%;
+   border-color: $dark;
+   border-style: solid;
+   border-width: 2px;
+}
