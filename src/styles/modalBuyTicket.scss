@@ -1,10 +1,10 @@
 .tickets-m-w {
    position: fixed;
    top: 0;
-   right: 0;
-   bottom: 0;
    left: 0;
-   
+   width: 100%;
+   height: calc(100% + 100vmax - 100%);
+
    background-color: $white;
    color: $dark;
 
@@ -25,7 +25,7 @@
    gap: 40px;
    flex-direction: column;
    padding: 0 10px;
-   position: relative;
+   margin-top: 25px;
 
    @media screen and (min-width: 768px) {
       flex-direction: row;
@@ -40,11 +40,9 @@
    justify-content: center;
    width: 25px;
    height: 25px;
-   position: absolute;
-   top: -65px;
-   right: 10px;
    cursor: pointer;
    background-color: $white;
+   margin-left: auto;
 
    span {
       width: 34px;
@@ -75,11 +73,11 @@
    border-bottom-width: 2px;
    border-bottom-style: solid;
 
-   img{
+   img {
       width: 85px;
    }
 
-   h2{
+   h2 {
       color: $font-gold;
       font-family: Forum;
       font-size: 32px;
@@ -91,7 +89,7 @@
       letter-spacing: 0px;
    }
 
-   h4{
+   h4 {
       color: $dark-red;
       font-family: Roboto;
       font-size: 18px;
@@ -101,32 +99,83 @@
       margin-bottom: 10px;
    }
 }
-.user-info__input {
-}
+
+.user-info__input {}
+
 .user-info__form {
    display: flex;
    flex-direction: column;
    gap: 20px;
 
-   input, select{
+   input {
       height: 45px;
       border-color: $dark;
       border-width: 1px;
       border-style: solid;
+
+      background-repeat: no-repeat;
+      background-position: 15px center;
+      padding-left: 45px;
+      padding-right: 15px;
+
+      &::placeholder {
+         color: $dark;
+      }
    }
 }
+
 .user-info__form-data {
    display: flex;
    flex-direction: column;
    gap: 20px;
-   
-   input{
+
+   input {
       border-color: $dark;
       border-width: 1px;
       border-style: solid;
    }
-
 }
+
+.user-info__date {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   background-image: url('../img/icon/form/date.svg');
+}
+
+.user-info__time {
+   background-image: url('../img/icon/form/time.svg');
+}
+
+.user-info__name {
+   background-image: url('../img/icon/form/name.svg');
+}
+
+.user-info__email {
+   background-image: url('../img/icon/form/email.svg');
+}
+
+.user-info__phone {
+   background-image: url('../img/icon/form/phone.svg');
+}
+
+.user-info__ticket-type {
+   height: 45px;
+   border-color: $dark;
+   border-width: 1px;
+   border-style: solid;
+
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+
+   background-image: url('../img/icon/form/ticket_type.svg'), url('../img/icon/form/arrow.svg');
+   background-repeat: no-repeat;
+   background-position: 15px center, calc(100% - 15px) center;
+   padding-left: 45px;
+   padding-right: 15px;
+}
+
 .user-info__entry-ticket {
    display: flex;
    flex-direction: column;
@@ -137,10 +186,11 @@
    border-width: 1px;
    border-style: solid;
 
-      input{
+   input {
       border: none;
    }
 }
+
 .entry-ticket__title {
    border-bottom-color: $dark-red;
    border-bottom-width: 2px;
@@ -157,32 +207,50 @@
       padding-bottom: 5px;
    }
 }
+
 .entry-ticket__type-ticket {
    display: flex;
    flex-direction: column;
-   
+   gap: 20px;
+
 }
-.entry-ticket__wrapper{
+
+.entry-ticket__wrapper {
    display: flex;
    justify-content: space-between;
    height: 25px;
 }
+
+.entry-ticket__text {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
 .entry-ticket__row {
    border-color: $dark;
    border-width: 1px;
    border-style: solid;
+   box-sizing: border-box;
    display: flex;
    width: 105px;
-   
+
    input {
-         height: 25px;
+      max-width: 100%;
+      height: 100%;
+      padding-left: 0;
+      padding-right: 0;
    }
 }
+
 .entry-ticket__form-btn {
    width: 35px;
+   height: 100%;
    background-color: $dark;
    color: $white;
+   font-size: 20px;
 }
+
 .entry-ticket__value {
    color: $bg-dark;
    font-family: Roboto;

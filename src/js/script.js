@@ -184,8 +184,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
    function quantityTickets() {
       const amountFormButtons = document.querySelectorAll('button[data-quantity-ticket]');
+      const priseBasicTickets = document.querySelector('.entry-ticket__price-basic');
+      const priseSeniorTickets = document.querySelector('.entry-ticket__price-senior');
+      const costBasicTicket = 17;
+      const costSeniorTicket = 10;
+
       let currentNumTicketsBasic = 0;
       let currentNumTicketsSenior = 0;
+
+      priseBasicTickets.innerHTML = costBasicTicket;
+      priseSeniorTickets.innerHTML = costSeniorTicket;
 
       amountFormButtons.forEach(amountFormButton => {
          amountFormButton.addEventListener('click', (event) => {
@@ -223,8 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       function totalCostTicket() {
-         const costBasicTicket = 17;
-         const costSeniorTicket = 10;
          const totalAmountTickets = document.querySelector('.total');
 
          let total = (currentNumTicketsBasic * costBasicTicket) + (currentNumTicketsSenior * costSeniorTicket);

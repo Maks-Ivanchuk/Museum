@@ -479,66 +479,71 @@
   </div>
 
 
-    <div class="tickets-m-w">
-      <div class="container">
-        <div class="tickets-m-w__wrapper">
-          <button class="tickets-m-w__btn-close">
-            <span></span>
-            <span></span>
-          </button> 
-          <div class="tickets-m-w__user-info">
-            <div class="user-info__title">
-              <img src="./src/img/icon/logo.png" alt="">
-              <h2>Booking tickets</h2>
-              <h4>Tour to Louvre</h4>
-            </div>
-            <div class="user-info__input">
-              <form class="user-info__form">
-                <div class="user-info__form-data">
-                  <input type="date">
-                  <input type="time" name="" id="">
-                </div>
-                <input type="text" placeholder="Name" name="" id="">
-                <input type="text" placeholder="E-mail" name="" id="">
-                <input type="text" placeholder="Phone" name="" id="">
-                <select name="" id="">
-                  <option value="permanent exhibition">Permanent exhibition</option>
-                  <option value="temporary exhibition">Temporary exhibition</option>
-                  <option value="combined Admission">Combined Admission</option>
-                </select>
-                <div class="user-info__entry-ticket">
-                  <div class="entry-ticket__title">
-                    <h4>Entry ticket</h4>
-                  </div>
-                  <div class="entry-ticket__type-ticket">
-                    <div class="entry-ticket__wrapper">
-                      <p>Basic 18+ (20 €)</p>
-                      <div class="entry-ticket__row">
-                        <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="minus">–</button>
-                        <input id="entry-ticket-basic" class="entry-ticket__value" value="0">
-                        <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="plus">+</button>
-                      </div>
-                    </div>
-                    <div class="entry-ticket__wrapper">
-                      <p>Senior 65+ (10 €)</p>
-                      <div class="entry-ticket__row">
-                        <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="minus">–</button>
-                        <input id="entry-ticket-senior" class="entry-ticket__value" value="0">
-                        <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="plus">+</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
+  <div class="tickets-m-w">
+    <div class="container">
+      <button class="tickets-m-w__btn-close">
+        <span></span>
+        <span></span>
+      </button>
+      <div class="tickets-m-w__wrapper">
+        <div class="tickets-m-w__user-info">
+          <div class="user-info__title">
+            <img src="./src/img/icon/logo.png" alt="">
+            <h2>Booking tickets</h2>
+            <h4>Tour to Louvre</h4>
           </div>
+          <div class="user-info__input">
+            <form class="user-info__form">
+              <div class="user-info__form-data">
+                <input type="date" class="user-info__date">
+                <input type="time" class="user-info__time" name="" id="">
+              </div>
+              <input type="text" class="user-info__name" placeholder="Name" id="">
+              <input type=" text" class="user-info__email" placeholder="E-mail" name="" id="">
+              <input type="text" class="user-info__phone" placeholder="Phone" name="" id="">
+              <select class="user-info__ticket-type" aria-placeholder="Ticket Type" name="" id="">
+                <option disabled selected value="">Ticket-Type</option>
+                <option value="permanent exhibition">Permanent exhibition</option>
+                <option value="temporary exhibition">Temporary exhibition</option>
+                <option value="combined Admission">Combined Admission</option>
+              </select>
+              <div class="user-info__entry-ticket">
+                <div class="entry-ticket__title">
+                  <h4>Entry ticket</h4>
+                </div>
+                <div class="entry-ticket__type-ticket">
+                  <div class="entry-ticket__wrapper">
+                    <div class="entry-ticket__text">
+                      <p>Basic 18+ (<span class="entry-ticket__price-basic"></span> €)</p>
+                    </div>
+                    <div class="entry-ticket__row">
+                      <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="minus">–</button>
+                      <input id="entry-ticket-basic" class="entry-ticket__value" value="0">
+                      <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="plus">+</button>
+                    </div>
+                  </div>
+                  <div class="entry-ticket__wrapper">
+                    <div class="entry-ticket__text">
+                      <p>Senior 65+ (<span class="entry-ticket__price-senior"></span> €)</p>
+                    </div>
+                    <div class="entry-ticket__row">
+                      <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="minus">–</button>
+                      <input id="entry-ticket-senior" class="entry-ticket__value" value="0">
+                      <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="plus">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
         <div class="tickets-m-w__purchase-info">
-          
+
         </div>
       </div>
     </div>
   </div>
-  
+
 
 
   <div id="overlay" class="overlay"></div>
