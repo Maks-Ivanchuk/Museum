@@ -539,14 +539,16 @@
         </div>
         <div class="tickets-m-w__purchase-info">
           <div class="purchase-info__title">
-            <div class="purchase-info__description">
-              <h3>Overview</h3>
-              <h4>Tour to Louvre</h4>
-            </div>
-            <div class="purchase-info__selected">
-                <input type="date" class="purchase-info__date">
-                <input type="time" class="purchase-info__time">
-                <input type="text" class="purchase-info__type">
+            <div class="purchase-info__title-wrapper">
+              <div class="purchase-info__description">
+                <h3>Overview</h3>
+                <h4>Tour to Louvre</h4>
+              </div>
+              <div class="purchase-info__selected">
+                <input type="date" class="purchase-info__date" value="Friday, August 19">
+                <input type="time" class="purchase-info__time" value="16 : 30">
+                <input type="text" class="purchase-info__type" value="Temporary exhibition">
+              </div>
             </div>
             <div class="purchase-info__img">
               <img src="./src/img/pictures/modal_buy_tickets-Rectangle 4.png" alt="">
@@ -568,16 +570,46 @@
               <span class="total-sum__total-tickets">20 E</span>
             </div>
             <hr class="total-sum__line">
-            <div class="total-sum__wrapper">
+            <div class="total-sum__total-wrapper">
               <h2>Total:</h2>
               <span class="total-sum__total">60 Є</span>
             </div>
           </div>
           <div class="purchase-info__card">
-            <form action="">
-              <div class="card__front" style="width: 330px; height: 210px; background-color: grey;"></div>
-              <div class="card__back" style="width: 330px; height: 210px; background-color: grey;"></div>
-              <button type="submit"></button>
+            <form class="purchase-info__card-form">
+              <div class="card card__front">
+                <div class="card__front-wrapper">
+                  <div class="card__front-img">
+                    <img src="./src/img/icon/form/visa-master.png" alt="Logo type card">
+                  </div>
+                  <div class="card__front-row">
+                    <label for="card-num">Card number</label>
+                    <input type="number" name="card-num" id="card-num">
+                  </div>
+                  <div class="card__front-row card__front-row--mounth">
+                    <div class="card__front-mounth-container">
+                      <label for="card-mounth">Expiration date</label>
+                      <input type="number" name="card-mounth" id="card-mounth" min="1" max="10">
+                    </div>
+                    <input type="number" name="card-yaer" id="card-yaer">
+                  </div>
+                  <div class="card__front-row card__front-cardholder">
+                    <label for="cardholder-name">Cardholder name</label>
+                    <input type="number" name="cardholder-name" id="cardholder-name" value="2222">
+                  </div>
+                </div>
+              </div>
+              <div class="card card__back">
+                <div class="card__back-wrapper">
+                  <div class="card__back-line"></div>
+                  <div class="card__back-cvv">
+                    <label for="card-cvv">CVC/CVV</label>
+                    <input type="number" name="card-cvv" id="card-cvv">
+                    <span>The last 3 or 4 digits on back of the card</span>
+                  </div>
+                </div>
+              </div>
+              <button class="purchase-info__btn" type="submit">Book</button>
             </form>
           </div>
         </div>
