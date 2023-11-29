@@ -1,36 +1,53 @@
 .tickets-m-w {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100vh;
-   overflow: auto;
+   display: none;
 
-   background-color: $white;
-   color: $dark;
-   padding-top: 30px;
+   &.tickets-m-w--open {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: auto;
 
-   display: flex;
-   z-index: 100;
+      background-color: $white;
+      color: $dark;
+      padding-top: 30px;
+
+      display: flex;
+      z-index: 100;
+   }
 
    .container {
+      display: flex;
       width: 100%;
+      flex-direction: column;
+
+      @media screen and (min-width: 1024px) {
+         align-items: center;
+         justify-content: center;
+      }
    }
 }
 
 .tickets-m-w__wrapper {
-   max-width: 970px;
-   width: 100%;
    display: flex;
-   gap: 40px;
    flex-direction: column;
+   gap: 40px;
+   max-width: 550px;
+   width: 100%;
    padding: 0 10px 30px 10px;
    margin-top: 25px;
 
+   margin-left: auto;
+   margin-right: auto;
 
-   @media screen and (min-width: 768px) {
+
+
+   @media screen and (min-width: 1024px) {
       flex-direction: row;
-      gap: 50px;
+      max-width: 970px;
+      margin-left: 0;
+      margin-right: 0;
    }
 }
 
@@ -67,6 +84,11 @@
    flex-direction: column;
    gap: 40px;
    margin-bottom: 10px;
+
+   @media screen and (min-width: 1024px) {
+      justify-content: space-between;
+      margin-bottom: 0;
+   }
 }
 
 .user-info__title {
@@ -101,6 +123,13 @@
       line-height: normal;
       margin-bottom: 10px;
    }
+
+
+   @media screen and (min-width: 768px) {
+      h2 {
+         font-size: 50px;
+      }
+   }
 }
 
 .user-info__input {}
@@ -109,6 +138,7 @@
    display: flex;
    flex-direction: column;
    gap: 20px;
+   font-size: 18px;
 
    input {
       height: 45px;
@@ -121,16 +151,24 @@
       padding-left: 45px;
       padding-right: 15px;
 
+      font-size: 18px;
+
       &::placeholder {
          color: $dark;
       }
    }
 }
 
+///////////////////////////////////////////////////////
+
 .user-info__form-data {
    display: flex;
    flex-direction: column;
    gap: 20px;
+
+   @media screen and (min-width: 768px) {
+      flex-direction: row;
+   }
 
    input {
       border-color: $dark;
@@ -144,11 +182,15 @@
    -moz-appearance: none;
    appearance: none;
    background-image: url('../img/icon/form/date.svg');
+   width: 100%;
 }
 
 .user-info__time {
    background-image: url('../img/icon/form/time.svg');
+   width: 100%;
 }
+
+/////////////////////////////////////////////////////////
 
 .user-info__name {
    background-image: url('../img/icon/form/name.svg');
@@ -177,6 +219,8 @@
    background-position: 15px center, calc(100% - 15px) center;
    padding-left: 45px;
    padding-right: 15px;
+
+   font-size: 18px;
 }
 
 .user-info__entry-ticket {
@@ -350,8 +394,9 @@
 }
 
 .purchase-info__img {
-   width: 120px;
-   height: auto;
+   max-width: 150px;
+   flex-basis: 39%;
+   height: fit-content;
 
    img {
       max-width: 100%;
@@ -428,6 +473,7 @@
       font-size: 32px;
       letter-spacing: 0px;
       text-transform: none;
+      line-height: normal;
 
    }
 
@@ -447,6 +493,12 @@
 .purchase-info__card-form {
    display: flex;
    flex-direction: column;
+   align-items: center;
+   position: relative;
+
+   @media screen and (min-width: 768px) {
+      align-items: normal;
+   }
 }
 
 .card {
@@ -456,6 +508,10 @@
    background-color: $ligth-grey;
    border-radius: 3px;
 
+   @media screen and (min-width: 768px) {
+      max-width: 360px;
+   }
+
    input {
       font-size: 13px;
    }
@@ -464,6 +520,10 @@
 .card__front {
    background-color: $ligth-grey;
    margin-bottom: 25px;
+
+   @media screen and (min-width: 768px) {
+      margin-bottom: 55px;
+   }
 }
 
 .card__front-wrapper {
@@ -479,7 +539,7 @@
    label {
       margin-bottom: 5px;
       color: $dark;
-      font-size: 11px;
+      font-size: 12px;
    }
 }
 
@@ -487,12 +547,19 @@
    position: absolute;
    top: 35px;
    right: 20px;
+   width: 17%;
+   max-width: 53px;
+
+   img {
+      width: 100%;
+      height: auto;
+   }
 }
 
 .card__front-row {
    display: flex;
    flex-direction: column;
-   width: 215px;
+   width: 74%;
 
    input {
       height: 35px;
@@ -504,7 +571,8 @@
       align-items: flex-end;
 
       input {
-         width: 100px;
+         width: 100%;
+         // max-width: 100%;
       }
    }
 }
@@ -522,6 +590,14 @@
 .card__back {
    background-color: $dark-grey;
    margin-bottom: 40px;
+   position: static;
+
+   @media screen and (min-width: 768px) {
+      position: absolute;
+      top: 30px;
+      right: 0;
+      z-index: -1;
+   }
 }
 
 .card__back-wrapper {

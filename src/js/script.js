@@ -83,8 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
       overlay.classList.toggle('overlay--open');
    });
 
-
-
    overlay.addEventListener('click', function () {
       headerNav.classList.toggle('header__nav--open');
       burgerMenuBtn.classList.toggle('header__bg-menu--open');
@@ -226,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                return;
             };
-            totalCostTicket()
+            totalCostTicket();
          });
       });
 
@@ -236,7 +234,43 @@ document.addEventListener("DOMContentLoaded", () => {
          let total = (currentNumTicketsBasic * costBasicTicket) + (currentNumTicketsSenior * costSeniorTicket);
          totalAmountTickets.innerHTML = total;
       }
+
+      function modalWbuyTicket() {
+         const buyTicketNowBtn = document.querySelector('.tickets__amount-btn');
+         const modalWBuyTicket = document.querySelector('.tickets-m-w');
+         const closeBtnModalWBuyTicket = document.querySelector('.tickets-m-w__btn-close');
+         // const priceBasic = document.querySelector('');
+         // const priceSenior = document.querySelector('.');
+
+         priceBasic.innerHTML = costBasicTicket;
+         priceSenior.innerHTML = costSeniorTicket;
+
+
+         buyTicketNowBtn.addEventListener('click', function (event) {
+            event.preventDefault();
+            const target = event.target;
+            console.log('jol');
+
+            if (modalWBuyTicket.closest('.tickets-m-w--open')) {
+               return
+            } else if (modalWBuyTicket.closest('.tickets-m-w')) {
+               modalWBuyTicket.classList.add('tickets-m-w--open')
+            }
+         });
+
+         closeBtnModalWBuyTicket.addEventListener('click', function (event) {
+            const target = event.target;
+
+            if (!modalWBuyTicket.closest('.tickets-m-w--open')) {
+               return
+            } else if (modalWBuyTicket.closest('.tickets-m-w')) {
+               modalWBuyTicket.classList.remove('tickets-m-w--open')
+            }
+         });
+      }
+      modalWbuyTicket();
    };
+
 
    quantityTickets();
 
