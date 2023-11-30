@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
    const burgerMenuBtn = document.querySelector('.header__bg-menu');
    const headerNav = document.querySelector('.header__nav');
    const body = document.querySelector('body');
-   const overlay = document.querySelector('.overlay');
+   const overlay = document.querySelector('#overlay');
    const maxWidth = 1024;
 
    function openCloseModalWindow() {
@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
          modalWindowBtn.addEventListener('click', (event) => {
             event.preventDefault();
             const targetSrc = modalWindowBtn.getAttribute('href');
-            console.log(targetSrc);
 
             modalWindowIframe.innerHTML =
                `
@@ -45,8 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
                   </iframe>
                `;
             modalWindow.classList.add('modal-window--open');
-            overlay.classList.add('overlay--open');
-            body.classList.add('body--block');
+            // overlay.classList.add('overlay--open');
+            // body.classList.add('body--block');
+            overlayOpenClose('open');
+            bodyBlockUnBlock('block');
 
          });
       });
@@ -55,8 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
          if (modalWindow.classList.contains('modal-window--open')) {
             modalWindow.classList.remove('modal-window--open');
             modalWindowIframe.innerHTML = '';
-            overlay.classList.remove('overlay--open');
-            body.classList.remove('body--block');
+            // overlay.classList.remove('overlay--open');
+            // body.classList.remove('body--block');
+            overlayOpenClose('close');
+            bodyBlockUnBlock('unblock');
          } else {
             return;
          };
@@ -70,8 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
          if (headerNav.classList.contains('header__nav--open')) {
             headerNav.classList.remove('header__nav--open');
             burgerMenuBtn.classList.remove('header__bg-menu--open');
-            body.classList.remove('body--block');
-            overlay.classList.remove('overlay--open');
+            // body.classList.remove('body--block');
+            bodyBlockUnBlock('unblock');
+            // overlay.classList.remove('overlay--open');
+            overlayOpenClose('close');
          }
       }
    }
@@ -182,24 +187,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
    function quantityTickets() {
       const amountFormButtons = document.querySelectorAll('button[data-quantity-ticket]');
-      const priseBasicTickets = document.querySelector('.entry-ticket__price-basic');
-      const priseSeniorTickets = document.querySelector('.entry-ticket__price-senior');
+      const priseBasicTickets = document.querySelectorAll('.price-basic');
+      const priseSeniorTickets = document.querySelectorAll('.price-senior');
       const costBasicTicket = 17;
       const costSeniorTicket = 10;
 
       let currentNumTicketsBasic = 0;
       let currentNumTicketsSenior = 0;
 
-      priseBasicTickets.innerHTML = costBasicTicket;
-      priseSeniorTickets.innerHTML = costSeniorTicket;
+      priseBasicTickets.forEach(priseBasicTicket => {
+         priseBasicTicket.innerHTML = `${costBasicTicket} €`;
+      });
+
+      priseSeniorTickets.forEach(priseSeniorTicket => {
+         priseSeniorTicket.innerHTML = `${costSeniorTicket} €`;
+      });
 
       amountFormButtons.forEach(amountFormButton => {
          amountFormButton.addEventListener('click', (event) => {
             const target = event.target;
             const typeBtn = target.dataset.quantityTicket;
-            const currentTicketsInput = target.closest('.amount-form__wrapper').querySelector('.amount-form__value');
+            const currentTicketsInput = target.closest('.form-btn-wrapper').querySelector('input');
 
-            if (currentTicketsInput.id === 'amount-basic') {
+            if (currentTicketsInput.id === 'amount-basic' ||
+               currentTicketsInput.id === 'entry-ticket-basic') {
                if (typeBtn === 'minus' && currentNumTicketsBasic !== 0) {
                   currentNumTicketsBasic -= 1;
                } else if (typeBtn === 'plus') {
@@ -207,10 +218,14 @@ document.addEventListener("DOMContentLoaded", () => {
                } else {
                   return;
                };
+               document.querySelector('#amount-basic').value = currentNumTicketsBasic;
+               document.querySelector('#entry-ticket-basic').value = currentNumTicketsBasic;
+               document.querySelector('#number-tickets-basic').innerHTML = currentNumTicketsBasic;
 
-               currentTicketsInput.value = currentNumTicketsBasic;
+               // currentTicketsInput.value = currentNumTicketsBasic;
 
-            } else if (currentTicketsInput.id === 'amount-senior') {
+            } else if (currentTicketsInput.id === 'amount-senior' ||
+               currentTicketsInput.id === 'entry-ticket-senior') {
                if (typeBtn === 'minus' && currentNumTicketsSenior !== 0) {
                   currentNumTicketsSenior -= 1;
                } else if (typeBtn === 'plus') {
@@ -219,8 +234,11 @@ document.addEventListener("DOMContentLoaded", () => {
                   return;
                };
 
-               currentTicketsInput.value = currentNumTicketsSenior;
+               document.querySelector('#amount-senior').value = currentNumTicketsSenior;
+               document.querySelector('#entry-ticket-senior').value = currentNumTicketsSenior;
+               document.querySelector('#number-tickets-senior').innerHTML = currentNumTicketsSenior;
 
+               // currentTicketsInput.value = currentNumTicketsSenior;
             } else {
                return;
             };
@@ -230,31 +248,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
       function totalCostTicket() {
          const totalAmountTickets = document.querySelector('.total');
+         const totalSumBuyModal = document.querySelector('.total-sum__total');
+         const totalСostBasic = document.querySelector('.total-basic-cost');
+         const totalСostSenoir = document.querySelector('.total-senior-cost');
 
+         let totalBasic = currentNumTicketsBasic * costBasicTicket;
+         let totalSenior = currentNumTicketsSenior * costSeniorTicket;
          let total = (currentNumTicketsBasic * costBasicTicket) + (currentNumTicketsSenior * costSeniorTicket);
+         totalСostBasic.innerHTML = `${totalBasic} €`;
+         totalСostSenoir.innerHTML = `${totalSenior} €`;
          totalAmountTickets.innerHTML = total;
+         totalSumBuyModal.innerHTML = `${total} €`;
       }
 
       function modalWbuyTicket() {
          const buyTicketNowBtn = document.querySelector('.tickets__amount-btn');
          const modalWBuyTicket = document.querySelector('.tickets-m-w');
          const closeBtnModalWBuyTicket = document.querySelector('.tickets-m-w__btn-close');
-         // const priceBasic = document.querySelector('');
-         // const priceSenior = document.querySelector('.');
-
-         priceBasic.innerHTML = costBasicTicket;
-         priceSenior.innerHTML = costSeniorTicket;
-
 
          buyTicketNowBtn.addEventListener('click', function (event) {
             event.preventDefault();
             const target = event.target;
-            console.log('jol');
 
             if (modalWBuyTicket.closest('.tickets-m-w--open')) {
                return
             } else if (modalWBuyTicket.closest('.tickets-m-w')) {
-               modalWBuyTicket.classList.add('tickets-m-w--open')
+               modalWBuyTicket.classList.add('tickets-m-w--open');
+               bodyBlockUnBlock('block');
             }
          });
 
@@ -265,15 +285,74 @@ document.addEventListener("DOMContentLoaded", () => {
                return
             } else if (modalWBuyTicket.closest('.tickets-m-w')) {
                modalWBuyTicket.classList.remove('tickets-m-w--open')
+               bodyBlockUnBlock('unblock');
             }
          });
       }
+
+      function ticketsType() {
+         const ticketsTypeForm = document.querySelector('.tickets__type-form');
+         const selectorType = document.querySelector('.user-info__ticket-type');
+         const purchaseselectorType = document.querySelector('.purchase-info__type');
+         const inputTypeTickets = document.querySelectorAll('.tickets__type-input');
+
+         inputTypeTickets.forEach(inputTypeTicket => {
+            inputTypeTicket.addEventListener('change', () => {
+               if (inputTypeTicket.checked) {
+                  selectorType.value = inputTypeTicket.value;
+                  purchaseselectorType.value = inputTypeTicket.value;
+               }
+            });
+         })
+
+         selectorType.addEventListener('change', () => {
+            purchaseselectorType.value = selectorType.value;
+
+            inputTypeTickets.forEach(inputTypeTicket => {
+               if (selectorType.value === inputTypeTicket.value) {
+                  inputTypeTicket.checked = true;
+               }
+            });
+         })
+      }
       modalWbuyTicket();
+      ticketsType();
+   };
+
+   function bodyBlockUnBlock(action) {
+      // const body = document.querySelector('body');
+
+      if (action === 'block') {
+         if (!body.classList.contains('body--block')) {
+            body.classList.add('body--block');
+         }
+      } else if (action === 'unblock') {
+         if (body.classList.contains('body--block')) {
+            body.classList.remove('body--block');
+         }
+      } else {
+         console.error('Invalid action. Use in function bodyBlockUnBlock "open" or "close".');
+      }
+   }
+
+   function overlayOpenClose(action) {
+      // const overlay = document.querySelector('#overlay');
+
+      if (action === 'open') {
+         if (!overlay.classList.contains('overlay--open')) {
+            overlay.classList.add('overlay--open');
+         }
+      } else if (action === 'close') {
+         if (overlay.classList.contains('overlay--open')) {
+            overlay.classList.remove('overlay--open');
+         }
+      } else {
+         console.error('Invalid action. Use in function overlayOpenClose "open" or "close".');
+      }
    };
 
 
    quantityTickets();
-
    //  modal-buy-tickets
 });
 

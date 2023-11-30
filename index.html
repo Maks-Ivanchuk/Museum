@@ -380,13 +380,13 @@
                 </div>
                 <form class="tickets__amount-form">
                   <p>Basic 18+</p>
-                  <div class="amount-form__wrapper">
-                    <button class="amount-form__btn" type="button" data-quantity-ticket="minus">–</button>
+                  <div class="amount-form__wrapper form-btn-wrapper">
+                    <button class="btn-minus amount-form__btn" type="button" data-quantity-ticket="minus">–</button>
                     <input id="amount-basic" class="amount-form__value" value="0">
-                    <button class="amount-form__btn" type="button" data-quantity-ticket="plus">+</button>
+                    <button class="btn-plus amount-form__btn" type="button" data-quantity-ticket="plus">+</button>
                   </div>
                   <p>Senior 65+</p>
-                  <div class="amount-form__wrapper">
+                  <div class="amount-form__wrapper form-btn-wrapper">
                     <button class="amount-form__btn" type="button" data-quantity-ticket="minus">–</button>
                     <input id="amount-senior" class="amount-form__value" value="0">
                     <button class="amount-form__btn" type="button" data-quantity-ticket="plus">+</button>
@@ -514,22 +514,26 @@
                 <div class="entry-ticket__type-ticket">
                   <div class="entry-ticket__wrapper">
                     <div class="entry-ticket__text">
-                      <p>Basic 18+ (<span class="entry-ticket__price-basic"></span> €)</p>
+                      <p>Basic 18+ (<span class="entry-ticket__price-basic price-basic"></span>)</p>
                     </div>
-                    <div class="entry-ticket__row">
-                      <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="minus">–</button>
+                    <div class="entry-ticket__row form-btn-wrapper">
+                      <button class="btn-minus entry-ticket__form-btn" type="button"
+                        data-quantity-ticket="minus">–</button>
                       <input id="entry-ticket-basic" class="entry-ticket__value" value="0">
-                      <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="plus">+</button>
+                      <button class="btn-plus entry-ticket__form-btn" type="button"
+                        data-quantity-ticket="plus">+</button>
                     </div>
                   </div>
                   <div class="entry-ticket__wrapper">
                     <div class="entry-ticket__text">
-                      <p>Senior 65+ (<span class="entry-ticket__price-senior"></span> €)</p>
+                      <p>Senior 65+ (<span class="entry-ticket__price-senior price-senior"></span>)</p>
                     </div>
-                    <div class="entry-ticket__row">
-                      <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="minus">–</button>
+                    <div class="entry-ticket__row form-btn-wrapper">
+                      <button class="btn-minus entry-ticket__form-btn" type="button"
+                        data-quantity-ticket="minus">–</button>
                       <input id="entry-ticket-senior" class="entry-ticket__value" value="0">
-                      <button class="entry-ticket__form-btn" type="button" data-quantity-ticket="plus">+</button>
+                      <button class="btn-plus entry-ticket__form-btn" type="button"
+                        data-quantity-ticket="plus">+</button>
                     </div>
                   </div>
                 </div>
@@ -547,7 +551,7 @@
               <div class="purchase-info__selected">
                 <input type="date" class="purchase-info__date" value="Friday, August 19">
                 <input type="time" class="purchase-info__time" value="16 : 30">
-                <input type="text" class="purchase-info__type" value="Temporary exhibition">
+                <input type="text" class="purchase-info__type" value="Ticket-Type">
               </div>
             </div>
             <div class="purchase-info__img">
@@ -557,22 +561,22 @@
           <div class="purchase-info__total-sum">
             <div class="total-sum__row">
               <div class="total-sum__wrapper">
-                <span class="total-sum__number-tickets">2</span>
-                <span class="total-sum__price-tickets">Junior (40 E)</span>
+                <span id="number-tickets-basic" class="total-sum__number-tickets">0</span>
+                <span class="total-sum__price-tickets">Basic (<span class="price-basic"></span>)</span>
               </div>
-              <span class="total-sum__total-tickets">40 E</span>
+              <span class="total-sum__total-tickets total-basic-cost">0 €</span>
             </div>
             <div class="total-sum__row">
               <div class="total-sum__wrapper">
-                <span class="total-sum__number-tickets">2</span>
-                <span class="total-sum__price-tickets">Basic (20 E)</span>
+                <span id="number-tickets-senior" class="total-sum__number-tickets">0</span>
+                <span class="total-sum__price-tickets">Senior (<span class="price-senior"></span>)</span>
               </div>
-              <span class="total-sum__total-tickets">20 E</span>
+              <span class="total-sum__total-tickets total-senior-cost">0 €</span>
             </div>
             <hr class="total-sum__line">
             <div class="total-sum__total-wrapper">
               <h2>Total:</h2>
-              <span class="total-sum__total">60 Є</span>
+              <span class="total-sum__total">0 €</span>
             </div>
           </div>
           <div class="purchase-info__card">
