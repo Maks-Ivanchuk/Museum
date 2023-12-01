@@ -44,8 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
                   </iframe>
                `;
             modalWindow.classList.add('modal-window--open');
-            // overlay.classList.add('overlay--open');
-            // body.classList.add('body--block');
             overlayOpenClose('open');
             bodyBlockUnBlock('block');
 
@@ -56,8 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
          if (modalWindow.classList.contains('modal-window--open')) {
             modalWindow.classList.remove('modal-window--open');
             modalWindowIframe.innerHTML = '';
-            // overlay.classList.remove('overlay--open');
-            // body.classList.remove('body--block');
             overlayOpenClose('close');
             bodyBlockUnBlock('unblock');
          } else {
@@ -73,28 +69,57 @@ document.addEventListener("DOMContentLoaded", () => {
          if (headerNav.classList.contains('header__nav--open')) {
             headerNav.classList.remove('header__nav--open');
             burgerMenuBtn.classList.remove('header__bg-menu--open');
-            // body.classList.remove('body--block');
             bodyBlockUnBlock('unblock');
-            // overlay.classList.remove('overlay--open');
             overlayOpenClose('close');
          }
       }
    }
 
-   burgerMenuBtn.addEventListener('click', () => {
-      headerNav.classList.toggle('header__nav--open');
-      burgerMenuBtn.classList.toggle('header__bg-menu--open');
-      body.classList.toggle('body--block');
-      overlay.classList.toggle('overlay--open');
-   });
+   function openCloseBurgerMenuBtn() {
+      const modalWindow = document.querySelector('.modal-window');
 
-   overlay.addEventListener('click', function () {
-      headerNav.classList.toggle('header__nav--open');
-      burgerMenuBtn.classList.toggle('header__bg-menu--open');
-      body.classList.toggle('body--block');
-      overlay.classList.toggle('overlay--open');
-   })
+      if (modalWindow.classList.contains('modal-window--open')) {
+         return;
+      }
 
+      if (!headerNav.classList.contains('header__nav--open')) {
+         headerNav.classList.add('header__nav--open');
+         burgerMenuBtn.classList.add('header__bg-menu--open');
+         bodyBlockUnBlock('block');
+         overlayOpenClose('open');
+      } else if (headerNav.classList.contains('header__nav--open')) {
+         headerNav.classList.remove('header__nav--open');
+         burgerMenuBtn.classList.remove('header__bg-menu--open');
+         bodyBlockUnBlock('unblock');
+         overlayOpenClose('close');
+      };
+   }
+
+   function clickOverlay() {
+      const modalWindow = document.querySelector('.modal-window');
+
+      if (modalWindow.classList.contains('modal-window--open')) {
+         return;
+      }
+
+      if (overlay.classList.contains('overlay--open')) {
+         overlayOpenClose('close');
+         if (headerNav.classList.contains('header__nav--open')) {
+            headerNav.classList.remove('header__nav--open')
+         };
+         if (burgerMenuBtn.classList.contains('header__bg-menu--open')) {
+            burgerMenuBtn.classList.remove('header__bg-menu--open');
+         };
+         if (body.classList.contains('body--block')) {
+            bodyBlockUnBlock('unblock');
+         };
+      } else {
+         return;
+      };
+   };
+
+   overlay.addEventListener('click', clickOverlay);
+   burgerMenuBtn.addEventListener('click', openCloseBurgerMenuBtn);
    window.addEventListener('resize', closeBurgerMenu);
    openCloseModalWindow();
 
@@ -268,7 +293,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
          buyTicketNowBtn.addEventListener('click', function (event) {
             event.preventDefault();
-            const target = event.target;
 
             if (modalWBuyTicket.closest('.tickets-m-w--open')) {
                return
@@ -278,30 +302,38 @@ document.addEventListener("DOMContentLoaded", () => {
             }
          });
 
-         closeBtnModalWBuyTicket.addEventListener('click', function (event) {
-            const target = event.target;
+         closeBtnModalWBuyTicket.addEventListener('click', function () {
 
             if (!modalWBuyTicket.closest('.tickets-m-w--open')) {
                return
             } else if (modalWBuyTicket.closest('.tickets-m-w')) {
                modalWBuyTicket.classList.remove('tickets-m-w--open')
                bodyBlockUnBlock('unblock');
-            }
+            };
          });
-      }
+      };
 
-      function ticketsType() {
-         const ticketsTypeForm = document.querySelector('.tickets__type-form');
+      function selectTicketsInfo() {
+         const selectDate = document.querySelector('.user-info__date');
+         const finalDate = document.querySelector('.purchase-info__date');
+         const selectTime = document.querySelector('.user-info__time');
+         const finalTime = document.querySelector('.purchase-info__time');
          const selectorType = document.querySelector('.user-info__ticket-type');
          const purchaseselectorType = document.querySelector('.purchase-info__type');
          const inputTypeTickets = document.querySelectorAll('.tickets__type-input');
 
+         selectDate.addEventListener('change', () => {
+            finalDate.value = selectDate.value;
+         });
+
+         selectTime.addEventListener('change', () => {
+            finalTime.value = selectTime.value;
+         });
+
          inputTypeTickets.forEach(inputTypeTicket => {
             inputTypeTicket.addEventListener('change', () => {
-               if (inputTypeTicket.checked) {
-                  selectorType.value = inputTypeTicket.value;
-                  purchaseselectorType.value = inputTypeTicket.value;
-               }
+               selectorType.value = inputTypeTicket.value;
+               purchaseselectorType.value = inputTypeTicket.value;
             });
          })
 
@@ -311,17 +343,16 @@ document.addEventListener("DOMContentLoaded", () => {
             inputTypeTickets.forEach(inputTypeTicket => {
                if (selectorType.value === inputTypeTicket.value) {
                   inputTypeTicket.checked = true;
-               }
+               };
             });
-         })
-      }
+         });
+      };
+
       modalWbuyTicket();
-      ticketsType();
+      selectTicketsInfo();
    };
 
    function bodyBlockUnBlock(action) {
-      // const body = document.querySelector('body');
-
       if (action === 'block') {
          if (!body.classList.contains('body--block')) {
             body.classList.add('body--block');
@@ -336,7 +367,6 @@ document.addEventListener("DOMContentLoaded", () => {
    }
 
    function overlayOpenClose(action) {
-      // const overlay = document.querySelector('#overlay');
 
       if (action === 'open') {
          if (!overlay.classList.contains('overlay--open')) {
@@ -350,7 +380,6 @@ document.addEventListener("DOMContentLoaded", () => {
          console.error('Invalid action. Use in function overlayOpenClose "open" or "close".');
       }
    };
-
 
    quantityTickets();
    //  modal-buy-tickets

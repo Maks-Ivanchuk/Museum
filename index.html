@@ -495,13 +495,13 @@
           <div class="user-info__input">
             <form class="user-info__form">
               <div class="user-info__form-data">
-                <input type="date" class="user-info__date">
-                <input type="time" class="user-info__time" name="" id="">
+                <input type="date" class="user-info__date" required>
+                <input type="time" class="user-info__time" required>
               </div>
-              <input type="text" class="user-info__name" placeholder="Name" id="">
-              <input type=" text" class="user-info__email" placeholder="E-mail" name="" id="">
-              <input type="text" class="user-info__phone" placeholder="Phone" name="" id="">
-              <select class="user-info__ticket-type" aria-placeholder="Ticket Type" name="" id="">
+              <input type="text" class="user-info__name" placeholder="Name" pattern="[A-Za-z\s]+" required>
+              <input type=" text" class="user-info__email" placeholder="E-mail" required>
+              <input type="text" class="user-info__phone" placeholder="Phone" required>
+              <select class="user-info__ticket-type" aria-placeholder="Ticket Type" required>
                 <option disabled selected value="">Ticket-Type</option>
                 <option value="Permanent exhibition">Permanent exhibition</option>
                 <option value="Temporary exhibition">Temporary exhibition</option>
@@ -549,8 +549,8 @@
                 <h4>Tour to Louvre</h4>
               </div>
               <div class="purchase-info__selected">
-                <input type="date" class="purchase-info__date" value="Friday, August 19">
-                <input type="time" class="purchase-info__time" value="16 : 30">
+                <input type="date" class="purchase-info__date" value="">
+                <input type="time" class="purchase-info__time" value="">
                 <input type="text" class="purchase-info__type" value="Ticket-Type">
               </div>
             </div>
