@@ -495,13 +495,14 @@
           <div class="user-info__input">
             <form class="user-info__form">
               <div class="user-info__form-data">
-                <input type="date" class="user-info__date" required>
-                <input type="time" class="user-info__time" required>
+                <input type="date" name="tickets-date" class="user-info__date" required>
+                <input type="time" name="tickets-time" class="user-info__time" required>
               </div>
-              <input type="text" class="user-info__name" placeholder="Name" pattern="[A-Za-z\s]+" required>
-              <input type=" text" class="user-info__email" placeholder="E-mail" required>
-              <input type="text" class="user-info__phone" placeholder="Phone" required>
-              <select class="user-info__ticket-type" aria-placeholder="Ticket Type" required>
+              <input type="text" class="user-info__name" name="user-name" placeholder="Name" pattern="[A-Za-z\s]+"
+                required>
+              <input type=" text" class="user-info__email" name="user-email" placeholder="E-mail" required>
+              <input type="text" class="user-info__phone" name="user-phone" placeholder="Phone" required>
+              <select class="user-info__ticket-type" name="ticket-type" aria-placeholder="Ticket Type" required>
                 <option disabled selected value="">Ticket-Type</option>
                 <option value="Permanent exhibition">Permanent exhibition</option>
                 <option value="Temporary exhibition">Temporary exhibition</option>
@@ -519,7 +520,7 @@
                     <div class="entry-ticket__row form-btn-wrapper">
                       <button class="btn-minus entry-ticket__form-btn" type="button"
                         data-quantity-ticket="minus">–</button>
-                      <input id="entry-ticket-basic" class="entry-ticket__value" value="0">
+                      <input id="entry-ticket-basic" name="tickets-num-basic" class="entry-ticket__value" value="0">
                       <button class="btn-plus entry-ticket__form-btn" type="button"
                         data-quantity-ticket="plus">+</button>
                     </div>
@@ -531,7 +532,7 @@
                     <div class="entry-ticket__row form-btn-wrapper">
                       <button class="btn-minus entry-ticket__form-btn" type="button"
                         data-quantity-ticket="minus">–</button>
-                      <input id="entry-ticket-senior" class="entry-ticket__value" value="0">
+                      <input id="entry-ticket-senior" name="tickets-num-senior" class="entry-ticket__value" value="0">
                       <button class="btn-plus entry-ticket__form-btn" type="button"
                         data-quantity-ticket="plus">+</button>
                     </div>
@@ -593,13 +594,13 @@
                   <div class="card__front-row card__front-row--mounth">
                     <div class="card__front-mounth-container">
                       <label for="card-mounth">Expiration date</label>
-                      <input type="number" name="card-mounth" id="card-mounth" min="1" max="10">
+                      <input type="number" name="card-mounth" id="card-mounth" min="1" max="12">
                     </div>
                     <input type="number" name="card-yaer" id="card-yaer">
                   </div>
                   <div class="card__front-row card__front-cardholder">
                     <label for="cardholder-name">Cardholder name</label>
-                    <input type="number" name="cardholder-name" id="cardholder-name" value="2222">
+                    <input type="text" name="cardholder-name" id="cardholder-name" value="">
                   </div>
                 </div>
               </div>

@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
    const headerNav = document.querySelector('.header__nav');
    const body = document.querySelector('body');
    const overlay = document.querySelector('#overlay');
+   const btnSubmit = document.querySelector('.purchase-info__btn');
    const maxWidth = 1024;
 
    function openCloseModalWindow() {
@@ -381,8 +382,60 @@ document.addEventListener("DOMContentLoaded", () => {
       }
    };
 
-   quantityTickets();
-   //  modal-buy-tickets
+
+
+
+   let orderId = 0;
+   let dataTickets = {};
+
+   function submitFormBuyTickets(event) {
+      const userInfoForm = document.querySelector('.user-info__form');
+      const purchaseInfoForm = document.querySelector('.purchase-info__card-form');
+
+      event.preventDefault();
+
+      const date = userInfoForm.elements['tickets-date'].value;
+      const time = userInfoForm.elements['tickets-time'].value;
+      const userName = userInfoForm.elements['user-name'].value;
+      const email = userInfoForm.elements['user-email'].value;
+      const phone = userInfoForm.elements['user-phone'].value;
+      const ticketType = userInfoForm.elements['ticket-type'].value;
+      const numberTiketsBasic = document.querySelector('#entry-ticket-basic').value;
+      const numberTiketsSenior = document.querySelector('#entry-ticket-senior').value;
+      const totalSumOrder = document.querySelector('.total-sum__total').textContent.slice(0, -2);
+      const cardNum = purchaseInfoForm.elements['card-num'].value;
+      const cardMonth = purchaseInfoForm.elements['card-mounth'].value;
+      const cardYear = purchaseInfoForm.elements['card-yaer'].value;
+      const cardHolderName = purchaseInfoForm.elements['cardholder-name'].value;
+      const cardCvv = purchaseInfoForm.elements['card-cvv'].value;
+
+
+      orderId += 1;
+
+      let orderName = `order#${orderId}`;
+
+      dataTickets[orderName] = {
+         date: date,
+         time: time,
+         name: userName,
+         email: email,
+         phone: phone,
+         typeExhibition: ticketType,
+         numberTiketsBasic: numberTiketsBasic,
+         numberTiketsSenior: numberTiketsSenior,
+         totalSumOrder: totalSumOrder,
+         cardNum: cardNum,
+         cardMonth: cardMonth,
+         cardYear: cardYear,
+         cardHolderName: cardHolderName,
+         cardCvv: cardCvv,
+      }
+
+      console.log(dataTickets);
+   }
+
+   quantityTickets()
+   btnSubmit.addEventListener('click', submitFormBuyTickets)
 });
 
 
