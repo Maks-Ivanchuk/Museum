@@ -89,7 +89,7 @@
    grid-template-columns: 1fr 1fr 1fr;
    gap: 25px;
    width: 100%;
-   
+
    @media screen and (min-width: 768px) {
       grid-template-columns: 1fr 1fr;
    }
@@ -113,6 +113,7 @@
    font-weight: 100;
    line-height: normal;
    letter-spacing: 2px;
+   transition: all 0.2s;
 
    @media screen and (min-width: 768px) {
       font-size: 18px;
@@ -120,6 +121,10 @@
 
    @media screen and (min-width: 1024px) {
       font-size: 22px;
+   }
+
+   &:hover {
+      color: $font-gold;
    }
 }
 
@@ -142,6 +147,7 @@
    align-items: center;
    width: 48px;
    height: 48px;
+   transition: all 0.2s;
 
    border-radius: 50%;
    border-style: solid;
@@ -149,7 +155,8 @@
    border-width: 1px;
 
    &:hover {
-      border-color: $white;
+      // border-color: $white;
+      border-color: $font-gold;
       transform: scale(1.05);
    }
 }

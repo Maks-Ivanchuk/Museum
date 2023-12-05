@@ -87,7 +87,7 @@
       height: 32px;
 
       .bg-menu__bar:nth-child(1) {
-         transform: translateY(8px) rotate(405deg);
+         transform: translateY(8px) rotate(45deg);
       }
 
       .bg-menu__bar:nth-child(2) {
@@ -95,7 +95,12 @@
       }
 
       .bg-menu__bar:nth-child(3) {
-         transform: translateY(-8px) rotate(675deg);
+         transform: translateY(-8px) rotate(-45deg);
+      }
+
+      &:hover {
+         transition: all 0.2s;
+         transform: rotate(90deg);
       }
    }
 }
@@ -171,6 +176,11 @@
    font-weight: 100;
    line-height: normal;
    letter-spacing: 2px;
+   transition: all 0.2s;
+
+   &:hover {
+      color: $font-gold;
+   }
 
    &::after {
       position: absolute;
@@ -296,6 +306,7 @@
    align-items: center;
    width: 48px;
    height: 48px;
+   transition: all 0.2s;
 
    border-radius: 50%;
    border-style: solid;
@@ -303,7 +314,7 @@
    border-width: 1px;
 
    &:hover {
-      border-color: $white;
+      border-color: $font-gold;
       transform: scale(1.05);
    }
 }

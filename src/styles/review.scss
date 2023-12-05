@@ -116,6 +116,7 @@
    letter-spacing: 2px;
    color: $white;
    cursor: pointer;
+   transition: all 0.2s;
 
    @media screen and (min-width: 1024px) {
       width: fit-content;
@@ -127,6 +128,10 @@
       padding: 25 65px;
       width: fit-content;
       font-size: 22px;
+   }
+
+   &:hover {
+      background-color: $font-gold;
    }
 }
 
@@ -689,7 +694,7 @@
    }
 }
 
-.tickets__type-input-form{
+.tickets__type-input-form {
    display: flex;
    max-width: 270px;
    width: 100%;
@@ -805,12 +810,17 @@
    font-weight: 300;
    line-height: 0px;
    letter-spacing: 2px;
+   transition: all 0.2s;
 
    @media screen and (min-width: 768px) {
       font-size: 22px;
       line-height: normal;
 
       padding: 11px 35px;
+   }
+
+   &:hover {
+      background-color: $font-gold;
    }
 }
 
@@ -937,6 +947,7 @@
    font-weight: 500;
 
    @media screen and (min-width: 768px) {
+      max-width: 155px;
       font-size: 20px;
    }
 

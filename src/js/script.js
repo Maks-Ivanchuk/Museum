@@ -365,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
          console.error('Invalid action. Use in function bodyBlockUnBlock "open" or "close".');
       }
-   }
+   };
 
    function overlayOpenClose(action) {
 
@@ -404,8 +404,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const numberTiketsSenior = document.querySelector('#entry-ticket-senior').value;
       const totalSumOrder = document.querySelector('.total-sum__total').textContent.slice(0, -2);
       const cardNum = purchaseInfoForm.elements['card-num'].value;
-      const cardMonth = purchaseInfoForm.elements['card-mounth'].value;
-      const cardYear = purchaseInfoForm.elements['card-yaer'].value;
+      const cardMonth = purchaseInfoForm.elements['card-month'].value;
+      const cardYear = purchaseInfoForm.elements['card-year'].value;
       const cardHolderName = purchaseInfoForm.elements['cardholder-name'].value;
       const cardCvv = purchaseInfoForm.elements['card-cvv'].value;
 
@@ -429,13 +429,16 @@ document.addEventListener("DOMContentLoaded", () => {
          cardYear: cardYear,
          cardHolderName: cardHolderName,
          cardCvv: cardCvv,
-      }
+      };
 
       console.log(dataTickets);
-   }
+   };
 
-   quantityTickets()
-   btnSubmit.addEventListener('click', submitFormBuyTickets)
+   quantityTickets();
+
+   console.log(btnSubmit);
+
+   btnSubmit.addEventListener('click', submitFormBuyTickets);
 });
 
 
