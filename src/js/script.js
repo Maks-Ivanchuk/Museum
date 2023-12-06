@@ -430,7 +430,6 @@ document.addEventListener("DOMContentLoaded", () => {
          cardHolderName: cardHolderName,
          cardCvv: cardCvv,
       };
-
       console.log(dataTickets);
    };
 
