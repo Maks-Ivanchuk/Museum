@@ -22,7 +22,7 @@ body {
    display: flex;
    flex-direction: column;
 
-   font-family: Roboto;
+   font-family: Roboto, serif;
    color: $white;
    position: relative;
 
@@ -42,7 +42,7 @@ body {
 
 h1,
 h2 {
-   font-family: Forum;
+   font-family: Forum, serif;
    font-size: 28px;
    font-style: normal;
    font-weight: 400;
@@ -67,7 +67,7 @@ h2 {
 }
 
 h3 {
-   font-family: Forum;
+   font-family: Forum, serif;
    font-size: 18px;
    font-style: normal;
    font-weight: 400;

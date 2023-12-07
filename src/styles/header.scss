@@ -38,7 +38,7 @@
 }
 
 .header__logo {
-   display: flex;
+   display: inline-flex;
    align-items: center;
    gap: 25px;
 }
@@ -55,7 +55,7 @@
 
 .header__logo-text {
    color: $white;
-   font-family: Forum;
+   font-family: Forum, serif;
    font-size: 16px;
    font-style: normal;
    font-weight: 400;
@@ -78,6 +78,7 @@
    justify-content: center;
    gap: 6px;
    cursor: pointer;
+   transition: all 0.2s;
 
    @media screen and (min-width: 1025px) {
       display: none;
@@ -87,7 +88,7 @@
       height: 32px;
 
       .bg-menu__bar:nth-child(1) {
-         transform: translateY(8px) rotate(405deg);
+         transform: translateY(8px) rotate(45deg);
       }
 
       .bg-menu__bar:nth-child(2) {
@@ -95,7 +96,15 @@
       }
 
       .bg-menu__bar:nth-child(3) {
-         transform: translateY(-8px) rotate(675deg);
+         transform: translateY(-8px) rotate(-45deg);
+      }
+
+      &:hover {
+         transform: rotate(90deg);
+      }
+
+      &:not(hover) {
+         transform: rotate(-90deg);
       }
    }
 }
@@ -157,32 +166,37 @@
       @media screen and (min-width: 1024px) {
          width: 300px;
       }
-
    }
 }
 
 .header__nav-link {
-   position: relative;
    width: 125px;
    color: $white;
-   font-family: Roboto;
+   font-family: Roboto, serif;
    font-size: 20px;
    font-style: normal;
    font-weight: 100;
    line-height: normal;
    letter-spacing: 2px;
+   transition: all 0.2s;
+   display: inline-flex;
+   justify-content: space-between;
+   align-items: center;
 
-   &::after {
-      position: absolute;
-      right: 0;
-      content: url(../img/icon/burgerMenuLinkVector.svg);
+
+   &:hover {
+      color: $font-gold;
+
+      path {
+         fill: rgb(157, 134, 101);
+      }
    }
 
    @media screen and (min-width: 1025px) {
       font-size: 22px;
       width: auto;
 
-      &::after {
+      svg {
          display: none;
       }
    }
@@ -296,6 +310,7 @@
    align-items: center;
    width: 48px;
    height: 48px;
+   transition: all 0.2s;
 
    border-radius: 50%;
    border-style: solid;
@@ -303,7 +318,16 @@
    border-width: 1px;
 
    &:hover {
-      border-color: $white;
+      border-color: $font-gold;
       transform: scale(1.05);
+
+      path,
+      #Vector {
+         fill: rgb(157, 134, 101);
+      }
+
+      #BG {
+         fill: #030303;
+      }
    }
 }
