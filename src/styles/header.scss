@@ -38,7 +38,7 @@
 }
 
 .header__logo {
-   display: flex;
+   display: inline-flex;
    align-items: center;
    gap: 25px;
 }
@@ -55,7 +55,7 @@
 
 .header__logo-text {
    color: $white;
-   font-family: Forum;
+   font-family: Forum, serif;
    font-size: 16px;
    font-style: normal;
    font-weight: 400;
@@ -78,6 +78,7 @@
    justify-content: center;
    gap: 6px;
    cursor: pointer;
+   transition: all 0.2s;
 
    @media screen and (min-width: 1025px) {
       display: none;
@@ -99,8 +100,11 @@
       }
 
       &:hover {
-         transition: all 0.2s;
          transform: rotate(90deg);
+      }
+
+      &:not(hover) {
+         transform: rotate(-90deg);
       }
    }
 }
@@ -162,37 +166,37 @@
       @media screen and (min-width: 1024px) {
          width: 300px;
       }
-
    }
 }
 
 .header__nav-link {
-   position: relative;
    width: 125px;
    color: $white;
-   font-family: Roboto;
+   font-family: Roboto, serif;
    font-size: 20px;
    font-style: normal;
    font-weight: 100;
    line-height: normal;
    letter-spacing: 2px;
    transition: all 0.2s;
+   display: inline-flex;
+   justify-content: space-between;
+   align-items: center;
+
 
    &:hover {
       color: $font-gold;
-   }
 
-   &::after {
-      position: absolute;
-      right: 0;
-      content: url(../img/icon/burgerMenuLinkVector.svg);
+      path {
+         fill: rgb(157, 134, 101);
+      }
    }
 
    @media screen and (min-width: 1025px) {
       font-size: 22px;
       width: auto;
 
-      &::after {
+      svg {
          display: none;
       }
    }
@@ -316,5 +320,14 @@
    &:hover {
       border-color: $font-gold;
       transform: scale(1.05);
+
+      path,
+      #Vector {
+         fill: rgb(157, 134, 101);
+      }
+
+      #BG {
+         fill: #030303;
+      }
    }
 }

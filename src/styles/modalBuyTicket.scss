@@ -110,7 +110,7 @@
 
    h2 {
       color: $font-gold;
-      font-family: Forum;
+      font-family: Forum, serif;
       font-size: 32px;
       font-style: normal;
       font-weight: 400;
@@ -122,7 +122,7 @@
 
    h4 {
       color: $dark-red;
-      font-family: Roboto;
+      font-family: Roboto, serif;
       font-size: 18px;
       font-style: normal;
       font-weight: 400;
@@ -251,7 +251,7 @@
 
    h4 {
       color: $font-gold;
-      font-family: Forum;
+      font-family: Forum, serif;
       font-size: 18px;
       font-style: normal;
       font-weight: 400;
@@ -306,7 +306,7 @@
 
 .entry-ticket__value {
    color: $bg-dark;
-   font-family: Roboto;
+   font-family: Roboto, serif;
    font-size: 18px;
    font-style: normal;
    font-weight: 400;
@@ -330,7 +330,7 @@
 
    padding: 25px 15px;
 
-   font-family: Roboto;
+   font-family: Roboto, serif;
    font-style: normal;
    font-weight: 400;
    line-height: normal;
@@ -347,7 +347,7 @@
    margin-bottom: 10px;
 
    h3 {
-      font-family: Roboto;
+      font-family: Roboto, serif;
       font-weight: 500;
       font-size: 32px;
       color: $dark;
@@ -357,7 +357,7 @@
 
    h4 {
       color: $dark-red;
-      font-family: Roboto;
+      font-family: Roboto, serif;
       font-size: 22px;
       font-weight: 500;
    }
@@ -429,7 +429,7 @@
    gap: 10px;
 
    h2 {
-      font-family: Roboto;
+      font-family: Roboto, serif;
       font-size: 32px;
    }
 
@@ -475,7 +475,7 @@
    gap: 10px;
 
    h2 {
-      font-family: Roboto;
+      font-family: Roboto, serif;
       font-size: 32px;
       letter-spacing: 0px;
       text-transform: none;

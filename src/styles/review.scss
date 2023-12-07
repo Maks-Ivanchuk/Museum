@@ -81,7 +81,7 @@
 
    h3 {
       text-transform: none;
-      font-family: Roboto;
+      font-family: Roboto, serif;
       font-size: 16px;
       font-style: normal;
       font-weight: 300;
@@ -108,7 +108,7 @@
    background-color: $dark-red;
    border-radius: 10px;
    text-align: center;
-   font-family: Roboto;
+   font-family: Roboto, serif;
    font-size: 20px;
    font-style: normal;
    font-weight: 300;
@@ -278,7 +278,7 @@
    flex-direction: column;
    gap: 10px;
    color: $dark;
-   font-family: Roboto;
+   font-family: Roboto, serif;
    font-size: 16px;
    font-style: normal;
    font-weight: 100;
@@ -345,7 +345,7 @@
 .description__text {
    display: none;
    color: $white;
-   font-family: Roboto;
+   font-family: Roboto, serif;
    font-size: 20px;
    font-style: normal;
    font-weight: 300;
@@ -419,7 +419,7 @@
       @media screen and (min-width: 1440px) {
          display: flex;
          max-width: 720px;
-         font-family: Roboto;
+         font-family: Roboto, serif;
          font-size: 22px;
          font-style: normal;
          font-weight: 300;
@@ -580,7 +580,7 @@
 }
 
 .tickets {
-   font-family: Roboto;
+   font-family: Roboto, serif;
 }
 
 .tickets__wrapper {
@@ -878,10 +878,9 @@
    background-attachment: fixed;
    background-position: center;
    background-repeat: no-repeat;
-   background-size: contain;
+   background-size: cover;
 
    @media screen and (min-width: 1024px) {
-      // height: 400px;
       height: 0;
    }
 }
@@ -907,7 +906,7 @@
    flex-direction: column;
    gap: 40px;
 
-   font-family: Roboto;
+   font-family: Roboto, serif;
    font-style: normal;
    line-height: normal;
 
@@ -981,6 +980,10 @@
    @media screen and (min-width: 1440px) {
       font-size: 22px;
       gap: 25px;
+   }
+
+   a {
+      color: $dark;
    }
 }
 

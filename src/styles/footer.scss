@@ -24,17 +24,16 @@
 }
 
 .footer__logo {
-   display: flex;
+   display: inline-flex;
    gap: 20px;
    align-items: flex-end;
+   height: fit-content;
 
    @media screen and (min-width: 768px) {
       align-items: flex-start;
       gap: 25px;
    }
 }
-
-.footer__logo-link {}
 
 .footer__logo-icon {
    width: 29px;
@@ -48,7 +47,7 @@
 
 .footer__logo-text {
    color: $white;
-   font-family: Forum;
+   font-family: Forum, serif;
    font-size: 16px;
    font-style: normal;
    font-weight: 400;
@@ -107,7 +106,7 @@
 
 .footer__nav-link {
    color: $white;
-   font-family: Roboto;
+   font-family: Roboto, serif;
    font-size: 16px;
    font-style: normal;
    font-weight: 100;
@@ -155,8 +154,16 @@
    border-width: 1px;
 
    &:hover {
-      // border-color: $white;
       border-color: $font-gold;
       transform: scale(1.05);
+
+      path,
+      #Vector {
+         fill: rgb(157, 134, 101);
+      }
+
+      #BG {
+         fill: #030303;
+      }
    }
 }
