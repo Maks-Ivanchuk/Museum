@@ -17,10 +17,12 @@ import galery15 from '../img/content/gallery/galery15.jpg';
 document.addEventListener("DOMContentLoaded", () => {
    const burgerMenuBtn = document.querySelector('.header__bg-menu');
    const headerNav = document.querySelector('.header__nav');
+   const headerWrapper = document.querySelector('.header__wrapper');
    const body = document.querySelector('body');
    const overlay = document.querySelector('#overlay');
    const btnSubmit = document.querySelector('.purchase-info__btn');
    const maxWidth = 1024;
+   const navLinks = document.querySelectorAll('.header__nav-link');
 
    function openCloseModalWindow() {
       const modalWindowBtns = document.querySelectorAll('.modal-window-btn');
@@ -119,10 +121,62 @@ document.addEventListener("DOMContentLoaded", () => {
       };
    };
 
+   function clickNavItemScrollToSection() {
+      const modalWindow = document.querySelector('.modal-window');
+      const modalWindowIframe = document.querySelector('.modal-window__iframe');
+
+      let heightHeader = "";
+      let anchorTagretOffsetTop = "";
+      let anchorTagretScroll = "";
+
+      navLinks.forEach((navLink) => {
+         navLink.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            if (modalWindow.classList.contains('modal-window--open')) {
+               modalWindow.classList.remove('modal-window--open');
+               modalWindowIframe.innerHTML = '';
+               overlayOpenClose('close');
+               bodyBlockUnBlock('unblock');
+            }
+
+            heightHeader = headerWrapper.offsetHeight;
+            anchorTagretOffsetTop = document.querySelector(event.target.getAttribute('href')).offsetTop;
+            anchorTagretScroll = anchorTagretOffsetTop - heightHeader;
+
+            window.scrollTo({
+               top: anchorTagretScroll,
+               behavior: 'smooth'
+            });
+
+            window.addEventListener('resize', function () {
+               heightHeader = headerWrapper.offsetHeight;
+               anchorTagretOffsetTop = document.querySelector(event.target.getAttribute('href')).offsetTop;
+               anchorTagretScroll = anchorTagretOffsetTop - heightHeader;
+
+               window.scrollTo({
+                  top: anchorTagretScroll,
+                  behavior: 'instant'
+               });
+            });
+
+            if (!headerNav.classList.contains('header__nav--open')) {
+               return;
+            } else if (headerNav.classList.contains('header__nav--open')) {
+               headerNav.classList.remove('header__nav--open');
+               burgerMenuBtn.classList.remove('header__bg-menu--open');
+               bodyBlockUnBlock('unblock');
+               overlayOpenClose('close');
+            };
+         });
+      });
+   };
+
    overlay.addEventListener('click', clickOverlay);
    burgerMenuBtn.addEventListener('click', openCloseBurgerMenuBtn);
-   window.addEventListener('resize', closeBurgerMenu);
+   window.addEventListener('resize', сloseBurgerMenuMaxWidth);
    openCloseModalWindow();
+   clickNavItemScrollToSection();
 
    //slider
    $('.slider__slick').slick({
