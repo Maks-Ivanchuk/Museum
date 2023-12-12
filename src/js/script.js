@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
    };
 
-   function closeBurgerMenu() {
+   function сloseBurgerMenuMaxWidth() {
       let curentWindowsWidth = document.documentElement.clientWidth;
 
       if (curentWindowsWidth > maxWidth) {
