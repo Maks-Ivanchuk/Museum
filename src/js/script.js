@@ -492,6 +492,11 @@ document.addEventListener("DOMContentLoaded", () => {
    console.log(btnSubmit);
 
    btnSubmit.addEventListener('click', submitFormBuyTickets);
+
+   /////////you tube//////////
+
+
+   ///////////////////////////
 });
 
 
