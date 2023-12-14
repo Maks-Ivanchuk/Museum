@@ -18,8 +18,8 @@
     "url": "https://github.com/Maks-Ivanchuk/Museum/issues"
   },
   "homepage": "https://github.com/Maks-Ivanchuk/Museum#readme",
-  "description": "",
   "dependencies": {
     "jquery": "^3.7.1"
-  }
+  },
+  "description": ""
 }

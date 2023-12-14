@@ -439,7 +439,14 @@
    padding-bottom: 20px;
 }
 
-.video__slider-item {}
+.video__slider-item {
+   max-width: 100%;
+   width: 100%;
+   height: auto;
+   display: block;
+   margin: 0 auto;
+   aspect-ratio: 16 / 9;
+}
 
 .slider-item__iframe {
    max-width: 100%;
@@ -458,7 +465,7 @@
 
 // /////////////////////////////////////////////////////////////////////подумати як обіграти
 
-.slider-nav-item__iframe {
+.slider-nav-item__icon-video {
    max-width: 100%;
    width: 100%;
    height: auto;
