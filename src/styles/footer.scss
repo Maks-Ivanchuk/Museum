@@ -124,6 +124,8 @@
 
    &:hover {
       color: $font-gold;
+      font-weight: 300;
+      transition: color 0.2s, font-weight 0s;
    }
 }
 

@@ -191,7 +191,6 @@
 }
 
 .visiting__title {
-   display: flex;
    border-bottom-color: $dark-red;
    border-bottom-width: 3px;
    border-bottom-style: solid;
@@ -337,7 +336,6 @@
 }
 
 .description__title {
-   display: flex;
    padding-bottom: 20px;
    border-bottom: 3px solid $dark-red;
 }
@@ -454,7 +452,11 @@
 
 .video__slider-nav {}
 
-.video__slider-nav-item {}
+.video__slider-nav-item {
+   margin: 0 5px;
+}
+
+// /////////////////////////////////////////////////////////////////////подумати як обіграти
 
 .slider-nav-item__iframe {
    max-width: 100%;

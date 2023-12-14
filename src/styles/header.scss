@@ -84,6 +84,12 @@
       display: none;
    }
 
+   &:hover {
+      span {
+         background-color: $font-gold;
+      }
+   }
+
    &.header__bg-menu--open {
       height: 32px;
 
@@ -98,14 +104,6 @@
       .bg-menu__bar:nth-child(3) {
          transform: translateY(-8px) rotate(-45deg);
       }
-
-      &:hover {
-         transform: rotate(90deg);
-      }
-
-      &:not(hover) {
-         transform: rotate(-90deg);
-      }
    }
 }
 
@@ -113,13 +111,13 @@
    width: 100%;
    height: 2px;
    background-color: $white;
-   transition: transform .8s, opacity .2s ease-out;
+   transition: transform .8s, opacity .2s ease-out, background-color .2s;
 }
 
 .header__nav {
    background-color: $dark;
    display: flex;
-   gap: 25px;
+   gap: 20px;
    height: 100dvh;
    padding-left: 55px;
    padding-right: 55px;
@@ -178,7 +176,7 @@
    font-weight: 100;
    line-height: normal;
    letter-spacing: 2px;
-   transition: all 0.2s;
+   transition: color 0.2s, font-weight 0s, fill 0.2s;
    display: inline-flex;
    justify-content: space-between;
    align-items: center;
@@ -186,6 +184,7 @@
 
    &:hover {
       color: $font-gold;
+      font-weight: 300;
 
       path {
          fill: rgb(157, 134, 101);
