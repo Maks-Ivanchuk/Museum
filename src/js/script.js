@@ -219,6 +219,16 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
    });
 
+   $('.video__slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+      // Зупинити відео перед зміною слайду
+      stopVideo();
+   });
+
+   $('.video__slider').on('afterChange', function (event, slick, currentSlide) {
+      // Змінити відео для нового слайду
+      player.loadVideoById(videoIds[currentSlide]);
+   });
+
    //galery
 
    function addRandomImgGalery() {
@@ -422,7 +432,6 @@ document.addEventListener("DOMContentLoaded", () => {
    };
 
    function overlayOpenClose(action) {
-
       if (action === 'open') {
          if (!overlay.classList.contains('overlay--open')) {
             overlay.classList.add('overlay--open');
@@ -435,9 +444,6 @@ document.addEventListener("DOMContentLoaded", () => {
          console.error('Invalid action. Use in function overlayOpenClose "open" or "close".');
       }
    };
-
-
-
 
    let orderId = 0;
    let dataTickets = {};
@@ -491,16 +497,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
    btnSubmit.addEventListener('click', submitFormBuyTickets);
 
-   /////////you tube//////////
+   //yyyytttttttttttt
 
-   let videoSliderItems = document.querySelector('.abc');
-   let player;
+
+   // const videoIds = ['zp1BXPX8jcU', 'Vi5D6FKhRmo', 'NOhDysLnTvY', 'aWmJ5DgyWPI', '2OR0OCr6uRE'];
+
+   var player;
+   var currentSlide = 0;
+   var videoIds = ['zp1BXPX8jcU', 'Vi5D6FKhRmo', 'NOhDysLnTvY', 'aWmJ5DgyWPI', '2OR0OCr6uRE']; // Додайте всі необхідні ID відео
 
    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('playerSliderYT1', {
-         // height: '360',
-         // width: '640',
-         videoId: 'zp1BXPX8jcU',
+      player = new YT.Player('player', {
+         height: '360',
+         width: '640',
+         videoId: videoIds[currentSlide],
+         playerVars: {
+            'autoplay': 1,
+            'showinfo': 0,
+            'controls': 0,
+         },
          events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -508,33 +523,44 @@ document.addEventListener("DOMContentLoaded", () => {
       });
    }
 
-   window.onYouTubeIframeAPIReady = function () {
-      // Викликаємо onYouTubeIframeAPIReady при завантаженні сторінки
-      onYouTubeIframeAPIReady();
-   }
-
-   // 4. The API will call this function when the video player is ready.
    function onPlayerReady(event) {
-      // event.target.playVideo();
-
+      event.target.playVideo();
    }
 
-   // 5. The API calls this function when the player's state changes.
-   //    The function indicates that when playing a video (state=1),
-   //    the player should play for six seconds and then stop.
-   let done = false;
    function onPlayerStateChange(event) {
-      if (event.data == YT.PlayerState.PLAYING && !done) {
-         // setTimeout(stopVideo, 6000);
-         // done = true;
-
+      if (event.data === YT.PlayerState.ENDED) {
+         // Якщо відео завершилося, перехід до наступного слайду
+         nextSlide();
       }
    }
+
    function stopVideo() {
       player.stopVideo();
    }
 
-   ///////////////////////////
+   function nextSlide() {
+      // Зупинити поточне відео
+      stopVideo();
+
+      // Збільшити індекс слайду
+      currentSlide++;
+
+      // Перевірка на кінець слайдів
+      if (currentSlide >= videoIds.length) {
+         currentSlide = 0; // Повернутися до першого слайду
+      }
+
+      // Змінити відео для нового слайду
+      player.loadVideoById(videoIds[currentSlide]);
+   }
+
+   // Завантажити YouTube API
+   var tag = document.createElement('script');
+   tag.src = "https://www.youtube.com/iframe_api";
+   var firstScriptTag = document.getElementsByTagName('script')[0];
+   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
 });
 
 
