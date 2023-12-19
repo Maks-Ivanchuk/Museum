@@ -689,3 +689,16 @@
       background-color: $font-gold;
    }
 }
+
+
+.valid {
+   border-color: green;
+   border-width: 1px;
+   border-style: solid;
+}
+
+.invalid {
+   border-color: red !important;
+   border-width: 1px;
+   border-style: solid;
+}
