@@ -591,70 +591,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
    btnSubmit.addEventListener('click', submitFormBuyTickets);
 
-   //yyyytttttttttttt
-
-
-   // const videoIds = ['zp1BXPX8jcU', 'Vi5D6FKhRmo', 'NOhDysLnTvY', 'aWmJ5DgyWPI', '2OR0OCr6uRE'];
-
-   var player;
-   var currentSlide = 0;
-   var videoIds = ['zp1BXPX8jcU', 'Vi5D6FKhRmo', 'NOhDysLnTvY', 'aWmJ5DgyWPI', '2OR0OCr6uRE']; // Додайте всі необхідні ID відео
-
-   function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-         height: '360',
-         width: '640',
-         videoId: videoIds[currentSlide],
-         playerVars: {
-            'autoplay': 1,
-            'showinfo': 0,
-            'controls': 0,
-         },
-         events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-         }
-      });
-   }
-
-   function onPlayerReady(event) {
-      event.target.playVideo();
-   }
-
-   function onPlayerStateChange(event) {
-      if (event.data === YT.PlayerState.ENDED) {
-         // Якщо відео завершилося, перехід до наступного слайду
-         nextSlide();
-      }
-   }
-
-   function stopVideo() {
-      player.stopVideo();
-   }
-
-   function nextSlide() {
-      // Зупинити поточне відео
-      stopVideo();
-
-      // Збільшити індекс слайду
-      currentSlide++;
-
-      // Перевірка на кінець слайдів
-      if (currentSlide >= videoIds.length) {
-         currentSlide = 0; // Повернутися до першого слайду
-      }
-
-      // Змінити відео для нового слайду
-      player.loadVideoById(videoIds[currentSlide]);
-   }
-
-   // Завантажити YouTube API
-   var tag = document.createElement('script');
-   tag.src = "https://www.youtube.com/iframe_api";
-   var firstScriptTag = document.getElementsByTagName('script')[0];
-   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-
 });
 
-
+window.onYouTubeIframeAPIReady = function () {
+   const videosSlider = document.querySelectorAll('.video__slider-item');
+   videosSlider.forEach((videoSlider) => {
+      player = new YT.Player(videoSlider.id, {
+         videoId: videoSlider.dataset.videoId,
+      });
+   });
+};
