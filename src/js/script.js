@@ -196,6 +196,10 @@ document.addEventListener("DOMContentLoaded", () => {
       speed: 300,
    });
 
+   $('.video__slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+      stopVideo();
+   });
+
    $('.video__slider-nav').slick({
       slidesToShow: 3,
       slidesToScroll: 1,
@@ -219,15 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
    });
 
-   $('.video__slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-      // Зупинити відео перед зміною слайду
-      stopVideo();
-   });
 
-   $('.video__slider').on('afterChange', function (event, slick, currentSlide) {
-      // Змінити відео для нового слайду
-      player.loadVideoById(videoIds[currentSlide]);
-   });
 
    //galery
 
@@ -479,66 +475,11 @@ document.addEventListener("DOMContentLoaded", () => {
    function submitFormBuyTickets(event) {
       event.preventDefault();
 
-      // const userInfoForm = document.querySelector('.user-info__form');
-      // const purchaseInfoForm = document.querySelector('.purchase-info__card-form');
-
-      //const date = userInfoForm.elements['tickets-date'].value;
-      // const time = userInfoForm.elements['tickets-time'].value;
-      // const userName = userInfoForm.elements['user-name'].value;
-      // const email = userInfoForm.elements['user-email'].value;
-      // const phone = userInfoForm.elements['user-phone'].value;
-      // const ticketType = userInfoForm.elements['ticket-type'].value;
-      // const numberTiketsBasic = document.querySelector('#entry-ticket-basic').value;
-      // const numberTiketsSenior = document.querySelector('#entry-ticket-senior').value;
-      // const totalSumOrder = document.querySelector('.total-sum__total').textContent.slice(0, -2);
-      // const cardNum = purchaseInfoForm.elements['card-num'].value;
-      // const cardMonth = purchaseInfoForm.elements['card-month'].value;
-      // const cardYear = purchaseInfoForm.elements['card-year'].value;
-      // const cardHolderName = purchaseInfoForm.elements['cardholder-name'].value;
-      // const cardCvv = purchaseInfoForm.elements['card-cvv'].value;
-
-
-
-
-
-
-
-
-      // date = date.value;
-      // time = time.value;
-      // userName = userName.value;
-      // email = email.value;
-      // phone = phone.value;
-      // ticketType = ticketType.value;
-      // numberTiketsBasic = numberTiketsBasic.value;
-      // numberTiketsSenior = numberTiketsSenior.value;
-      // totalSumOrder = totalSumOrder.textContent.slice(0, -2);
-      // cardNum = cardNum.value;
-      // cardMonth = cardMonth.value;
-      // cardYear = cardYear.value;
-      // cardHolderName = cardHolderName.value;
-      // cardCvv = cardCvv.value;
-
-
       orderId += 1;
 
       let orderName = `order#${orderId}`;
 
       dataTickets[orderName] = {
-         // date: date,
-         // time: time,
-         // name: userName,
-         // email: email,
-         // phone: phone,
-         // typeExhibition: ticketType,
-         // numberTiketsBasic: numberTiketsBasic,
-         // numberTiketsSenior: numberTiketsSenior,
-         // totalSumOrder: totalSumOrder,
-         // cardNum: cardNum,
-         // cardMonth: cardMonth,
-         // cardYear: cardYear,
-         // cardHolderName: cardHolderName,
-         // cardCvv: cardCvv,
 
          date: date.value,
          time: time.value,
@@ -593,11 +534,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+let players = [];
+
 window.onYouTubeIframeAPIReady = function () {
    const videosSlider = document.querySelectorAll('.video__slider-item');
    videosSlider.forEach((videoSlider) => {
-      player = new YT.Player(videoSlider.id, {
-         videoId: videoSlider.dataset.videoId,
-      });
+      if (
+         videoSlider.id == 'playerSliderYT1' ||
+         videoSlider.id == 'playerSliderYT2' ||
+         videoSlider.id == 'playerSliderYT3' ||
+         videoSlider.id == 'playerSliderYT4' ||
+         videoSlider.id == 'playerSliderYT5'
+      ) {
+         const player = new YT.Player(videoSlider.id, {
+            videoId: videoSlider.dataset.videoId,
+         });
+         players.push(player);
+      }
    });
 };
+
+function stopVideo() {
+   players.forEach(player => {
+      if (player && typeof player.stopVideo === 'function') {
+         player.stopVideo();
+      }
+   });
+}
