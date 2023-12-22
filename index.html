@@ -169,7 +169,6 @@
         </div>
       </div>
     </section>
-    <!-- івівів -->
     <section id="Visiting" class="visiting">
       <div class="container">
         <div class="visiting__wrapper">
@@ -290,61 +289,32 @@
           <div class="video__content">
             <div class="video__slider--wrapper">
               <div class="video__slider">
-                <div class="video__slider-item">
-                  <iframe class="slider-item__iframe"
-                    src="https://www.youtube.com/embed/zp1BXPX8jcU?si=_AgQ52F_93GJrf4p" title="YouTube video player"
-                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;
-                    web-share" allowfullscreen>
-                  </iframe>
-                </div>
-                <div class="video__slider-item">
-                  <iframe class="slider-item__iframe"
-                    src="https://www.youtube.com/embed/Vi5D6FKhRmo?si=gsMFnt8JX2eIOl2S" title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                  </iframe>
-                </div>
-                <div class="video__slider-item">
-                  <iframe class="slider-item__iframe"
-                    src="https://www.youtube.com/embed/NOhDysLnTvY?si=uxNS0RPxxj7v1h1l" title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                  </iframe>
-                </div>
-                <div class="video__slider-item">
-                  <iframe class="slider-item__iframe"
-                    src="https://www.youtube.com/embed/aWmJ5DgyWPI?si=-ULPSTlbwAuGsi_u" title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                  </iframe>
-                </div>
-                <div class="video__slider-item">
-                  <iframe class="slider-item__iframe"
-                    src="https://www.youtube.com/embed/2OR0OCr6uRE?si=vgb25TZbmeiWz8X5" title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                  </iframe>
-                </div>
+                <div class="video__slider-item" id="playerSliderYT1" data-video-id="zp1BXPX8jcU"></div>
+                <div class="video__slider-item" id="playerSliderYT2" data-video-id="Vi5D6FKhRmo"></div>
+                <div class="video__slider-item" id="playerSliderYT3" data-video-id="NOhDysLnTvY"></div>
+                <div class="video__slider-item" id="playerSliderYT4" data-video-id="aWmJ5DgyWPI"></div>
+                <div class="video__slider-item" id="playerSliderYT5" data-video-id="2OR0OCr6uRE"></div>
               </div>
               <div class="video__slider-nav">
                 <div class="video__slider-nav-item">
-                  <img class="slider-nav-item__iframe" src="./src/img/icon/video-nav/videoNav1.jpg" alt="video nav 1">
+                  <img class="slider-nav-item__icon-video" src="./src/img/icon/video-nav/videoNav1.jpg"
+                    alt="video nav 1">
                 </div>
                 <div class="video__slider-nav-item">
-                  <img class="slider-nav-item__iframe" src="./src/img/icon/video-nav/videoNav2.jpg" alt="video nav 2">
+                  <img class="slider-nav-item__icon-video" src="./src/img/icon/video-nav/videoNav2.jpg"
+                    alt="video nav 2">
                 </div>
                 <div class="video__slider-nav-item">
-                  <img class="slider-nav-item__iframe" src="./src/img/icon/video-nav/videoNav3.jpg" alt="video nav 3">
+                  <img class="slider-nav-item__icon-video" src="./src/img/icon/video-nav/videoNav3.jpg"
+                    alt="video nav 3">
                 </div>
                 <div class="video__slider-nav-item">
-                  <img class="slider-nav-item__iframe" src="./src/img/icon/video-nav/videoNav4.jpg" alt="video nav 4">
+                  <img class="slider-nav-item__icon-video" src="./src/img/icon/video-nav/videoNav4.jpg"
+                    alt="video nav 4">
                 </div>
                 <div class="video__slider-nav-item">
-                  <img class="slider-nav-item__iframe" src="./src/img/icon/video-nav/videoNav5.jpg" alt="video nav 5">
+                  <img class="slider-nav-item__icon-video" src="./src/img/icon/video-nav/videoNav5.jpg"
+                    alt="video nav 5">
                 </div>
               </div>
             </div>
@@ -547,8 +517,7 @@
                 <input type="date" name="tickets-date" class="user-info__date" required>
                 <input type="time" name="tickets-time" class="user-info__time" required>
               </div>
-              <input type="text" class="user-info__name" name="user-name" placeholder="Name" pattern="[A-Za-z\s]+"
-                required>
+              <input type="text" class="user-info__name" name="user-name" placeholder="Name" required>
               <input type=" text" class="user-info__email" name="user-email" placeholder="E-mail" required>
               <input type="text" class="user-info__phone" name="user-phone" placeholder="Phone" required>
               <select class="user-info__ticket-type" name="ticket-type" aria-placeholder="Ticket Type" required>
@@ -692,6 +661,7 @@
     </div>
   </div>
   <div id="overlay" class="overlay"></div>
+  <script type="module" src="https://www.youtube.com/iframe_api"></script>
   <script type="module" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script type="module" src="https://kenwheeler.github.io/slick/slick/slick.js"></script>
   <script type="module" src="./src/js/script.js"></script>
