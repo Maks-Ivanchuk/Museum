@@ -507,8 +507,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-      //    modalWBuyTicket.classList.remove('tickets-m-w--open')
-      //    bodyBlockUnBlock('unblock');
+      modalWBuyTicket.classList.remove('tickets-m-w--open')
+      bodyBlockUnBlock('unblock');
 
       // додати очищення полів
       // date.value = "";
