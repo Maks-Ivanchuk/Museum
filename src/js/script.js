@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
    const headerWrapper = document.querySelector('.header__wrapper');
    const body = document.querySelector('body');
    const overlay = document.querySelector('#overlay');
-   const btnSubmit = document.querySelector('.purchase-info__btn');
    const maxWidth = 1024;
    const navLinks = document.querySelectorAll('.header__nav-link');
 
@@ -49,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
             modalWindow.classList.add('modal-window--open');
             overlayOpenClose('open');
             bodyBlockUnBlock('block');
-
          });
       });
 
@@ -107,12 +105,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (overlay.classList.contains('overlay--open')) {
          overlayOpenClose('close');
+
          if (headerNav.classList.contains('header__nav--open')) {
             headerNav.classList.remove('header__nav--open')
          };
+
          if (burgerMenuBtn.classList.contains('header__bg-menu--open')) {
             burgerMenuBtn.classList.remove('header__bg-menu--open');
          };
+
          if (body.classList.contains('body--block')) {
             bodyBlockUnBlock('unblock');
          };
@@ -178,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
    openCloseModalWindow();
    clickNavItemScrollToSection();
 
-   //slider
+
    $('.slider__slick').slick({
       arrows: false,
       slidesToShow: 1,
@@ -196,6 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
       speed: 300,
    });
 
+   //stop video in slider
    $('.video__slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
       stopVideo();
    });
@@ -222,8 +224,6 @@ document.addEventListener("DOMContentLoaded", () => {
          }
       ]
    });
-
-
 
    //galery
 
@@ -297,6 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (currentTicketsInput.id === 'amount-basic' ||
                currentTicketsInput.id === 'entry-ticket-basic') {
+
                if (typeBtn === 'minus' && currentNumTicketsBasic !== 0) {
                   currentNumTicketsBasic -= 1;
                } else if (typeBtn === 'plus') {
@@ -304,11 +305,10 @@ document.addEventListener("DOMContentLoaded", () => {
                } else {
                   return;
                };
+
                document.querySelector('#amount-basic').value = currentNumTicketsBasic;
                document.querySelector('#entry-ticket-basic').value = currentNumTicketsBasic;
                document.querySelector('#number-tickets-basic').innerHTML = currentNumTicketsBasic;
-
-               // currentTicketsInput.value = currentNumTicketsBasic;
 
             } else if (currentTicketsInput.id === 'amount-senior' ||
                currentTicketsInput.id === 'entry-ticket-senior') {
@@ -323,8 +323,6 @@ document.addEventListener("DOMContentLoaded", () => {
                document.querySelector('#amount-senior').value = currentNumTicketsSenior;
                document.querySelector('#entry-ticket-senior').value = currentNumTicketsSenior;
                document.querySelector('#number-tickets-senior').innerHTML = currentNumTicketsSenior;
-
-               // currentTicketsInput.value = currentNumTicketsSenior;
             } else {
                return;
             };
@@ -347,32 +345,33 @@ document.addEventListener("DOMContentLoaded", () => {
          totalSumBuyModal.innerHTML = `${total} €`;
       }
 
-      function modalWbuyTicket() {
-         const buyTicketNowBtn = document.querySelector('.tickets__amount-btn');
-         const modalWBuyTicket = document.querySelector('.tickets-m-w');
-         const closeBtnModalWBuyTicket = document.querySelector('.tickets-m-w__btn-close');
 
-         buyTicketNowBtn.addEventListener('click', function (event) {
-            event.preventDefault();
+      // const buyTicketNowBtn = document.querySelector('.tickets__amount-btn');
+      // const modalWBuyTicket = document.querySelector('.tickets-m-w');
+      // const closeBtnModalWBuyTicket = document.querySelector('.tickets-m-w__btn-close');
 
-            if (!modalWBuyTicket.closest('.tickets-m-w--open')) {
-               modalWBuyTicket.classList.add('tickets-m-w--open');
-               bodyBlockUnBlock('block');
-            } else if (modalWBuyTicket.closest('.tickets-m-w')) {
-               return
-            }
-         });
+      // function openCloseModWindowBuyTicket() {
+      //    buyTicketNowBtn.addEventListener('click', function (event) {
+      //       event.preventDefault();
 
-         closeBtnModalWBuyTicket.addEventListener('click', function () {
+      //       if (!modalWBuyTicket.closest('.tickets-m-w--open')) {
+      //          modalWBuyTicket.classList.add('tickets-m-w--open');
+      //          bodyBlockUnBlock('block');
+      //       } else if (modalWBuyTicket.closest('.tickets-m-w')) {
+      //          return
+      //       }
+      //    });
 
-            if (!modalWBuyTicket.closest('.tickets-m-w--open')) {
-               return
-            } else if (modalWBuyTicket.closest('.tickets-m-w--open')) {
-               modalWBuyTicket.classList.remove('tickets-m-w--open')
-               bodyBlockUnBlock('unblock');
-            };
-         });
-      };
+      //    closeBtnModalWBuyTicket.addEventListener('click', function () {
+
+      //       if (!modalWBuyTicket.closest('.tickets-m-w--open')) {
+      //          return
+      //       } else if (modalWBuyTicket.closest('.tickets-m-w--open')) {
+      //          modalWBuyTicket.classList.remove('tickets-m-w--open')
+      //          bodyBlockUnBlock('unblock');
+      //       };
+      //    });
+      // };
 
       function selectTicketsInfo() {
          const selectDate = document.querySelector('.user-info__date');
@@ -409,8 +408,188 @@ document.addEventListener("DOMContentLoaded", () => {
          });
       };
 
-      modalWbuyTicket();
+      openCloseModWindowBuyTicket();
       selectTicketsInfo();
+   };
+
+   const buyTicketNowBtn = document.querySelector('.tickets__amount-btn');
+   const modalWBuyTicket = document.querySelector('.tickets-m-w');
+   const closeBtnModalWBuyTicket = document.querySelector('.tickets-m-w__btn-close');
+
+
+
+   //form by tickets
+   const btnSubBuyTicketsForm = document.querySelector('.purchase-info__btn');
+   let orderId = 0;
+   let dataTickets = {};
+
+   const userInfoForm = document.querySelector('.user-info__form');
+   const purchaseInfoForm = document.querySelector('.purchase-info__card-form');
+   const date = userInfoForm.elements['tickets-date'];
+   const time = userInfoForm.elements['tickets-time'];
+   const userName = userInfoForm.elements['user-name'];
+   const email = userInfoForm.elements['user-email'];
+   const phone = userInfoForm.elements['user-phone'];
+   const ticketType = userInfoForm.elements['ticket-type'];
+   const numberTiketsBasic = document.querySelector('#entry-ticket-basic');
+   const numberTiketsSenior = document.querySelector('#entry-ticket-senior');
+   const totalSumOrder = document.querySelector('.total-sum__total');
+   const cardNum = purchaseInfoForm.elements['card-num'];
+   const cardMonth = purchaseInfoForm.elements['card-month'];
+   const cardYear = purchaseInfoForm.elements['card-year'];
+   const cardHolderName = purchaseInfoForm.elements['cardholder-name'];
+   const cardCvv = purchaseInfoForm.elements['card-cvv'];
+
+   function submitFormBuyTickets(event) {
+      event.preventDefault(); //зупинили відправку форми
+      // const userInfo = document.querySelector('#user-info');
+      // const userInfoInput = userInfo.querySelectorAll('input');
+      // const userInfoSelect = userInfo.querySelectorAll('select');
+      // const purchaseInfo = document.querySelector('#purchase-info');
+      // const purchaseInfoInput = purchaseInfo.querySelectorAll('input');
+      // const purchaseInfoSelect = purchaseInfo.querySelectorAll('select');
+
+      // console.log(userInfo, purchaseInfo);
+
+      function validForms() {
+         const userInfo = document.querySelector('#user-info');
+         const userInfoInput = userInfo.querySelectorAll('input');
+         const userInfoSelect = userInfo.querySelectorAll('select');
+         const purchaseInfo = document.querySelector('#purchase-info');
+         const purchaseInfoInput = purchaseInfo.querySelectorAll('input');
+         const purchaseInfoSelect = purchaseInfo.querySelectorAll('select');
+         let error = 0;
+
+         userInfoInput.forEach(input => {
+            if (input.value.length == 0 || input.value == 0) {
+               error++;
+               input.classList.add('invalid');
+               console.log(`заповніть поле ${input.name}`);
+            } else {
+               if (input.classList.contains('invalid')) {
+                  input.classList.remove('invalid');
+               }
+            }
+         });
+
+         userInfoSelect.forEach(select => {
+            if (select.value.length == 0) {
+               error++;
+               select.classList.add('invalid');
+               console.log(`заповніть поле ${select.name}`);
+            } else {
+               if (select.classList.contains('invalid')) {
+                  select.classList.remove('invalid');
+               }
+            }
+         });
+
+         purchaseInfoInput.forEach(input => {
+            if (input.value.length == 0) {
+               error++;
+               input.classList.add('invalid');
+               console.log(`заповніть поле ${input.name}`);
+            } else {
+               if (input.classList.contains('invalid')) {
+                  input.classList.remove('invalid');
+               }
+            }
+         });
+
+         purchaseInfoSelect.forEach(select => {
+            if (select.value.length == 0) {
+               error++;
+               select.classList.add('invalid');
+               console.log(`заповніть поле ${select.name}`);
+            } else {
+               if (select.classList.contains('invalid')) {
+                  select.classList.remove('invalid');
+               }
+            }
+         });
+      }
+
+
+
+
+
+
+
+
+
+      //інфо про придбаний квиток, к-ть та юзера
+      orderId += 1;
+
+      let orderName = `order#${orderId}`;
+
+      dataTickets[orderName] = {
+
+         date: date.value,
+         time: time.value,
+         name: userName.value,
+         email: email.value,
+         phone: phone.value,
+         typeExhibition: ticketType.value,
+         numberTiketsBasic: numberTiketsBasic.value,
+         numberTiketsSenior: numberTiketsSenior.value,
+         totalSumOrder: totalSumOrder.textContent.slice(0, -2),
+         cardNum: cardNum.value,
+         cardMonth: cardMonth.value,
+         cardYear: cardYear.value,
+         cardHolderName: cardHolderName.value,
+         cardCvv: cardCvv.value,
+      };
+
+      console.log(dataTickets); //тест інфи, що зібрали
+
+      //закриття форми після проходження валідації та відправки данних
+      // modalWBuyTicket.classList.remove('tickets-m-w--open');//тимчасово  скрито, щоб не заважало
+      // bodyBlockUnBlock('unblock');//тимчасово  скрито, щоб не заважало
+
+      // додати очищення полів
+      // date.value = "";
+      // time.value = "";
+      // userName.value = "";
+      // email.value = "";
+      // phone.value = "";
+      // ticketType.value = "";
+      // numberTiketsBasic.value = "0";
+      // numberTiketsSenior.value = "0";
+      // totalSumOrder = "0";
+      // cardNum.value = "";
+      // cardMonth.value = "";
+      // cardYear.value = "";
+      // cardHolderName.value = "";
+      // cardCvv.value = "";
+      // };
+      validForms();
+   };
+
+   quantityTickets();
+
+   btnSubBuyTicketsForm.addEventListener('click', submitFormBuyTickets);
+
+   function openCloseModWindowBuyTicket() {
+      buyTicketNowBtn.addEventListener('click', function (event) {
+         event.preventDefault();
+
+         if (!modalWBuyTicket.closest('.tickets-m-w--open')) {
+            modalWBuyTicket.classList.add('tickets-m-w--open');
+            bodyBlockUnBlock('block');
+         } else if (modalWBuyTicket.closest('.tickets-m-w')) {
+            return
+         }
+      });
+
+      closeBtnModalWBuyTicket.addEventListener('click', function () {
+
+         if (!modalWBuyTicket.closest('.tickets-m-w--open')) {
+            return
+         } else if (modalWBuyTicket.closest('.tickets-m-w--open')) {
+            modalWBuyTicket.classList.remove('tickets-m-w--open')
+            bodyBlockUnBlock('unblock');
+         };
+      });
    };
 
    function bodyBlockUnBlock(action) {
@@ -440,99 +619,41 @@ document.addEventListener("DOMContentLoaded", () => {
          console.error('Invalid action. Use in function overlayOpenClose "open" or "close".');
       }
    };
-
-   let orderId = 0;
-   let dataTickets = {};
-
-   const userInfoForm = document.querySelector('.user-info__form');
-   const purchaseInfoForm = document.querySelector('.purchase-info__card-form');
-   const date = userInfoForm.elements['tickets-date'];
-   const time = userInfoForm.elements['tickets-time'];
-   const userName = userInfoForm.elements['user-name'];
-   const email = userInfoForm.elements['user-email'];
-   const phone = userInfoForm.elements['user-phone'];
-   const ticketType = userInfoForm.elements['ticket-type'];
-   const numberTiketsBasic = document.querySelector('#entry-ticket-basic');
-   const numberTiketsSenior = document.querySelector('#entry-ticket-senior');
-   const totalSumOrder = document.querySelector('.total-sum__total');
-   const cardNum = purchaseInfoForm.elements['card-num'];
-   const cardMonth = purchaseInfoForm.elements['card-month'];
-   const cardYear = purchaseInfoForm.elements['card-year'];
-   const cardHolderName = purchaseInfoForm.elements['cardholder-name'];
-   const cardCvv = purchaseInfoForm.elements['card-cvv'];
-
-   function validationFormBuyTikets(event) {
-      // if (event.value == '') {
-      // event.classList.add('invalid');
-      console.log(event.value);
-      // }
-   }
-
-   userName.addEventListener('input', function () {
-      validationFormBuyTikets(userName);
-   });
-
-   function submitFormBuyTickets(event) {
-      event.preventDefault();
-
-      orderId += 1;
-
-      let orderName = `order#${orderId}`;
-
-      dataTickets[orderName] = {
-
-         date: date.value,
-         time: time.value,
-         name: userName.value,
-         email: email.value,
-         phone: phone.value,
-         typeExhibition: ticketType.value,
-         numberTiketsBasic: numberTiketsBasic.value,
-         numberTiketsSenior: numberTiketsSenior.value,
-         totalSumOrder: totalSumOrder.textContent.slice(0, -2),
-         cardNum: cardNum.value,
-         cardMonth: cardMonth.value,
-         cardYear: cardYear.value,
-         cardHolderName: cardHolderName.value,
-         cardCvv: cardCvv.value,
-      };
-
-      console.log(dataTickets);
-
-      // alert('Сongratulations, tickets purchased!');
-
-      // const modalWBuyTicket = document.querySelector('.tickets-m-w');
-
-      // if (modalWBuyTicket.closest('.tickets-m-w--open')) {
-
-
-
-      modalWBuyTicket.classList.remove('tickets-m-w--open')
-      bodyBlockUnBlock('unblock');
-
-      // додати очищення полів
-      // date.value = "";
-      // time.value = "";
-      // userName.value = "";
-      // email.value = "";
-      // phone.value = "";
-      // ticketType.value = "";
-      // numberTiketsBasic.value = "0";
-      // numberTiketsSenior.value = "0";
-      // totalSumOrder = "0";
-      // cardNum.value = "";
-      // cardMonth.value = "";
-      // cardYear.value = "";
-      // cardHolderName.value = "";
-      // cardCvv.value = "";
-      // };
-   };
-
-   quantityTickets();
-
-   btnSubmit.addEventListener('click', submitFormBuyTickets);
-
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//YT API
 
 let players = [];
 
