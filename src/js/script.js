@@ -507,15 +507,26 @@ document.addEventListener("DOMContentLoaded", () => {
                }
             }
          });
+
+         if (error > 0) {
+            console.log(`error = ${error}`);//перевірка чи обнуляється ерор при кожному кліку
+            error = 0;
+            console.log(`error = ${error}`);//перевірка чи обнуляється ерор при кожному кліку
+            return false;
+         } else {
+            console.log(`error = ${error}`); //перевірка чи обнуляється ерор при кожному кліку
+            return true;
+         }
       }
 
+      // validForms();
 
-
-
-
-
-
-
+      if (!validForms()) {
+         console.log(`Заповність обов'язкові поля`);
+         return;
+      } else {
+         console.log(`Форму заповнено колектно.`);
+      }
 
       //інфо про придбаний квиток, к-ть та юзера
       orderId += 1;
@@ -542,7 +553,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.log(dataTickets); //тест інфи, що зібрали
 
-      //закриття форми після проходження валідації та відправки данних
+      // закриття форми після проходження валідації та відправки данних
       // modalWBuyTicket.classList.remove('tickets-m-w--open');//тимчасово  скрито, щоб не заважало
       // bodyBlockUnBlock('unblock');//тимчасово  скрито, щоб не заважало
 
@@ -562,7 +573,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // cardHolderName.value = "";
       // cardCvv.value = "";
       // };
-      validForms();
+
    };
 
    quantityTickets();
