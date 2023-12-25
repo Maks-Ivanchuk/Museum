@@ -443,8 +443,45 @@ document.addEventListener("DOMContentLoaded", () => {
    const cardHolderName = purchaseInfoForm.elements['cardholder-name'];
    const cardCvv = purchaseInfoForm.elements['card-cvv'];
 
+   userName.addEventListener('input', function () {
+      let inputValue = this.value;
+      const validInput = inputValue.replace(/[^a-zA-Zа-щью-яА-ЩЬЮ\s-]/gu, '');
+      const formattedInput = validInput.replace(/\b\w/g, (match) => match.toUpperCase());
+      const words = formattedInput.split(' ');
+      const modifiedWords = words.map(word => {
+         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      });
+      const finalFormattedInput = modifiedWords.join(' ');
+      this.value = finalFormattedInput;
+   });
+
+   phone.addEventListener('input', function () {
+      let inputValue = this.value;
+      const cleanedValue = inputValue.replace(/\D/g, '');
+
+      if (cleanedValue.length <= 12) {
+         this.value = cleanedValue;
+      } else {
+
+         this.value = cleanedValue.slice(0, 12);
+      }
+   });
+
+   // cardNum.addEventListener('input', function () {
+   //    let inputValue = this.value;
+   //    if (inputValue.length % 4 === 0 &&
+   //       inputValue.length < 16) {
+   //       inputValue = inputValue + '-';
+   //    } else {
+   //       inputValue = inputValue;
+   //    }
+   // });
+
+
+
+
    function submitFormBuyTickets(event) {
-      event.preventDefault(); //зупинили відправку форми
+      event.preventDefault();
 
       function validForms() {
          let error = 0;
