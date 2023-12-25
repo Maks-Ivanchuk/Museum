@@ -160,6 +160,16 @@
       opacity: 1;
       left: 0;
       width: 100%;
+      overflow: auto;
+      height: calc(100dvh - 90px);
+
+      @media screen and (min-width: 421px) {
+         height: calc(100dvh - 110px);
+      }
+
+      @media screen and (min-width: 769px) {
+         height: calc(100dvh - 130px);
+      }
 
       @media screen and (min-width: 1024px) {
          width: 300px;

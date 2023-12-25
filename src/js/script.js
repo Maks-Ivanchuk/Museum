@@ -271,6 +271,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
    //buy ticket
 
+
+   let currentNumTicketsBasic = 0;
+   let currentNumTicketsSenior = 0;
+
    function quantityTickets() {
       const amountFormButtons = document.querySelectorAll('button[data-quantity-ticket]');
       const priseBasicTickets = document.querySelectorAll('.price-basic');
@@ -278,8 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const costBasicTicket = 17;
       const costSeniorTicket = 10;
 
-      let currentNumTicketsBasic = 0;
-      let currentNumTicketsSenior = 0;
+
 
       priseBasicTickets.forEach(priseBasicTicket => {
          priseBasicTicket.innerHTML = `${costBasicTicket} €`;
@@ -442,79 +445,206 @@ document.addEventListener("DOMContentLoaded", () => {
 
    function submitFormBuyTickets(event) {
       event.preventDefault(); //зупинили відправку форми
-      // const userInfo = document.querySelector('#user-info');
-      // const userInfoInput = userInfo.querySelectorAll('input');
-      // const userInfoSelect = userInfo.querySelectorAll('select');
-      // const purchaseInfo = document.querySelector('#purchase-info');
-      // const purchaseInfoInput = purchaseInfo.querySelectorAll('input');
-      // const purchaseInfoSelect = purchaseInfo.querySelectorAll('select');
-
-      // console.log(userInfo, purchaseInfo);
 
       function validForms() {
-         const userInfo = document.querySelector('#user-info');
-         const userInfoInput = userInfo.querySelectorAll('input');
-         const userInfoSelect = userInfo.querySelectorAll('select');
-         const purchaseInfo = document.querySelector('#purchase-info');
-         const purchaseInfoInput = purchaseInfo.querySelectorAll('input');
-         const purchaseInfoSelect = purchaseInfo.querySelectorAll('select');
          let error = 0;
 
-         userInfoInput.forEach(input => {
-            if (input.value.length == 0 || input.value == 0) {
-               error++;
-               input.classList.add('invalid');
-               console.log(`заповніть поле ${input.name}`);
-            } else {
-               if (input.classList.contains('invalid')) {
-                  input.classList.remove('invalid');
-               }
-            }
-         });
+         const formReg = document.querySelectorAll('._reg');
+         const nameRegex = /^[A-Za-zА-Яа-яІіЇїЄєҐґ']+([- ][A-Za-zА-Яа-яІіЇїЄєҐґ']+)*$/;
+         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+         const phoneRegex = /^380\d{9}$/;
 
-         userInfoSelect.forEach(select => {
-            if (select.value.length == 0) {
-               error++;
-               select.classList.add('invalid');
-               console.log(`заповніть поле ${select.name}`);
-            } else {
-               if (select.classList.contains('invalid')) {
-                  select.classList.remove('invalid');
-               }
-            }
-         });
 
-         purchaseInfoInput.forEach(input => {
-            if (input.value.length == 0) {
+         formReg.forEach(reg => {
+            if (reg.length == 0 || reg.value == 0) {
                error++;
-               input.classList.add('invalid');
-               console.log(`заповніть поле ${input.name}`);
+               reg.classList.add('invalid');
             } else {
-               if (input.classList.contains('invalid')) {
-                  input.classList.remove('invalid');
+               switch (reg.name) {
+                  case 'tickets-date':
+                     if (reg.value == '') {
+                        error++;
+                        if (!reg.classList.contains('invalid')) {
+                           reg.classList.add('invalid');
+                        }
+                     } else {
+                        if (reg.classList.contains('invalid')) {
+                           reg.classList.remove('invalid');
+                        }
+                        console.log(`Дата гуд`);
+                     }
+                     break;
+                  case 'tickets-time':
+                     if (reg.value == '') {
+                        error++;
+                        if (!reg.classList.contains('invalid')) {
+                           reg.classList.add('invalid');
+                        }
+                     } else {
+                        if (reg.classList.contains('invalid')) {
+                           reg.classList.remove('invalid');
+                        }
+                        console.log(`Час гуд`);
+                     }
+                     break;
+                  case 'user-name':
+                     if (!nameRegex.test(reg.value)) {
+                        error++;
+                        console.log(`Введено некоректне ім'я`);
+                        if (!reg.classList.contains('invalid')) {
+                           reg.classList.add('invalid');
+                        }
+                     } else {
+                        if (reg.classList.contains('invalid')) {
+                           reg.classList.remove('invalid');
+                        }
+                        console.log(`Ім'я гуд`);
+                     }
+                     break;
+                  case 'user-email':
+                     if (!emailRegex.test(reg.value)) {
+                        error++;
+                        console.log(`Введено некоректний E-mail`);
+                        if (!reg.classList.contains('invalid')) {
+                           reg.classList.add('invalid');
+                        }
+                     } else {
+                        if (reg.classList.contains('invalid')) {
+                           reg.classList.remove('invalid');
+                        }
+                        console.log(`E-mail гуд`);
+                     }
+                     break;
+                  case 'user-phone':
+                     if (!phoneRegex.test(reg.value)) {
+                        error++;
+                        console.log(`Введено некоректний Phone`);
+                        if (!reg.classList.contains('invalid')) {
+                           reg.classList.add('invalid');
+                        }
+                     } else {
+                        if (reg.classList.contains('invalid')) {
+                           reg.classList.remove('invalid');
+                        }
+                        console.log(`Phone гуд`);
+                     }
+                     break;
+                  case 'ticket-type':
+                     if (reg.value == '') {
+                        error++;
+                        if (!reg.classList.contains('invalid')) {
+                           reg.classList.add('invalid');
+                        }
+                     } else {
+                        if (reg.classList.contains('invalid')) {
+                           reg.classList.remove('invalid');
+                        }
+                        console.log(`Тип виставки гуд`);
+                     }
+                     break;
+                  case 'tickets-num-basic':
+                     if (reg.value == 0) {
+                        error++;
+                        console.log(`Оберіть к-ть квитків Басік`);
+                        if (!reg.classList.contains('invalid')) {
+                           reg.classList.add('invalid');
+                        }
+                     } else {
+                        if (reg.classList.contains('invalid')) {
+                           reg.classList.remove('invalid');
+                        }
+                        console.log(`Басік гуд`);
+                     }
+                     break;
+                  case 'tickets-num-senior':
+                     if (reg.value == 0) {
+                        error++;
+                        console.log(`Оберіть к-ть квитків Сенйор`);
+                        if (!reg.classList.contains('invalid')) {
+                           reg.classList.add('invalid');
+                        }
+                     } else {
+                        if (reg.classList.contains('invalid')) {
+                           reg.classList.remove('invalid');
+                        }
+                        console.log(`Сенйор гуд`);
+                     }
+                     break;
+                  case 'card-num':
+                     if (reg.value.length == 0 || reg.value.length != 16) {
+                        error++;
+                        if (!reg.classList.contains('invalid')) {
+                           reg.classList.add('invalid');
+                        }
+                     } else {
+                        if (reg.classList.contains('invalid')) {
+                           reg.classList.remove('invalid');
+                        }
+                        console.log(`Номер карти гуд`);
+                     }
+                     break;
+                  case 'card-month':
+                     if (reg.value == '') {
+                        error++;
+                        if (!reg.classList.contains('invalid')) {
+                           reg.classList.add('invalid');
+                        }
+                     } else {
+                        if (reg.classList.contains('invalid')) {
+                           reg.classList.remove('invalid');
+                        }
+                        console.log('Місяць карти гуд');
+                     }
+                     break;
+                  case 'card-year':
+                     if (reg.value == '') {
+                        error++;
+                        if (!reg.classList.contains('invalid')) {
+                           reg.classList.add('invalid');
+                        }
+                     } else {
+                        if (reg.classList.contains('invalid')) {
+                           reg.classList.remove('invalid');
+                        }
+                        console.log('Рік карти гуд');
+                     }
+                     break;
+                  case 'cardholder-name':
+                     if (!nameRegex.test(reg.value)) {
+                        error++;
+                        if (!reg.classList.contains('invalid')) {
+                           reg.classList.add('invalid');
+                        }
+                     } else {
+                        if (reg.classList.contains('invalid')) {
+                           reg.classList.remove('invalid');
+                        }
+                        console.log(`Ім'я гуд`);
+                     }
+                     break;
+                  case 'card-cvv':
+                     if (reg.value.length == 0 || reg.value.length != 3) {
+                        error++;
+                        if (!reg.classList.contains('invalid')) {
+                           reg.classList.add('invalid');
+                        }
+                     } else {
+                        if (reg.classList.contains('invalid')) {
+                           reg.classList.remove('invalid');
+                        }
+                        console.log(`CVV карти гуд`);
+                     }
+                     break;
                }
-            }
-         });
 
-         purchaseInfoSelect.forEach(select => {
-            if (select.value.length == 0) {
-               error++;
-               select.classList.add('invalid');
-               console.log(`заповніть поле ${select.name}`);
-            } else {
-               if (select.classList.contains('invalid')) {
-                  select.classList.remove('invalid');
-               }
             }
-         });
+         })
 
          if (error > 0) {
-            console.log(`error = ${error}`);//перевірка чи обнуляється ерор при кожному кліку
+            console.log(error);
             error = 0;
-            console.log(`error = ${error}`);//перевірка чи обнуляється ерор при кожному кліку
             return false;
          } else {
-            console.log(`error = ${error}`); //перевірка чи обнуляється ерор при кожному кліку
             return true;
          }
       }
@@ -564,6 +694,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // email.value = "";
       // phone.value = "";
       // ticketType.value = "";
+      // currentNumTicketsBasic = 0;
+      // currentNumTicketsSenior = 0;
       // numberTiketsBasic.value = "0";
       // numberTiketsSenior.value = "0";
       // totalSumOrder = "0";
@@ -572,7 +704,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // cardYear.value = "";
       // cardHolderName.value = "";
       // cardCvv.value = "";
-      // };
+
 
    };
 

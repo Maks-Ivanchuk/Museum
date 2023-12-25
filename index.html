@@ -556,14 +556,14 @@
           <div class="user-info__input">
             <form class="user-info__form" id="user-info">
               <div class="user-info__form-data">
-                <input type="date" name="tickets-date" class="user-info__date" required>
-                <input type="time" name="tickets-time" class="user-info__time" required>
+                <input type="date" name="tickets-date" class="user-info__date _reg" required>
+                <input type="time" name="tickets-time" class="user-info__time _reg" required>
               </div>
-              <input type="text" class="user-info__name" name="user-name" placeholder="Name" pattern="[A-Za-z\s]+"
+              <input type="text" class="user-info__name _reg" name="user-name" placeholder="Name" pattern="[A-Za-z\s]+"
                 required>
-              <input type=" text" class="user-info__email" name="user-email" placeholder="E-mail" required>
-              <input type="text" class="user-info__phone" name="user-phone" placeholder="Phone" required>
-              <select class="user-info__ticket-type" name="ticket-type" aria-placeholder="Ticket Type" required>
+              <input type=" text" class="user-info__email _reg" name="user-email" placeholder="E-mail" required>
+              <input type="text" class="user-info__phone _reg" name="user-phone" placeholder="Phone" required>
+              <select class="user-info__ticket-type _reg" name="ticket-type" aria-placeholder="Ticket Type" required>
                 <option disabled selected value="">Ticket-Type</option>
                 <option value="Permanent exhibition">Permanent exhibition</option>
                 <option value="Temporary exhibition">Temporary exhibition</option>
@@ -581,7 +581,7 @@
                     <div class="entry-ticket__row form-btn-wrapper">
                       <button class="btn-minus entry-ticket__form-btn" type="button"
                         data-quantity-ticket="minus">–</button>
-                      <input id="entry-ticket-basic" name="tickets-num-basic" class="entry-ticket__value" readonly
+                      <input id="entry-ticket-basic" name="tickets-num-basic" class="entry-ticket__value _reg" readonly
                         value="0">
                       <button class="btn-plus entry-ticket__form-btn" type="button"
                         data-quantity-ticket="plus">+</button>
@@ -594,8 +594,8 @@
                     <div class="entry-ticket__row form-btn-wrapper">
                       <button class="btn-minus entry-ticket__form-btn" type="button"
                         data-quantity-ticket="minus">–</button>
-                      <input id="entry-ticket-senior" name="tickets-num-senior" class="entry-ticket__value" readonly
-                        value="0">
+                      <input id="entry-ticket-senior" name="tickets-num-senior" class="entry-ticket__value _reg"
+                        readonly value="0">
                       <button class="btn-plus entry-ticket__form-btn" type="button"
                         data-quantity-ticket="plus">+</button>
                     </div>
@@ -652,10 +652,10 @@
                   </div>
                   <div class="card__front-row">
                     <label for="card-num">Card number</label>
-                    <input type="number" name="card-num" id="card-num" placeholder="XXXX-XXXX-XXXX-XXXX">
+                    <input class=" _reg" type="number" name="card-num" id="card-num" placeholder="XXXX-XXXX-XXXX-XXXX">
                   </div>
                   <div class="card__front-row card__front-row--date">
-                    <select name="card-month" aria-placeholder="--">
+                    <select class=" _reg" name="card-month" aria-placeholder="--">
                       <option disabled selected value="">--</option>
                       <option value="01">01</option>
                       <option value="02">02</option>
@@ -670,7 +670,7 @@
                       <option value="11">11</option>
                       <option value="12">12</option>
                     </select>
-                    <select name="card-year" aria-placeholder="----">
+                    <select class=" _reg" name="card-year" aria-placeholder="----">
                       <option disabled selected value="">----</option>
                       <option value="2024">2024</option>
                       <option value="2025">2025</option>
@@ -682,7 +682,8 @@
                   </div>
                   <div class="card__front-row card__front-cardholder">
                     <label for="cardholder-name">Cardholder name</label>
-                    <input type="text" name="cardholder-name" id="cardholder-name" value="" placeholder="James Bond">
+                    <input class=" _reg" type="text" name="cardholder-name" id="cardholder-name" value=""
+                      placeholder="James Bond">
                   </div>
                 </div>
               </div>
@@ -691,7 +692,7 @@
                   <div class="card__back-line"></div>
                   <div class="card__back-cvv">
                     <label for="card-cvv">CVC/CVV</label>
-                    <input type="number" name="card-cvv" id="card-cvv" placeholder="***">
+                    <input class=" _reg" type="number" name="card-cvv" id="card-cvv" placeholder="***">
                     <span>The last 3 or 4 digits on back of the card</span>
                   </div>
                 </div>
