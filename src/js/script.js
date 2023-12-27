@@ -179,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
    openCloseModalWindow();
    clickNavItemScrollToSection();
 
-
    $('.slider__slick').slick({
       arrows: false,
       slidesToShow: 1,
@@ -271,7 +270,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
    //buy ticket
 
-
    let currentNumTicketsBasic = 0;
    let currentNumTicketsSenior = 0;
 
@@ -281,8 +279,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const priseSeniorTickets = document.querySelectorAll('.price-senior');
       const costBasicTicket = 17;
       const costSeniorTicket = 10;
-
-
 
       priseBasicTickets.forEach(priseBasicTicket => {
          priseBasicTicket.innerHTML = `${costBasicTicket} €`;
@@ -391,12 +387,11 @@ document.addEventListener("DOMContentLoaded", () => {
    const modalWBuyTicket = document.querySelector('.tickets-m-w');
    const closeBtnModalWBuyTicket = document.querySelector('.tickets-m-w__btn-close');
 
-
+   quantityTickets();
 
    //form by tickets
    const btnSubBuyTicketsForm = document.querySelector('.purchase-info__btn');
    const nameRegex = /^[A-Za-z]+([- ][A-Za-z]+)*$/;
-   // const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
    const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
    const phoneRegex = /^380\d{9}$/;
    let orderId = 0;
@@ -470,7 +465,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
    });
 
-
    email.addEventListener('input', function () {
       let inputValue = this.value;
 
@@ -481,7 +475,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
    });
 
-
    ticketType.addEventListener('input', function () {
       let inputValue = this.value;
 
@@ -490,26 +483,45 @@ document.addEventListener("DOMContentLoaded", () => {
       }
    });
 
+   const btnInForm = document.querySelector('.entry-ticket__type-ticket').querySelectorAll('button[data-quantity-ticket]');
+   const allTargetInputs = document.querySelector('.entry-ticket__type-ticket').querySelectorAll('input');
 
-   // const btnInForm = document.querySelector('.entry-ticket__type-ticket').querySelectorAll('button[data-quantity-ticket]');
-   // btnInForm.forEach((btn)=> {
+   btnInForm.forEach((btn) => {
+      btn.addEventListener('click', function (event) {
+         let targetInput = event.target.closest('.form-btn-wrapper').querySelector('input');
+         let targetInputValue = targetInput.value;
 
-   // })
+         if (btn.dataset.quantityTicket === 'minus' && targetInputValue == 0) return;
 
+         if (targetInputValue > 0) {
+            allTargetInputs.forEach(oneTargetInput => {
+               if (oneTargetInput.classList.contains('invalid')) {
+                  oneTargetInput.classList.remove('invalid');
+               }
+            })
+         }
 
+         if (targetInput.name === 'tickets-num-basic') {
+            if (targetInputValue > 0 && targetInput.classList.contains('invalid')) {
+               targetInput.classList.remove('invalid');
+            } else if (targetInputValue == 0 && !this.classList.contains('invalid')) {
+               targetInput.classList.add('invalid');
+            }
+         } else if (targetInput.name === 'tickets-num-senior') {
+            if (targetInputValue > 0 && targetInput.classList.contains('invalid')) {
+               targetInput.classList.remove('invalid');
+            } else if (targetInputValue == 0 && !this.classList.contains('invalid')) {
+               targetInput.classList.add('invalid');
+            }
+         }
+      })
+   });
 
    cardNum.addEventListener('input', function () {
 
       let inputValue = this.value;
-      console.log(inputValue.length, 'inputValue.length');
-
       const cleanedValue = inputValue.replace(/\D/g, '');
-      console.log(cleanedValue.length, 'cleanedValue.length');
-
       const formattedValue = cleanedValue.replace(/(\d{4})(?=\d)/g, '$1 ');
-
-      console.log(formattedValue.length, 'formattedValue.length');
-
       const maxLength = 16;
 
       if (cleanedValue.length <= maxLength) {
@@ -566,15 +578,13 @@ document.addEventListener("DOMContentLoaded", () => {
          this.value = inputValue;
       } else {
          this.value = inputValue.slice(0, 3);
-
-         if (inputValue.length < 3 && !this.classList.contains('invalid')) {
-            this.classList.add('invalid');
-         } else if (inputValue.length == 3 && this.classList.contains('invalid')) {
-            this.classList.remove('invalid');
-         }
+      }
+      if (inputValue.length < 3 && !this.classList.contains('invalid')) {
+         this.classList.add('invalid');
+      } else if (inputValue.length == 3 && this.classList.contains('invalid')) {
+         this.classList.remove('invalid');
       }
    });
-
 
    function submitFormBuyTickets(event) {
       event.preventDefault();
@@ -583,9 +593,27 @@ document.addEventListener("DOMContentLoaded", () => {
          let error = 0;
 
          const formReg = document.querySelectorAll('._reg');
+         const valueTikets = document.querySelectorAll('.entry-ticket__value');
+         valueTikets.forEach(valueTicket => {
+            if (currentNumTicketsBasic == 0 && currentNumTicketsSenior == 0) {
+               error++;
+               console.log(`Оберіть к-ть та тип квитків`);
+               if (!valueTicket.classList.contains('invalid')) {
+                  valueTicket.classList.add('invalid');
+               }
+            } else {
+               if (valueTicket.classList.contains('invalid')) {
+                  valueTicket.classList.remove('invalid');
+                  console.log(`К-ть та тип квитків обрано коректно`);
+               }
+            }
+         })
 
          formReg.forEach(reg => {
-            if (reg.length == 0 || reg.value == 0) {
+            if (reg.length == 0 ||
+               reg.value == 0 &&
+               reg.name != 'tickets-num-basic' &&
+               reg.name != 'tickets-num-senior') {
                error++;
                reg.classList.add('invalid');
             } else {
@@ -677,34 +705,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         console.log(`Тип виставки гуд`);
                      }
                      break;
-                  case 'tickets-num-basic':
-                     if (reg.value == 0) {
-                        error++;
-                        console.log(`Оберіть к-ть квитків Басік`);
-                        if (!reg.classList.contains('invalid')) {
-                           reg.classList.add('invalid');
-                        }
-                     } else {
-                        if (reg.classList.contains('invalid')) {
-                           reg.classList.remove('invalid');
-                        }
-                        console.log(`Басік гуд`);
-                     }
-                     break;
-                  case 'tickets-num-senior':
-                     if (reg.value == 0) {
-                        error++;
-                        console.log(`Оберіть к-ть квитків Сенйор`);
-                        if (!reg.classList.contains('invalid')) {
-                           reg.classList.add('invalid');
-                        }
-                     } else {
-                        if (reg.classList.contains('invalid')) {
-                           reg.classList.remove('invalid');
-                        }
-                        console.log(`Сенйор гуд`);
-                     }
-                     break;
                   case 'card-num':
                      if (reg.value.length == 0 || reg.value.length != 19) {
                         error++;
@@ -771,12 +771,10 @@ document.addEventListener("DOMContentLoaded", () => {
                      }
                      break;
                }
-
             }
          })
 
          if (error > 0) {
-            console.log(error);
             error = 0;
             return false;
          } else {
@@ -814,36 +812,44 @@ document.addEventListener("DOMContentLoaded", () => {
          cardYear: cardYear.value,
          cardHolderName: cardHolderName.value,
          cardCvv: cardCvv.value,
+
       };
 
       console.log(dataTickets); //тест інфи, що зібрали
 
       // закриття форми після проходження валідації та відправки данних
-      // modalWBuyTicket.classList.remove('tickets-m-w--open');//тимчасово  скрито, щоб не заважало
-      // bodyBlockUnBlock('unblock');//тимчасово  скрито, щоб не заважало
+      modalWBuyTicket.classList.remove('tickets-m-w--open');//тимчасово  скрито, щоб не заважало
+      bodyBlockUnBlock('unblock');//тимчасово  скрито, щоб не заважало
 
       // додати очищення полів
-      // date.value = "";
-      // time.value = "";
-      // userName.value = "";
-      // email.value = "";
-      // phone.value = "";
-      // ticketType.value = "";
-      // currentNumTicketsBasic = 0;
-      // currentNumTicketsSenior = 0;
-      // numberTiketsBasic.value = "0";
-      // numberTiketsSenior.value = "0";
-      // totalSumOrder = "0";
-      // cardNum.value = "";
-      // cardMonth.value = "";
-      // cardYear.value = "";
-      // cardHolderName.value = "";
-      // cardCvv.value = "";
-
-
+      date.value = "";
+      time.value = "";
+      userName.value = "";
+      email.value = "";
+      phone.value = "";
+      ticketType.value = "";
+      currentNumTicketsBasic = 0;
+      currentNumTicketsSenior = 0;
+      document.querySelector('#amount-basic').value = currentNumTicketsBasic;
+      document.querySelector('#amount-senior').value = currentNumTicketsBasic;
+      numberTiketsBasic.value = "0";
+      numberTiketsSenior.value = "0";
+      totalSumOrder.value = "0";
+      cardNum.value = "";
+      cardMonth.value = "";
+      cardYear.value = "";
+      cardHolderName.value = "";
+      cardCvv.value = "";
+      document.querySelector('.total').innerHTML = 0;
+      document.querySelector('#number-tickets-basic').innerHTML = 0;
+      document.querySelector('#number-tickets-senior').innerHTML = 0;
+      document.querySelector('.total-sum__total').innerHTML = '0 €';
+      document.querySelector('.total-basic-cost').innerHTML = '0 €';
+      document.querySelector('.total-senior-cost').innerHTML = '0 €';
+      document.querySelector('.purchase-info__date').value = "";
+      document.querySelector('.purchase-info__time').value = "";
+      document.querySelector('.purchase-info__type').value = "";
    };
-
-   quantityTickets();
 
    btnSubBuyTicketsForm.addEventListener('click', submitFormBuyTickets);
 
@@ -898,38 +904,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
    };
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //YT API
 
