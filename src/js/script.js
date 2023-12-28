@@ -816,7 +816,7 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       console.log(dataTickets); //тест інфи, що зібрали
-
+      alert(`Congratulations, the tickets have been purchased and sent to e-mail: ${email.value}`);
       // закриття форми після проходження валідації та відправки данних
       modalWBuyTicket.classList.remove('tickets-m-w--open');//тимчасово  скрито, щоб не заважало
       bodyBlockUnBlock('unblock');//тимчасово  скрито, щоб не заважало
