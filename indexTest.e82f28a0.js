@@ -569,6 +569,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const headerWrapper = document.querySelector(".header__wrapper");
     const body = document.querySelector("body");
     const overlay = document.querySelector("#overlay");
+    const btnSubmit = document.querySelector(".purchase-info__btn");
     const maxWidth = 1024;
     const navLinks = document.querySelectorAll(".header__nav-link");
     function openCloseModalWindow() {
@@ -686,6 +687,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     window.addEventListener("resize", сloseBurgerMenuMaxWidth);
     openCloseModalWindow();
     clickNavItemScrollToSection();
+    //slider
     $(".slider__slick").slick({
         arrows: false,
         slidesToShow: 1,
@@ -700,10 +702,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
         asNavFor: ".video__slider-nav",
         infinite: true,
         speed: 300
-    });
-    //stop video in slider
-    $(".video__slider").on("beforeChange", function(event, slick, currentSlide, nextSlide) {
-        stopVideo();
     });
     $(".video__slider-nav").slick({
         slidesToShow: 3,
@@ -766,14 +764,14 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
     addRandomImgGalery();
     //buy ticket
-    let currentNumTicketsBasic = 0;
-    let currentNumTicketsSenior = 0;
     function quantityTickets() {
         const amountFormButtons = document.querySelectorAll("button[data-quantity-ticket]");
         const priseBasicTickets = document.querySelectorAll(".price-basic");
         const priseSeniorTickets = document.querySelectorAll(".price-senior");
         const costBasicTicket = 17;
         const costSeniorTicket = 10;
+        let currentNumTicketsBasic = 0;
+        let currentNumTicketsSenior = 0;
         priseBasicTickets.forEach((priseBasicTicket)=>{
             priseBasicTicket.innerHTML = `${costBasicTicket} €`;
         });
@@ -792,6 +790,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
                     document.querySelector("#amount-basic").value = currentNumTicketsBasic;
                     document.querySelector("#entry-ticket-basic").value = currentNumTicketsBasic;
                     document.querySelector("#number-tickets-basic").innerHTML = currentNumTicketsBasic;
+                // currentTicketsInput.value = currentNumTicketsBasic;
                 } else if (currentTicketsInput.id === "amount-senior" || currentTicketsInput.id === "entry-ticket-senior") {
                     if (typeBtn === "minus" && currentNumTicketsSenior !== 0) currentNumTicketsSenior -= 1;
                     else if (typeBtn === "plus") currentNumTicketsSenior += 1;
@@ -799,6 +798,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
                     document.querySelector("#amount-senior").value = currentNumTicketsSenior;
                     document.querySelector("#entry-ticket-senior").value = currentNumTicketsSenior;
                     document.querySelector("#number-tickets-senior").innerHTML = currentNumTicketsSenior;
+                // currentTicketsInput.value = currentNumTicketsSenior;
                 } else return;
                 totalCostTicket();
             });
@@ -815,6 +815,26 @@ document.addEventListener("DOMContentLoaded", ()=>{
             totalСostSenoir.innerHTML = `${totalSenior} €`;
             totalAmountTickets.innerHTML = total;
             totalSumBuyModal.innerHTML = `${total} €`;
+        }
+        function modalWbuyTicket() {
+            const buyTicketNowBtn = document.querySelector(".tickets__amount-btn");
+            const modalWBuyTicket = document.querySelector(".tickets-m-w");
+            const closeBtnModalWBuyTicket = document.querySelector(".tickets-m-w__btn-close");
+            buyTicketNowBtn.addEventListener("click", function(event) {
+                event.preventDefault();
+                if (modalWBuyTicket.closest(".tickets-m-w--open")) return;
+                else if (modalWBuyTicket.closest(".tickets-m-w")) {
+                    modalWBuyTicket.classList.add("tickets-m-w--open");
+                    bodyBlockUnBlock("block");
+                }
+            });
+            closeBtnModalWBuyTicket.addEventListener("click", function() {
+                if (!modalWBuyTicket.closest(".tickets-m-w--open")) return;
+                else if (modalWBuyTicket.closest(".tickets-m-w")) {
+                    modalWBuyTicket.classList.remove("tickets-m-w--open");
+                    bodyBlockUnBlock("unblock");
+                }
+            });
         }
         function selectTicketsInfo() {
             const selectDate = document.querySelector(".user-info__date");
@@ -843,338 +863,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 });
             });
         }
-        openCloseModWindowBuyTicket();
+        modalWbuyTicket();
         selectTicketsInfo();
-    }
-    const buyTicketNowBtn = document.querySelector(".tickets__amount-btn");
-    const modalWBuyTicket = document.querySelector(".tickets-m-w");
-    const closeBtnModalWBuyTicket = document.querySelector(".tickets-m-w__btn-close");
-    quantityTickets();
-    //form by tickets
-    const btnSubBuyTicketsForm = document.querySelector(".purchase-info__btn");
-    const nameRegex = /^[A-Za-z]+([- ][A-Za-z]+)*$/;
-    const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-    const phoneRegex = /^380\d{9}$/;
-    let orderId = 0;
-    let dataTickets = {};
-    const userInfoForm = document.querySelector(".user-info__form");
-    const purchaseInfoForm = document.querySelector(".purchase-info__card-form");
-    const date = userInfoForm.elements["tickets-date"];
-    const time = userInfoForm.elements["tickets-time"];
-    const userName = userInfoForm.elements["user-name"];
-    const email = userInfoForm.elements["user-email"];
-    const phone = userInfoForm.elements["user-phone"];
-    const ticketType = userInfoForm.elements["ticket-type"];
-    const numberTiketsBasic = document.querySelector("#entry-ticket-basic");
-    const numberTiketsSenior = document.querySelector("#entry-ticket-senior");
-    const totalSumOrder = document.querySelector(".total-sum__total");
-    const cardNum = purchaseInfoForm.elements["card-num"];
-    const cardMonth = purchaseInfoForm.elements["card-month"];
-    const cardYear = purchaseInfoForm.elements["card-year"];
-    const cardHolderName = purchaseInfoForm.elements["cardholder-name"];
-    const cardCvv = purchaseInfoForm.elements["card-cvv"];
-    date.addEventListener("input", function() {
-        let inputValue = this.value;
-        if (inputValue != "" && this.classList.contains("invalid")) this.classList.remove("invalid");
-    });
-    time.addEventListener("input", function() {
-        let inputValue = this.value;
-        if (inputValue != "" && this.classList.contains("invalid")) this.classList.remove("invalid");
-    });
-    userName.addEventListener("input", function() {
-        let inputValue = this.value;
-        const validInput = inputValue.replace(/[^a-zA-Z\s-]/g, "");
-        const formattedInput = validInput.replace(/\b\w/g, (match)=>match.toUpperCase());
-        const words = formattedInput.split(" ");
-        const modifiedWords = words.map((word)=>{
-            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-        });
-        const finalFormattedInput = modifiedWords.join(" ");
-        this.value = finalFormattedInput;
-        if (inputValue.length > 1 && this.classList.contains("invalid")) this.classList.remove("invalid");
-        else if (inputValue.length < 2 && !this.classList.contains("invalid")) this.classList.add("invalid");
-    });
-    phone.addEventListener("input", function() {
-        let inputValue = this.value;
-        const cleanedValue = inputValue.replace(/\D/g, "");
-        if (cleanedValue.length <= 12) this.value = cleanedValue;
-        else this.value = cleanedValue.slice(0, 12);
-        if (cleanedValue.length < 12 && !this.classList.contains("invalid")) this.classList.add("invalid");
-        else if (cleanedValue.length == 12 && this.classList.contains("invalid")) this.classList.remove("invalid");
-    });
-    email.addEventListener("input", function() {
-        let inputValue = this.value;
-        if (emailRegex.test(inputValue) && this.classList.contains("invalid")) this.classList.remove("invalid");
-        else if (!emailRegex.test(inputValue) && !this.classList.contains("invalid")) this.classList.add("invalid");
-    });
-    ticketType.addEventListener("input", function() {
-        let inputValue = this.value;
-        if (!inputValue == "" && this.classList.contains("invalid")) this.classList.remove("invalid");
-    });
-    const btnInForm = document.querySelector(".entry-ticket__type-ticket").querySelectorAll("button[data-quantity-ticket]");
-    const allTargetInputs = document.querySelector(".entry-ticket__type-ticket").querySelectorAll("input");
-    btnInForm.forEach((btn)=>{
-        btn.addEventListener("click", function(event) {
-            let targetInput = event.target.closest(".form-btn-wrapper").querySelector("input");
-            let targetInputValue = targetInput.value;
-            if (btn.dataset.quantityTicket === "minus" && targetInputValue == 0) return;
-            if (targetInputValue > 0) allTargetInputs.forEach((oneTargetInput)=>{
-                if (oneTargetInput.classList.contains("invalid")) oneTargetInput.classList.remove("invalid");
-            });
-            if (targetInput.name === "tickets-num-basic") {
-                if (targetInputValue > 0 && targetInput.classList.contains("invalid")) targetInput.classList.remove("invalid");
-                else if (targetInputValue == 0 && !this.classList.contains("invalid")) targetInput.classList.add("invalid");
-            } else if (targetInput.name === "tickets-num-senior") {
-                if (targetInputValue > 0 && targetInput.classList.contains("invalid")) targetInput.classList.remove("invalid");
-                else if (targetInputValue == 0 && !this.classList.contains("invalid")) targetInput.classList.add("invalid");
-            }
-        });
-    });
-    cardNum.addEventListener("input", function() {
-        let inputValue = this.value;
-        const cleanedValue = inputValue.replace(/\D/g, "");
-        const formattedValue = cleanedValue.replace(/(\d{4})(?=\d)/g, "$1 ");
-        const maxLength = 16;
-        if (cleanedValue.length <= maxLength) this.value = formattedValue;
-        else this.value = formattedValue.slice(0, -2);
-        if (inputValue.length < 19 && !this.classList.contains("invalid")) this.classList.add("invalid");
-        else if (inputValue.length >= 19 && this.classList.contains("invalid")) this.classList.remove("invalid");
-    });
-    cardMonth.addEventListener("input", function() {
-        let inputValue = this.value;
-        if (inputValue != "" && this.classList.contains("invalid")) this.classList.remove("invalid");
-    });
-    cardYear.addEventListener("input", function() {
-        let inputValue = this.value;
-        if (inputValue != "" && this.classList.contains("invalid")) this.classList.remove("invalid");
-    });
-    cardHolderName.addEventListener("input", function() {
-        let inputValue = this.value;
-        const validInput = inputValue.replace(/[^a-zA-Z\s-]/g, "");
-        const formattedInput = validInput.replace(/\b\w/g, (match)=>match.toUpperCase());
-        const words = formattedInput.split(" ");
-        const modifiedWords = words.map((word)=>{
-            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-        });
-        const finalFormattedInput = modifiedWords.join(" ");
-        this.value = finalFormattedInput;
-        if (inputValue.length > 1 && this.classList.contains("invalid")) this.classList.remove("invalid");
-        else if (inputValue.length < 2 && !this.classList.contains("invalid")) this.classList.add("invalid");
-    });
-    cardCvv.addEventListener("input", function() {
-        let inputValue = this.value;
-        if (inputValue.length <= 3) this.value = inputValue;
-        else this.value = inputValue.slice(0, 3);
-        if (inputValue.length < 3 && !this.classList.contains("invalid")) this.classList.add("invalid");
-        else if (inputValue.length == 3 && this.classList.contains("invalid")) this.classList.remove("invalid");
-    });
-    function submitFormBuyTickets(event) {
-        event.preventDefault();
-        function validForms() {
-            let error = 0;
-            const formReg = document.querySelectorAll("._reg");
-            const valueTikets = document.querySelectorAll(".entry-ticket__value");
-            valueTikets.forEach((valueTicket)=>{
-                if (currentNumTicketsBasic == 0 && currentNumTicketsSenior == 0) {
-                    error++;
-                    console.log(`Оберіть к-ть та тип квитків`);
-                    if (!valueTicket.classList.contains("invalid")) valueTicket.classList.add("invalid");
-                } else if (valueTicket.classList.contains("invalid")) {
-                    valueTicket.classList.remove("invalid");
-                    console.log(`К-ть та тип квитків обрано коректно`);
-                }
-            });
-            formReg.forEach((reg)=>{
-                if (reg.length == 0 || reg.value == 0 && reg.name != "tickets-num-basic" && reg.name != "tickets-num-senior") {
-                    error++;
-                    reg.classList.add("invalid");
-                } else switch(reg.name){
-                    case "tickets-date":
-                        if (reg.value == "") {
-                            error++;
-                            if (!reg.classList.contains("invalid")) reg.classList.add("invalid");
-                        } else {
-                            if (reg.classList.contains("invalid")) reg.classList.remove("invalid");
-                            console.log(`Дата гуд`);
-                        }
-                        break;
-                    case "tickets-time":
-                        if (reg.value == "") {
-                            error++;
-                            if (!reg.classList.contains("invalid")) reg.classList.add("invalid");
-                        } else {
-                            if (reg.classList.contains("invalid")) reg.classList.remove("invalid");
-                            console.log(`Час гуд`);
-                        }
-                        break;
-                    case "user-name":
-                        if (!nameRegex.test(reg.value)) {
-                            error++;
-                            console.log(`Введено некоректне ім'я`);
-                            if (!reg.classList.contains("invalid")) reg.classList.add("invalid");
-                        } else if (reg.value.length < 2) {
-                            error++;
-                            console.log(`Введено некоректне ім'я`);
-                            if (!reg.classList.contains("invalid")) reg.classList.add("invalid");
-                        } else {
-                            if (reg.classList.contains("invalid")) reg.classList.remove("invalid");
-                            console.log(`Ім'я гуд`);
-                        }
-                        break;
-                    case "user-email":
-                        if (!emailRegex.test(reg.value)) {
-                            error++;
-                            console.log(`Введено некоректний E-mail`);
-                            if (!reg.classList.contains("invalid")) reg.classList.add("invalid");
-                        } else {
-                            if (reg.classList.contains("invalid")) reg.classList.remove("invalid");
-                            console.log(`E-mail гуд`);
-                        }
-                        break;
-                    case "user-phone":
-                        if (!phoneRegex.test(reg.value)) {
-                            error++;
-                            console.log(`Введено некоректний Phone`);
-                            if (!reg.classList.contains("invalid")) reg.classList.add("invalid");
-                        } else {
-                            if (reg.classList.contains("invalid")) reg.classList.remove("invalid");
-                            console.log(`Phone гуд`);
-                        }
-                        break;
-                    case "ticket-type":
-                        if (reg.value == "") {
-                            error++;
-                            if (!reg.classList.contains("invalid")) reg.classList.add("invalid");
-                        } else {
-                            if (reg.classList.contains("invalid")) reg.classList.remove("invalid");
-                            console.log(`Тип виставки гуд`);
-                        }
-                        break;
-                    case "card-num":
-                        if (reg.value.length == 0 || reg.value.length != 19) {
-                            error++;
-                            if (!reg.classList.contains("invalid")) reg.classList.add("invalid");
-                        } else {
-                            if (reg.classList.contains("invalid")) reg.classList.remove("invalid");
-                            console.log(`Номер карти гуд`);
-                        }
-                        break;
-                    case "card-month":
-                        if (reg.value == "") {
-                            error++;
-                            if (!reg.classList.contains("invalid")) reg.classList.add("invalid");
-                        } else {
-                            if (reg.classList.contains("invalid")) reg.classList.remove("invalid");
-                            console.log("Місяць карти гуд");
-                        }
-                        break;
-                    case "card-year":
-                        if (reg.value == "") {
-                            error++;
-                            if (!reg.classList.contains("invalid")) reg.classList.add("invalid");
-                        } else {
-                            if (reg.classList.contains("invalid")) reg.classList.remove("invalid");
-                            console.log("Рік карти гуд");
-                        }
-                        break;
-                    case "cardholder-name":
-                        if (!nameRegex.test(reg.value)) {
-                            error++;
-                            if (!reg.classList.contains("invalid")) reg.classList.add("invalid");
-                        } else {
-                            if (reg.classList.contains("invalid")) reg.classList.remove("invalid");
-                            console.log(`Чия карта ім'я гуд`);
-                        }
-                        break;
-                    case "card-cvv":
-                        if (reg.value.length == 0 || reg.value.length != 3) {
-                            error++;
-                            if (!reg.classList.contains("invalid")) reg.classList.add("invalid");
-                        } else {
-                            if (reg.classList.contains("invalid")) reg.classList.remove("invalid");
-                            console.log(`CVV карти гуд`);
-                        }
-                        break;
-                }
-            });
-            if (error > 0) {
-                error = 0;
-                return false;
-            } else return true;
-        }
-        // validForms();
-        if (!validForms()) {
-            console.log(`Заповність обов'язкові поля`);
-            return;
-        } else console.log(`Форму заповнено колектно.`);
-        //інфо про придбаний квиток, к-ть та юзера
-        orderId += 1;
-        let orderName = `order#${orderId}`;
-        dataTickets[orderName] = {
-            date: date.value,
-            time: time.value,
-            name: userName.value,
-            email: email.value,
-            phone: phone.value,
-            typeExhibition: ticketType.value,
-            numberTiketsBasic: numberTiketsBasic.value,
-            numberTiketsSenior: numberTiketsSenior.value,
-            totalSumOrder: totalSumOrder.textContent.slice(0, -2),
-            cardNum: cardNum.value,
-            cardMonth: cardMonth.value,
-            cardYear: cardYear.value,
-            cardHolderName: cardHolderName.value,
-            cardCvv: cardCvv.value
-        };
-        console.log(dataTickets); //тест інфи, що зібрали
-        // закриття форми після проходження валідації та відправки данних
-        modalWBuyTicket.classList.remove("tickets-m-w--open"); //тимчасово  скрито, щоб не заважало
-        bodyBlockUnBlock("unblock"); //тимчасово  скрито, щоб не заважало
-        // додати очищення полів
-        date.value = "";
-        time.value = "";
-        userName.value = "";
-        email.value = "";
-        phone.value = "";
-        ticketType.value = "";
-        currentNumTicketsBasic = 0;
-        currentNumTicketsSenior = 0;
-        document.querySelector("#amount-basic").value = currentNumTicketsBasic;
-        document.querySelector("#amount-senior").value = currentNumTicketsBasic;
-        numberTiketsBasic.value = "0";
-        numberTiketsSenior.value = "0";
-        totalSumOrder.value = "0";
-        cardNum.value = "";
-        cardMonth.value = "";
-        cardYear.value = "";
-        cardHolderName.value = "";
-        cardCvv.value = "";
-        document.querySelector(".total").innerHTML = 0;
-        document.querySelector("#number-tickets-basic").innerHTML = 0;
-        document.querySelector("#number-tickets-senior").innerHTML = 0;
-        document.querySelector(".total-sum__total").innerHTML = "0 €";
-        document.querySelector(".total-basic-cost").innerHTML = "0 €";
-        document.querySelector(".total-senior-cost").innerHTML = "0 €";
-        document.querySelector(".purchase-info__date").value = "";
-        document.querySelector(".purchase-info__time").value = "";
-        document.querySelector(".purchase-info__type").value = "";
-    }
-    btnSubBuyTicketsForm.addEventListener("click", submitFormBuyTickets);
-    function openCloseModWindowBuyTicket() {
-        buyTicketNowBtn.addEventListener("click", function(event) {
-            event.preventDefault();
-            if (!modalWBuyTicket.closest(".tickets-m-w--open")) {
-                modalWBuyTicket.classList.add("tickets-m-w--open");
-                bodyBlockUnBlock("block");
-            } else if (modalWBuyTicket.closest(".tickets-m-w")) return;
-        });
-        closeBtnModalWBuyTicket.addEventListener("click", function() {
-            if (!modalWBuyTicket.closest(".tickets-m-w--open")) return;
-            else if (modalWBuyTicket.closest(".tickets-m-w--open")) {
-                modalWBuyTicket.classList.remove("tickets-m-w--open");
-                bodyBlockUnBlock("unblock");
-            }
-        });
     }
     function bodyBlockUnBlock(action) {
         if (action === "block") {
@@ -1190,25 +880,52 @@ document.addEventListener("DOMContentLoaded", ()=>{
             if (overlay.classList.contains("overlay--open")) overlay.classList.remove("overlay--open");
         } else console.error('Invalid action. Use in function overlayOpenClose "open" or "close".');
     }
+    let orderId = 0;
+    let dataTickets = {};
+    function submitFormBuyTickets(event) {
+        const userInfoForm = document.querySelector(".user-info__form");
+        const purchaseInfoForm = document.querySelector(".purchase-info__card-form");
+        event.preventDefault();
+        const date = userInfoForm.elements["tickets-date"].value;
+        const time = userInfoForm.elements["tickets-time"].value;
+        const userName = userInfoForm.elements["user-name"].value;
+        const email = userInfoForm.elements["user-email"].value;
+        const phone = userInfoForm.elements["user-phone"].value;
+        const ticketType = userInfoForm.elements["ticket-type"].value;
+        const numberTiketsBasic = document.querySelector("#entry-ticket-basic").value;
+        const numberTiketsSenior = document.querySelector("#entry-ticket-senior").value;
+        const totalSumOrder = document.querySelector(".total-sum__total").textContent.slice(0, -2);
+        const cardNum = purchaseInfoForm.elements["card-num"].value;
+        const cardMonth = purchaseInfoForm.elements["card-month"].value;
+        const cardYear = purchaseInfoForm.elements["card-year"].value;
+        const cardHolderName = purchaseInfoForm.elements["cardholder-name"].value;
+        const cardCvv = purchaseInfoForm.elements["card-cvv"].value;
+        orderId += 1;
+        let orderName = `order#${orderId}`;
+        dataTickets[orderName] = {
+            date: date,
+            time: time,
+            name: userName,
+            email: email,
+            phone: phone,
+            typeExhibition: ticketType,
+            numberTiketsBasic: numberTiketsBasic,
+            numberTiketsSenior: numberTiketsSenior,
+            totalSumOrder: totalSumOrder,
+            cardNum: cardNum,
+            cardMonth: cardMonth,
+            cardYear: cardYear,
+            cardHolderName: cardHolderName,
+            cardCvv: cardCvv
+        };
+        console.log(dataTickets);
+    }
+    quantityTickets();
+    console.log(btnSubmit);
+    btnSubmit.addEventListener("click", submitFormBuyTickets);
+/////////you tube//////////
+///////////////////////////
 });
-//YT API
-let players = [];
-window.onYouTubeIframeAPIReady = function() {
-    const videosSlider = document.querySelectorAll(".video__slider-item");
-    videosSlider.forEach((videoSlider)=>{
-        if (videoSlider.id == "playerSliderYT1" || videoSlider.id == "playerSliderYT2" || videoSlider.id == "playerSliderYT3" || videoSlider.id == "playerSliderYT4" || videoSlider.id == "playerSliderYT5") {
-            const player = new YT.Player(videoSlider.id, {
-                videoId: videoSlider.dataset.videoId
-            });
-            players.push(player);
-        }
-    });
-};
-function stopVideo() {
-    players.forEach((player)=>{
-        if (player && typeof player.stopVideo === "function") player.stopVideo();
-    });
-}
 
 },{"../img/content/gallery/galery1.jpg":"iYa8R","../img/content/gallery/galery2.jpg":"feCBs","../img/content/gallery/galery3.jpg":"fFPb5","../img/content/gallery/galery4.jpg":"4VcsT","../img/content/gallery/galery5.jpg":"bW7yj","../img/content/gallery/galery6.jpg":"30gp8","../img/content/gallery/galery7.jpg":"fKFR4","../img/content/gallery/galery8.jpg":"g0vvZ","../img/content/gallery/galery9.jpg":"czEqw","../img/content/gallery/galery10.jpg":"jKH2W","../img/content/gallery/galery11.jpg":"8wodO","../img/content/gallery/galery12.jpg":"aNrol","../img/content/gallery/galery13.jpg":"alQuo","../img/content/gallery/galery14.jpg":"fEJzX","../img/content/gallery/galery15.jpg":"dg7GJ","@parcel/transformer-js/src/esmodule-helpers.js":"3ObZ9"}],"iYa8R":[function(require,module,exports) {
 module.exports = require("36494fe8da3829e2").getBundleURL("2MSMO") + "galery1.29993cf9.jpg" + "?" + Date.now();
@@ -1321,4 +1038,4 @@ exports.export = function(dest, destName, get) {
 
 },{}]},["2VSSk","dV6cC"], "dV6cC", "parcelRequire6ae1")
 
-//# sourceMappingURL=index.e82f28a0.js.map
+//# sourceMappingURL=indexTest.e82f28a0.js.map
